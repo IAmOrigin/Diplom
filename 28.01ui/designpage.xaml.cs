@@ -27,7 +27,6 @@ namespace _28._01ui
 				Height = 208,
 				Width = 408
 			};
-
 			var stackPanel = new StackPanel
 			{
 				VerticalAlignment = VerticalAlignment.Bottom,
