@@ -46,15 +46,13 @@
                     Text="FastLane Manager"
                     FontSize="32"
                     FontWeight="Bold"
-                    Foreground="White"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"/>
-
                 <TextBlock
                     TextWrapping="Wrap"
                     Text="Стать частью автоспорта может каждый"
                     FontSize="12"
-                    Foreground="#FFD0D0D0"
+                    Opacity="0.7"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Bottom"/>
             </StackPanel>

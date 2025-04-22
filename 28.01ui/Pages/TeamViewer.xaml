@@ -28,29 +28,29 @@
 
             <Image
                 Name="bunner"
-            Grid.Row="0"
-            Grid.ColumnSpan="3"
-            Stretch="UniformToFill"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"/>
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Stretch="UniformToFill"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
 
 
             <StackPanel
-            Orientation="Vertical"
-            Grid.Row="0"
-            Grid.Column="1"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Bottom"
-            Margin="0,0,0,10">
+                Orientation="Vertical"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="0,0,0,10">
                 <TextBlock
-                Text="Команда"
-                Foreground="White"/>
+                    Text="Команда"
+                    Foreground="White"/>
                 <TextBlock
-                Name="textblockteamname"
-                Text="APEX"
-                Foreground="White"
-                FontSize="32"
-                FontWeight="SemiBold"/>
+                    Name="textblockteamname"
+                    Text="APEX"
+                    Foreground="White"
+                    FontSize="32"
+                    FontWeight="SemiBold"/>
             </StackPanel>
 
             <StackPanel
@@ -62,8 +62,8 @@
                 Margin="0,0,10,10">
                 <ui:Button
                 Name="btnEdit"
-                Height="37"
-                Width="37"
+                Height="40"
+                Width="40"
                 BorderThickness="0"
                 Margin="0,0,10,0"
                 Click="btnEdit_Click"

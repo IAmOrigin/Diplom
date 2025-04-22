@@ -156,7 +156,7 @@ namespace _28._01ui
 			if (selectedEvent == null) return;
 			LViewEvents.SelectedItem = selectedEvent;
 			DataHolder.SharedResultEventId = selectedEvent.Id;
-			Manager.MainFrame.Navigate(new Uri("RatingPage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new RatingPage());
 		}
 	}
 }

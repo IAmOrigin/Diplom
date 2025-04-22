@@ -49,7 +49,7 @@ namespace _28._01ui
 				entities.Users.Add(newUser);
 				entities.SaveChanges();
 				Settings.Default.loggedInUser = newUser.Id;
-				Manager.MainFrame.Navigate(new Uri("StartPage.xaml", UriKind.Relative));
+				Manager.MainFrame.Navigate(new StartPage());
 			}
 			catch (Exception ex)
 			{

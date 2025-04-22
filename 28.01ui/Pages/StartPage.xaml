@@ -34,57 +34,54 @@
         </Grid.ColumnDefinitions>
 
         <Image
-        Name="imageDisplay"
-        VerticalAlignment="Center"
-        HorizontalAlignment="Center"
-        Stretch="UniformToFill"
-        Source="/images/ImageSlider/1.jpg"
-        Grid.RowSpan="2"
-        Grid.ColumnSpan="4"/>
-
+            Name="imageDisplay"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Stretch="UniformToFill"
+            Source="/images/ImageSlider/1.jpg"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="4"/>
         <StackPanel
-        Grid.Row="1"
-        Grid.ColumnSpan="2"
-        Orientation="Vertical"
-        VerticalAlignment="Bottom"
-        Margin="10">
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Orientation="Vertical"
+            VerticalAlignment="Bottom"
+            Margin="10">
             <TextBlock
-            Text="Добро пожаловать"
-            Foreground="White"
-            FontSize="16"/>
+                Text="Добро пожаловать"
+                FontSize="16"/>
             <TextBlock
-            Text="FastLane Manager"
-            Foreground="White"
-            FontSize="32"
-            FontWeight="Bold"/>
+                Text="FastLane World"
+                FontSize="34"
+                FontWeight="Bold"/>
         </StackPanel>
 
 
         <ui:Button
-        Click="RaceBtn"
-        Grid.Column="0"
-        Grid.Row="2"
-        BorderThickness="0"
-        Margin="10,10,5,10"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch"
-        HorizontalContentAlignment="Left">
+            Click="RaceBtn"
+            Grid.Column="0"
+            Grid.Row="2"
+            BorderThickness="0"
+            Margin="10,10,5,10"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Left">
             <StackPanel
-            Margin="10"
-            Orientation="Horizontal">
+                Margin="10"
+                Orientation="Horizontal">
                 <ui:SymbolIcon
-                Symbol="FastAcceleration20"
-                FontSize="34"
-                Margin="0,0,10,0"/>
+                    Symbol="FastAcceleration20"
+                    FontSize="34"
+                    Margin="0,0,10,0"/>
                 <StackPanel Orientation="Vertical">
                     <TextBlock
-                    FontSize="14"
-                    Text="Гонки"/>
+                        FontSize="14"
+                        Text="События"/>
                     <TextBlock
-                    FontSize="12"
-                    TextWrapping="Wrap"
-                    Foreground="#FFA7A5A5"
-                    Text="Предстоящие события"/>
+                        FontSize="12"
+                        TextWrapping="Wrap"
+                        Text="Предстоящие события"
+                        Opacity="0.5"/>
                 </StackPanel>
             </StackPanel>
         </ui:Button>
@@ -111,7 +108,7 @@
                     <TextBlock
                     FontSize="12"
                     TextWrapping="Wrap"
-                    Foreground="#FFA7A5A5"
+                    Opacity="0.5"
                     Text="Прошедшие события"/>
                 </StackPanel>
             </StackPanel>
@@ -139,7 +136,7 @@
                     <TextBlock
                     FontSize="12"
                     TextWrapping="Wrap"
-                    Foreground="#FFA7A5A5"
+                    Opacity="0.5"
                     Text="Таблица лидеров"/>
                 </StackPanel>
             </StackPanel>
@@ -167,7 +164,7 @@
                     <TextBlock
                     FontSize="12"
                     TextWrapping="Wrap"
-                    Foreground="#FFA7A5A5"
+                    Opacity="0.5"
                     Text="Команды и их состав"/>
                 </StackPanel>
             </StackPanel>

@@ -72,14 +72,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ArchivePage.xaml.cs">
+    <Compile Include="Pages\ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataHolder.cs" />
-    <Compile Include="designeventpage.xaml.cs">
+    <Compile Include="Classes\DataHolder.cs" />
+    <Compile Include="Pages\designeventpage.xaml.cs">
       <DependentUpon>designeventpage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="designpage.xaml.cs">
+    <Compile Include="Pages\designpage.xaml.cs">
       <DependentUpon>designpage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Events.cs">
@@ -103,7 +103,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PilotEditor.xaml.cs">
+    <Compile Include="Pages\EventViewer.xaml.cs">
+      <DependentUpon>EventViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PilotEditor.xaml.cs">
       <DependentUpon>PilotEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="PilotRoles.cs">
@@ -112,38 +115,38 @@
     <Compile Include="Pilots.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProfilePage.xaml.cs">
+    <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EventEditor.xaml.cs">
+    <Compile Include="Pages\EventEditor.xaml.cs">
       <DependentUpon>EventEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EventPage.xaml.cs">
+    <Compile Include="Pages\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IndexConverter.cs" />
-    <Compile Include="InitPage.cs" />
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="Classes\IndexConverter.cs" />
+    <Compile Include="Classes\InitPage.cs" />
+    <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Manager.cs" />
-    <Compile Include="ProjectDirectory.cs" />
-    <Compile Include="RatingEditor.xaml.cs">
+    <Compile Include="Classes\Manager.cs" />
+    <Compile Include="Classes\ProjectDirectory.cs" />
+    <Compile Include="Pages\RatingEditor.xaml.cs">
       <DependentUpon>RatingEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RatingPage.xaml.cs">
+    <Compile Include="Pages\RatingPage.xaml.cs">
       <DependentUpon>RatingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistrPage.xaml.cs">
+    <Compile Include="Pages\RegistrPage.xaml.cs">
       <DependentUpon>RegistrPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Results.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="StartPage.xaml.cs">
+    <Compile Include="Pages\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeamEditor.xaml.cs">
+    <Compile Include="Pages\TeamEditor.xaml.cs">
       <DependentUpon>TeamEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Teams.cs">
@@ -155,46 +158,50 @@
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="View.cs" />
-    <Compile Include="TeamsPage.xaml.cs">
+    <Compile Include="Classes\StringOverride.cs" />
+    <Compile Include="Pages\TeamsPage.xaml.cs">
       <DependentUpon>TeamsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TeamViewer.xaml.cs">
+    <Compile Include="Pages\TeamViewer.xaml.cs">
       <DependentUpon>TeamViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextBlockExtentions.cs" />
+    <Compile Include="Classes\TextBlockExtentions.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TicketBuy.xaml.cs">
+    <Compile Include="Pages\TicketBuy.xaml.cs">
       <DependentUpon>TicketBuy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VisibiltyConverter.cs" />
-    <Page Include="ArchivePage.xaml">
+    <Compile Include="Classes\VisibiltyConverter.cs" />
+    <Page Include="Pages\ArchivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="designeventpage.xaml">
+    <Page Include="Pages\designeventpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="designpage.xaml">
+    <Page Include="Pages\designpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PilotEditor.xaml">
+    <Page Include="Pages\EventViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ProfilePage.xaml">
+    <Page Include="Pages\PilotEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EventEditor.xaml">
+    <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EventPage.xaml">
+    <Page Include="Pages\EventEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EventPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,23 +209,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="LoginPage.xaml">
+    <Page Include="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RatingEditor.xaml">
+    <Page Include="Pages\RatingEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RatingPage.xaml">
+    <Page Include="Pages\RatingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistrPage.xaml">
+    <Page Include="Pages\RegistrPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartPage.xaml">
+    <Page Include="Pages\StartPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -226,19 +233,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeamEditor.xaml">
+    <Page Include="Pages\TeamEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeamsPage.xaml">
+    <Page Include="Pages\TeamsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TeamViewer.xaml">
+    <Page Include="Pages\TeamViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TicketBuy.xaml">
+    <Page Include="Pages\TicketBuy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -394,6 +401,10 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\DarkImageSlider\" />
+    <Folder Include="images\LightImageSlider\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

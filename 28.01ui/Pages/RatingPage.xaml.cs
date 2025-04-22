@@ -16,6 +16,10 @@ namespace _28._01ui
 			animGrid.InitSlideUp();
 			animGrid1.ContentSlideUp();
 			addResultButton.Visibility = Visibility.Collapsed;
+			foreach(var item in entities.Results)
+			{
+				dataGridResults.Items.Add(item);
+			}
 			try
 			{
 				cboxevents.SelectedItem = entities.Events.Find(DataHolder.SharedResultEventId);
@@ -70,7 +74,7 @@ namespace _28._01ui
 			var selectedEvent = cboxevents.SelectedItem as Events;
 			DataHolder.SharedResultId = 0;
 			DataHolder.SharedResultEventId = selectedEvent.Id;
-			Manager.MainFrame.Navigate(new Uri("RatingEditor.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new RatingEditor());
 		}
 		private void editResultClick(object sender, RoutedEventArgs e)
 		{
@@ -83,7 +87,7 @@ namespace _28._01ui
 				listviewrating.SelectedItem = result;
 				DataHolder.SharedResultId = result.Id;
 				DataHolder.SharedResultEventId = selectedEvent.Id;
-				Manager.MainFrame.Navigate(new Uri("RatingEditor.xaml", UriKind.Relative));
+				Manager.MainFrame.Navigate(new RatingEditor());
 			}
 		}
 	}

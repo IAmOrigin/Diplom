@@ -10,6 +10,12 @@
                 <ui:ThemesDictionary Theme="Dark" />
                 <ui:ControlsDictionary />
             </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="AppBackgroundColor" Color="#FF1B1B1B"/>
+            <SolidColorBrush x:Key="AppTextColor" Color="White"/>
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{DynamicResource AppTextColor}"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

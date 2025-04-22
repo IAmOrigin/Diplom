@@ -14,7 +14,8 @@
         MinWidth="750"
         Background="{x:Null}">
 
-    <Grid >
+    <Grid
+        Background="{DynamicResource AppBackgroundColor}">
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="48"/>
@@ -58,7 +59,8 @@
                 Width="35"
                 Height="35">
                 <ui:SymbolIcon
-                    Symbol="ArrowLeft20"/>
+                    Symbol="ArrowLeft20"
+                    FontSize="17"/>
             </ui:Button>
         </Grid>
 

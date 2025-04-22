@@ -37,7 +37,7 @@ namespace _28._01ui
 						{
 							Settings.Default.loggedInUser = user.Id;
 							Settings.Default.Save();
-							Manager.MainFrame.Navigate(new Uri("StartPage.xaml", UriKind.Relative));
+							Manager.MainFrame.Navigate(new StartPage());
 						}
 						else
 						{
@@ -58,7 +58,7 @@ namespace _28._01ui
 
 		private void HyperlinkButton_Click(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("RegistrPage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new RegistrPage());
 		}
 	}
 }

@@ -20,6 +20,7 @@ namespace _28._01ui
     /// </summary>
     public partial class designeventpage : Page
     {
+        Entities entities = new Entities();
         public designeventpage()
         {
             InitializeComponent();

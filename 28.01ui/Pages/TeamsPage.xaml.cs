@@ -29,13 +29,13 @@ namespace _28._01ui
 			if (team == null) return;
 			listviewteams.SelectedItem = team;
 			DataHolder.SharedTeamId = team.Id;
-			Manager.MainFrame.Navigate(new Uri("TeamViewer.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new TeamViewer());
 		}
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
 			DataHolder.SharedTeamId = 0;
-			Manager.MainFrame.Navigate(new Uri("TeamEditor.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new TeamEditor());
 		}
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

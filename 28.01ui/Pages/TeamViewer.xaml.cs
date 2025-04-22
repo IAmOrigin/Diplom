@@ -162,12 +162,12 @@ namespace _28._01ui
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("PilotEditor.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new PilotEditor());
 		}
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("TeamEditor.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new TeamEditor());
 		}
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)

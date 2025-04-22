@@ -39,7 +39,7 @@ namespace _28._01ui
 		private void InitializeTimer()
 		{
 			_timer = new DispatcherTimer();
-			_timer.Interval = TimeSpan.FromSeconds(4.2); // Интервал - 4.2 секунд
+			_timer.Interval = TimeSpan.FromSeconds(4.2); // Интервал - 4.20 секунд
 			_timer.Tick += TimerTick;
 			_timer.Start();
 		}
@@ -70,23 +70,23 @@ namespace _28._01ui
 
 		private void RaceBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("EventPage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new EventPage());
 		}
 
 		private void ArchiveBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("ArchivePage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new ArchivePage());
 		}
 
 		private void RatingBtn(object sender, RoutedEventArgs e)
 		{
 			DataHolder.SharedResultEventId = 0;
-			Manager.MainFrame.Navigate(new Uri("RatingPage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new RatingPage());
 		}
 
 		private void TeamsBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("TeamsPage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new TeamsPage());
 		}
     }
 }
