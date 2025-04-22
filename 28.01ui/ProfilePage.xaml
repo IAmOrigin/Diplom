@@ -1,0 +1,172 @@
+﻿<Page x:Class="_28._01ui.ProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_28._01ui"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1440"
+      Title="design1">
+
+    <ui:DynamicScrollViewer>
+        <Grid
+            Name="animGrid">
+
+            <Grid.RenderTransform>
+                <TranslateTransform Y="20"/>
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="160"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Image
+            Grid.ColumnSpan="3"
+            Stretch="UniformToFill"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Source="/images/BackImages/18.jpg"
+            Height="162"
+            Width="1910"/>
+
+            <ui:Button
+            Grid.Row="0"
+            Grid.Column="2"
+            BorderThickness="0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Height="40"
+            Width="40"
+            Margin="0,0,20,5"
+            Background="#26FFFFFF">
+                <ui:SymbolIcon
+                FontSize="20"
+                Symbol="ImageEdit20"/>
+            </ui:Button>
+
+            <StackPanel
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="0,10,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Orientation="Horizontal"
+                Grid.Column="1">
+                <ui:Button
+                    Grid.Row="0"
+                Grid.Column="2"
+                BorderThickness="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Height="35"
+                Width="35"
+                Margin="0,0,10,0">
+                    <ui:SymbolIcon
+                    FontSize="14"
+                    Symbol="Edit20"/>
+                </ui:Button>
+                <ui:Button
+                    Name="btnLogOut"
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    BorderThickness="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Height="35"
+                    Width="35"
+                    Margin="0,0,0,0" Click="btnLogOut_Click">
+                    <ui:SymbolIcon
+                        FontSize="14"
+                        Symbol="SignOut20"/>
+                </ui:Button>
+            </StackPanel>
+
+            <Border
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            Name="avaborder"
+            CornerRadius="150"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Left"
+            Margin="0,0,0,0"
+            Width="147"
+            Height="147">
+            </Border>
+
+            <StackPanel
+            Grid.Row="1"
+            Margin="162,10,0,10"
+            Orientation="Vertical"
+            Height="auto"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Width="217"
+            MaxWidth="300" Grid.Column="1">
+
+                <TextBlock
+                    Name="TBlockName"
+            HorizontalAlignment="Left"
+            Text="Имя"
+            Foreground="White"
+            FontSize="20"
+            TextWrapping="Wrap"
+            FontWeight="SemiBold"
+            Width="auto"
+            Height="auto"/>
+
+                <TextBlock
+                    Name="TBlockRole"
+            HorizontalAlignment="Left"
+            Margin="0,10,0,0"
+            Text="Роль"
+            Foreground="White"
+            FontSize="14"
+            Width="auto" 
+            Height="auto"/>
+            </StackPanel>
+
+            <TextBlock
+                Name="ticketsinfo"
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="Билеты"
+                FontSize="20"
+                Margin="0,10,0,10"
+                Foreground="White"/>
+
+            <Grid
+                Grid.Row="3"
+                Grid.Column="1"
+                Name="animGrid1">
+
+                <Grid.RenderTransform>
+                    <TranslateTransform Y="20"/>
+                </Grid.RenderTransform>
+
+                <WrapPanel
+                Name="TicketContainer"/>
+            </Grid>
+
+
+            <TextBlock
+                Name="noneticket"
+                Text="У вас нет билетов"
+                Foreground="#FFA7A5A5"
+                Grid.Column="1"
+                Grid.Row="3"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"/>
+
+        </Grid>
+    </ui:DynamicScrollViewer>
+</Page>

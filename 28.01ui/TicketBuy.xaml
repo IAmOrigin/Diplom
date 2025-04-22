@@ -1,0 +1,193 @@
+﻿<Page x:Class="_28._01ui.TicketBuy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_28._01ui"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="TicketBuy">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel
+            VerticalAlignment="Center"
+            Margin="10,10,10,0"
+            Orientation="Vertical"
+            Grid.Column="0">
+            <TextBlock
+                TextWrapping="Wrap"
+                Text="Введите контактные данные"
+                Foreground="White"/>
+            <ui:TextBox
+                Name="textboxHolder"
+                Margin="0,10,0,0"
+                PlaceholderText="Имя держателя"
+                BorderThickness="0"
+                TextChanged="textboxHolder_TextChanged"/>
+            <ui:TextBox
+                Name="textboxPhone"
+                Margin="0,10,0,0"
+                PlaceholderText="Номер телефона"
+                BorderThickness="0"
+                TextChanged="textboxPhone_TextChanged"/>
+            <TextBlock
+                TextWrapping="Wrap"
+                Name="Warn"
+                Foreground="Coral"
+                VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Vertical"
+            Grid.Column="1">
+            <TextBlock
+                Foreground="White"
+                Text="Ваш билет будет выглядеть так:"
+                Margin="0,0,0,10"/>
+            <Border
+                Name="imgBorder"
+                Width="600"
+                Height="250">
+                <Border.Background>
+                    <ImageBrush
+                    ImageSource="/images/EventImages/RDS2025Summer.jpg"
+                    Stretch="UniformToFill"/>
+                </Border.Background>
+                <Grid
+                    HorizontalAlignment="Left"
+                    Width="280" Background="#AF000000">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Margin="10,0,0,0"
+                        Grid.Row="0"
+                        Name="textblockeventname"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        TextWrapping="Wrap"
+                        Text="Event Name"
+                        FontSize="32"/>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Name="locationTextBlock"
+                        FontWeight="Medium"
+                        Foreground="White"
+                        Text="Location"
+                        FontSize="16"
+                        Margin="10,10,0,0"/>        
+
+                    <TextBlock
+                        Grid.Row="2"
+                        Name="holderTextBlock"
+                        Foreground="White"
+                        FontSize="16"
+                        Margin="10,5,0,0"/>
+                    
+                    <TextBlock
+                        Grid.Row="3"
+                        Name="phoneTextBloxk"
+                        Foreground="White"
+                        FontSize="16"
+                        Margin="10,5,0,0"/>
+
+                    <StackPanel
+                        Grid.RowSpan="5"
+                        Orientation="Vertical"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,10">
+                        <TextBlock
+                            Name="textblockDate"
+                            Text="17 march"
+                            Foreground="White"
+                            FontSize="18"
+                            FontWeight="SemiBold"/>
+                        <TextBlock
+                            Name="textblockTime"
+                            Text="9:30"
+                            Foreground="White"
+                            FontSize="26"
+                            HorizontalAlignment="Center"
+                            FontWeight="Bold"/>
+                        <TextBlock
+                            Name="textblockYear"
+                            Text="2025"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            FontSize="12"
+                            FontWeight="Light"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <StackPanel
+                HorizontalAlignment="Center"
+                Margin="0,10,0,0"
+                Orientation="Horizontal">
+                <TextBlock
+                    Foreground="White"
+                    VerticalAlignment="Center"
+                    Name="textblockPrice"
+                    Text="К оплате 100 рублей"
+                    Margin="0,0,10,0"/>
+                <ui:HyperlinkButton
+                    Name="buyButton"
+                    Content="Оплатить"
+                    Click="Btnbuy_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+        <!--<TextBlock
+            Name="textblockeventname"
+            Text="Событие: рдс 2023"
+            Foreground="White"
+            Margin="0,0,475,415"/>
+        <TextBlock
+            Name="textblocklocation"
+            Text="Локация"
+            Foreground="White"
+            Margin="0,40,475,375"/>
+        <TextBlock
+            Name="textblockdate"
+            Text="Дата"
+            Foreground="White"
+            Margin="0,80,475,335"/>
+        <ui:TextBox
+            Name="textboxholder"
+            PlaceholderText="Владелец билета"
+            Margin="0,153,475,257"/>
+        <ui:TextBox
+            Name="textboxphone"
+            PlaceholderText="Номер телефона"
+            Margin="0,218,475,190"/>
+        <TextBlock
+            Name="textblockprice"
+            Text="Стоимость билета: 100 рублей"
+            Margin="0,279,475,136"
+            Foreground="White"/>
+        <ui:Button
+            Content="Оплатить"
+            Margin="0,347,0,0"
+            VerticalAlignment="Top"
+            Click="Btnbuy_Click"/>-->
+
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23092A88-02BC-4E0E-8D93-3531BE23FB17}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>_28._01ui</RootNamespace>
+    <AssemblyName>FastLane Manager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Wpf.Ui, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF-UI.3.0.5\lib\net472\Wpf.Ui.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataHolder.cs" />
+    <Compile Include="designeventpage.xaml.cs">
+      <DependentUpon>designeventpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="designpage.xaml.cs">
+      <DependentUpon>designpage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Events.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PilotEditor.xaml.cs">
+      <DependentUpon>PilotEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRoles.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pilots.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventEditor.xaml.cs">
+      <DependentUpon>EventEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventPage.xaml.cs">
+      <DependentUpon>EventPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IndexConverter.cs" />
+    <Compile Include="InitPage.cs" />
+    <Compile Include="LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Manager.cs" />
+    <Compile Include="ProjectDirectory.cs" />
+    <Compile Include="RatingEditor.xaml.cs">
+      <DependentUpon>RatingEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RatingPage.xaml.cs">
+      <DependentUpon>RatingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrPage.xaml.cs">
+      <DependentUpon>RegistrPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Results.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StartPage.xaml.cs">
+      <DependentUpon>StartPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeamEditor.xaml.cs">
+      <DependentUpon>TeamEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Teams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ticket.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="View.cs" />
+    <Compile Include="TeamsPage.xaml.cs">
+      <DependentUpon>TeamsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TeamViewer.xaml.cs">
+      <DependentUpon>TeamViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TextBlockExtentions.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TicketBuy.xaml.cs">
+      <DependentUpon>TicketBuy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VisibiltyConverter.cs" />
+    <Page Include="ArchivePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="designeventpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="designpage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PilotEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RatingEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RatingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeamEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeamsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TeamViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TicketBuy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ImageSlider\2.jpg" />
+    <Resource Include="images\ImageSlider\1.jpg" />
+    <Resource Include="images\ImageSlider\3.jpg" />
+    <Resource Include="images\ImageSlider\4.jpg" />
+    <Resource Include="images\ImageSlider\5.jpg" />
+    <Resource Include="images\ImageSlider\6.jpg" />
+    <Resource Include="images\ImageSlider\7.jpg" />
+    <Resource Include="images\ImageSlider\8.jpg" />
+    <Resource Include="images\ImageSlider\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BackImages\1.jpg" />
+    <Resource Include="images\BackImages\10.jpg" />
+    <Resource Include="images\BackImages\11.jpg" />
+    <Resource Include="images\BackImages\12.jpg" />
+    <Resource Include="images\BackImages\13.jpg" />
+    <Resource Include="images\BackImages\14.jpg" />
+    <Resource Include="images\BackImages\15.jpg" />
+    <Resource Include="images\BackImages\2.jpg" />
+    <Resource Include="images\BackImages\3.jpg" />
+    <Resource Include="images\BackImages\4.jpg" />
+    <Resource Include="images\BackImages\5.jpg" />
+    <Resource Include="images\BackImages\6.jpg" />
+    <Resource Include="images\BackImages\7.jpg" />
+    <Resource Include="images\BackImages\8.jpg" />
+    <Resource Include="images\BackImages\9.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\EventImages\RDS2025Summer.jpg" />
+    <Resource Include="images\EventImages\RDS2025Winter.jpg" />
+    <Resource Include="images\EventImages\RDS2026Summer.jpg" />
+    <Resource Include="images\EventImages\SRC2023.jpg" />
+    <Resource Include="images\EventImages\SRC2025.jpg" />
+    <Resource Include="images\EventImages\TA02.jpg" />
+    <Resource Include="images\EventImages\TA07.jpg" />
+    <Resource Include="images\EventImages\TA08.jpg" />
+    <Resource Include="images\EventImages\SDC2024.jpg" />
+    <Resource Include="images\EventImages\SDC2025.jpg" />
+    <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ProfileImages\admin.jpg" />
+    <Resource Include="images\ProfileImages\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BackImages\17.jpg" />
+    <Resource Include="images\BackImages\18.jpg" />
+    <Resource Include="images\BackImages\19.jpg" />
+    <Resource Include="images\BackImages\20.jpg" />
+    <Resource Include="images\BackImages\16.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\TeamImages\apex.jpg" />
+    <Resource Include="images\TeamImages\slide.jpg" />
+    <Resource Include="images\TeamImages\redline.jpg" />
+    <Resource Include="images\TeamImages\ebdurance.jpg" />
+    <Resource Include="images\TeamImages\gforce.jpg" />
+    <Resource Include="images\TeamImages\grit.jpg" />
+    <Resource Include="images\TeamImages\trailblazers.jpg" />
+    <Resource Include="images\BackImages\7740.jpg" />
+    <Resource Include="images\TeamImages\Banners\redline-bunner.jpg" />
+    <Resource Include="images\TeamImages\Banners\apex-bunner.jpg" />
+    <Resource Include="images\TeamImages\Banners\endurance-bunner.jpg" />
+    <Resource Include="images\TeamImages\Banners\gforce-bunner.jpg" />
+    <Resource Include="images\TeamImages\Banners\grit-bunner.jpg" />
+    <Resource Include="images\TeamImages\Banners\trailb-bunner.jpg" />
+    <Resource Include="images\default.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ProfileImages\p1.jpg" />
+    <Resource Include="images\ProfileImages\p2.jpg" />
+    <Resource Include="images\ProfileImages\p3.jpg" />
+    <Resource Include="images\ProfileImages\p4.jpg" />
+    <Resource Include="images\ProfileImages\p5.jpg" />
+    <Resource Include="images\ProfileImages\p6.jpg" />
+    <Resource Include="images\defaultprofilepic.jpg" />
+    <Resource Include="images\TeamImages\Banners\photo_2024-12-25_11-33-53.jpg" />
+    <Resource Include="images\11.jpg" />
+    <Resource Include="images\TeamImages\16.jpg" />
+    <Resource Include="images\TeamImages\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
+    <Resource Include="images\TeamImages\7740.jpg" />
+    <Resource Include="images\TeamImages\Banners\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
+    <Resource Include="images\TeamImages\Banners\7740.jpg" />
+    <Resource Include="images\TeamImages\Banners\automobile-racing-sports-competition.jpg" />
+    <Resource Include="images\TeamImages\Banners\drift.jpg" />
+    <Resource Include="images\TeamImages\Banners\drive.png" />
+    <Resource Include="images\TeamImages\Banners\eb488cdbee3611ef8cb8ceeb8f83ad34_1.jpg" />
+    <Resource Include="images\TeamImages\Banners\mine and craft.png" />
+    <Resource Include="images\TeamImages\Banners\ostanovka.png" />
+    <Resource Include="images\TeamImages\Banners\RaceMgrLogo.png" />
+    <Resource Include="images\TeamImages\Banners\srN02ejYD9Q.jpg" />
+    <Resource Include="images\TeamImages\Banners\zvonok.png" />
+    <Resource Include="images\TeamImages\d3b380e0f30611ef996266b929a52cde_1.jpg" />
+    <Resource Include="images\TeamImages\drive.png" />
+    <Resource Include="images\TeamImages\eb488cdbee3611ef8cb8ceeb8f83ad34_1.jpg" />
+    <Resource Include="images\TeamImages\F_MHhWjwujM.jpg" />
+    <Resource Include="images\TeamImages\p3.jpg" />
+    <Resource Include="images\ProfileImages\ostanovka.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\**\*.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
