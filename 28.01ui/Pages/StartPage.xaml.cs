@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _28._01ui.Classes;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,23 +71,23 @@ namespace _28._01ui
 
 		private void RaceBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new EventPage());
+			Manager.MainFrame.Navigate(new Uri("Pages/EventPage.xaml", UriKind.Relative));
 		}
 
 		private void ArchiveBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new ArchivePage());
+			Manager.MainFrame.Navigate(new Uri("Pages/ArchivePage.xaml", UriKind.Relative));
 		}
 
 		private void RatingBtn(object sender, RoutedEventArgs e)
 		{
 			DataHolder.SharedResultEventId = 0;
-			Manager.MainFrame.Navigate(new RatingPage());
+			Manager.MainFrame.Navigate(new Uri("Pages/RatingPage.xaml", UriKind.Relative));
 		}
 
 		private void TeamsBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new TeamsPage());
+			Manager.MainFrame.Navigate(new Uri("Pages/TeamsPage.xaml", UriKind.Relative));
 		}
     }
 }

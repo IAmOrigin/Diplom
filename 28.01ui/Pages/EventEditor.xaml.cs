@@ -100,7 +100,7 @@ namespace _28._01ui
 
 		private void Delete(object sender, RoutedEventArgs e)
 		{
-			var deleteEvent = entities.Events.Find(Convert.ToInt32(DataHolder.SharedEventId));
+			var deleteEvent = entities.Events.Find(DataHolder.SharedEventId);
 
 			var result = MessageBox.Show("Вы точно хотите удалить?", "Удаление",
 			MessageBoxButton.YesNo, MessageBoxImage.Question);

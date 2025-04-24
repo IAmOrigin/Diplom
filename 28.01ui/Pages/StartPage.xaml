@@ -48,9 +48,11 @@
             VerticalAlignment="Bottom"
             Margin="10">
             <TextBlock
+                Foreground="White"
                 Text="Добро пожаловать"
                 FontSize="16"/>
             <TextBlock
+                Foreground="White"
                 Text="FastLane World"
                 FontSize="34"
                 FontWeight="Bold"/>

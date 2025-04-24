@@ -16,10 +16,6 @@ namespace _28._01ui
 			animGrid.InitSlideUp();
 			animGrid1.ContentSlideUp();
 			addResultButton.Visibility = Visibility.Collapsed;
-			foreach(var item in entities.Results)
-			{
-				dataGridResults.Items.Add(item);
-			}
 			try
 			{
 				cboxevents.SelectedItem = entities.Events.Find(DataHolder.SharedResultEventId);

@@ -7,7 +7,74 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="EventViewer">
+      Title="EventViewer"
+      Language="ru-RU">
+
+    <Page.Resources>
+        <DataTemplate
+            x:Key="EventTemplate">
+            <Grid
+                Margin="0,10,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="8*"/>
+                    <ColumnDefinition
+                        Width="10*"/>
+                    <ColumnDefinition
+                        Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="0,0,0,10"
+                    TextWrapping="Wrap"
+                    Text="{Binding EventName}"
+                    FontSize="32"
+                    FontWeight="SemiBold"/>
+                <ui:Button
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HorizontalAlignment="Right"
+                    Content="Купить билет"
+                    Width="150"
+                    Appearance="Primary"/>
+                <StackPanel
+                    Orientation="Vertical"
+                    Grid.Row="1"
+                    Grid.Column="0">
+                    <TextBlock
+                        FontSize="24"
+                        Text="{Binding EventDate, StringFormat='dd MMMM yyyy'}"
+                        Margin="0,0,0,10"/>
+                    <TextBlock
+                        FontSize="24"
+                        Text="{Binding Location}"
+                        Margin="0,0,0,10"/>
+                    <TextBlock
+                        FontSize="20"
+                        Text="{Binding EventType.TypeName}"
+                        Margin="0,0,0,10"/>
+                    <TextBlock
+                        TextWrapping="Wrap"
+                         Text="{Binding EventDesc}"/>
+                </StackPanel>
+                <Image
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Stretch="Uniform"
+                    Margin="10"
+                    Source="/images/ProfileImages/admin.jpg" />
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
 
     <ui:DynamicScrollViewer>
         <Grid
@@ -34,19 +101,15 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
 
-            <TextBlock
-                Grid.Row="0"
+            <ItemsControl
+                Name="EventContainer"
+                Grid.Row="1"
                 Grid.Column="1"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Margin="0,0,0,10"
-                Name="textBlockName"
-                Text="Название"
-                Foreground="White"
-                FontSize="32"
-                FontWeight="SemiBold"/>
+                ItemTemplate="{StaticResource EventTemplate}">
+            </ItemsControl>
 
             <StackPanel
+                Name="adminPanel"
                 Orientation="Horizontal"
                 Grid.Row="0"
                 Grid.Column="1"

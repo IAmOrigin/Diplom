@@ -63,8 +63,11 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Wpf.Ui, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WPF-UI.3.0.5\lib\net472\Wpf.Ui.dll</HintPath>
+    <Reference Include="Wpf.Ui, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF-UI.4.0.2\lib\net472\Wpf.Ui.dll</HintPath>
+    </Reference>
+    <Reference Include="Wpf.Ui.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=11f9f5cc97b3ffd6, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPF-UI.Abstractions.4.0.2\lib\net472\Wpf.Ui.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -72,16 +75,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\PopupManager.cs" />
     <Compile Include="Pages\ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\DataHolder.cs" />
-    <Compile Include="Pages\designeventpage.xaml.cs">
-      <DependentUpon>designeventpage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\designpage.xaml.cs">
-      <DependentUpon>designpage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Events.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -174,14 +172,6 @@
     </Compile>
     <Compile Include="Classes\VisibiltyConverter.cs" />
     <Page Include="Pages\ArchivePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\designeventpage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\designpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -388,9 +378,149 @@
     <Resource Include="images\ProfileImages\ostanovka.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\**\*.*" />
+    <None Include="images\11.jpg" />
+    <None Include="images\BackImages\1.jpg" />
+    <None Include="images\BackImages\10.jpg" />
+    <None Include="images\BackImages\11.jpg" />
+    <None Include="images\BackImages\12.jpg" />
+    <None Include="images\BackImages\13.jpg" />
+    <None Include="images\BackImages\14.jpg" />
+    <None Include="images\BackImages\15.jpg" />
+    <None Include="images\BackImages\16.jpg" />
+    <None Include="images\BackImages\17.jpg" />
+    <None Include="images\BackImages\18.jpg" />
+    <None Include="images\BackImages\19.jpg" />
+    <None Include="images\BackImages\2.jpg" />
+    <None Include="images\BackImages\20.jpg" />
+    <None Include="images\BackImages\3.jpg" />
+    <None Include="images\BackImages\4.jpg" />
+    <None Include="images\BackImages\5.jpg" />
+    <None Include="images\BackImages\6.jpg" />
+    <None Include="images\BackImages\7.jpg" />
+    <None Include="images\BackImages\7740.jpg" />
+    <None Include="images\BackImages\8.jpg" />
+    <None Include="images\BackImages\9.jpg" />
+    <None Include="images\default.jpg" />
+    <None Include="images\defaultprofilepic.jpg" />
+    <None Include="images\EventImages\16.jpg" />
+    <None Include="images\EventImages\6230f6c937ebbf861432084bab421a6d.jpg" />
+    <None Include="images\EventImages\7740.jpg" />
+    <None Include="images\EventImages\964ee3074d7e3633249146174eada86a.jpg" />
+    <None Include="images\EventImages\aaab993e71fa5d661563e16139c816a8.jpg" />
+    <None Include="images\EventImages\admin.jpg" />
+    <None Include="images\EventImages\automobile-racing-sports-competition.jpg" />
+    <None Include="images\EventImages\BlXKknPpJ7E.jpg" />
+    <None Include="images\EventImages\drift.jpg" />
+    <None Include="images\EventImages\F_MHhWjwujM.jpg" />
+    <None Include="images\EventImages\image.png" />
+    <None Include="images\EventImages\photo_2023-09-13_12-15-02.jpg" />
+    <None Include="images\EventImages\photo_2024-03-08_18-56-23.jpg" />
+    <None Include="images\EventImages\photo_2024-05-14_11-14-52.jpg" />
+    <None Include="images\EventImages\photo_2024-12-25_11-33-53.jpg" />
+    <None Include="images\EventImages\photo_2025-04-21_00-36-13 %283%29.jpg" />
+    <None Include="images\EventImages\RDS2025Summer.jpg" />
+    <None Include="images\EventImages\RDS2025Winter.jpg" />
+    <None Include="images\EventImages\RDS2026Summer.jpg" />
+    <None Include="images\EventImages\SDC2024.jpg" />
+    <None Include="images\EventImages\SDC2025.jpg" />
+    <None Include="images\EventImages\SRC2023.jpg" />
+    <None Include="images\EventImages\SRC2025.jpg" />
+    <None Include="images\EventImages\srN02ejYD9Q.jpg" />
+    <None Include="images\EventImages\TA02.jpg" />
+    <None Include="images\EventImages\TA07.jpg" />
+    <None Include="images\EventImages\TA08.jpg" />
+    <None Include="images\EventImages\user.jpg" />
+    <None Include="images\EventImages\Кошка_Вирго.jpg" />
+    <None Include="images\ImageSlider\1.jpg" />
+    <None Include="images\ImageSlider\2.jpg" />
+    <None Include="images\ImageSlider\3.jpg" />
+    <None Include="images\ImageSlider\4.jpg" />
+    <None Include="images\ImageSlider\5.jpg" />
+    <None Include="images\ImageSlider\6.jpg" />
+    <None Include="images\ImageSlider\7.jpg" />
+    <None Include="images\ImageSlider\8.jpg" />
+    <None Include="images\ImageSlider\9.jpg" />
+    <None Include="images\ProfileImages\7740.jpg" />
+    <None Include="images\ProfileImages\admin.jpg" />
+    <None Include="images\ProfileImages\d3b380e0f30611ef996266b929a52cde_1.jpg" />
+    <None Include="images\ProfileImages\drive.png" />
+    <None Include="images\ProfileImages\image.png" />
+    <None Include="images\ProfileImages\Nov-14%4015.14.5.png" />
+    <None Include="images\ProfileImages\ostanovka.png" />
+    <None Include="images\ProfileImages\p1.jpg" />
+    <None Include="images\ProfileImages\p2.jpg" />
+    <None Include="images\ProfileImages\p3.jpg" />
+    <None Include="images\ProfileImages\p4.jpg" />
+    <None Include="images\ProfileImages\p5.jpg" />
+    <None Include="images\ProfileImages\p6.jpg" />
+    <None Include="images\ProfileImages\photo_2023-03-26_17-25-52.jpg" />
+    <None Include="images\ProfileImages\photo_2023-09-13_12-15-02.jpg" />
+    <None Include="images\ProfileImages\photo_2024-03-08_18-56-23.jpg" />
+    <None Include="images\ProfileImages\photo_2024-03-30_21-38-58.jpg" />
+    <None Include="images\ProfileImages\photo_2024-04-06_14-51-32.jpg" />
+    <None Include="images\ProfileImages\photo_2024-05-14_11-14-52.jpg" />
+    <None Include="images\ProfileImages\photo_2025-01-19_20-38-53.jpg" />
+    <None Include="images\ProfileImages\photo_2025-02-15_12-35-16.jpg" />
+    <None Include="images\ProfileImages\user.jpg" />
+    <None Include="images\ProfileImages\WIN_20231114_21_36_33_Pro.jpg" />
+    <None Include="images\ProfileImages\WIN_20231114_21_36_45_Pro.jpg" />
+    <None Include="images\ProfileImages\zvonok.png" />
+    <None Include="images\TeamImages\16.jpg" />
+    <None Include="images\TeamImages\2.jpg" />
+    <None Include="images\TeamImages\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
+    <None Include="images\TeamImages\7740.jpg" />
+    <None Include="images\TeamImages\admin.jpg" />
+    <None Include="images\TeamImages\apex.jpg" />
+    <None Include="images\TeamImages\Banners\2024-11-12_23.51.45.png" />
+    <None Include="images\TeamImages\Banners\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
+    <None Include="images\TeamImages\Banners\7740.jpg" />
+    <None Include="images\TeamImages\Banners\9.jpg" />
+    <None Include="images\TeamImages\Banners\apex-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\automobile-racing-sports-competition.jpg" />
+    <None Include="images\TeamImages\Banners\BlXKknPpJ7E.jpg" />
+    <None Include="images\TeamImages\Banners\drift.jpg" />
+    <None Include="images\TeamImages\Banners\drive.png" />
+    <None Include="images\TeamImages\Banners\e245d5fef30511efa4f986c50544bce9_1.jpg" />
+    <None Include="images\TeamImages\Banners\eb488cdbee3611ef8cb8ceeb8f83ad34_1.jpg" />
+    <None Include="images\TeamImages\Banners\endurance-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\F_MHhWjwujM.jpg" />
+    <None Include="images\TeamImages\Banners\gforce-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\grit-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\image.png" />
+    <None Include="images\TeamImages\Banners\mine and craft.png" />
+    <None Include="images\TeamImages\Banners\Nov-13%4020.31.8.png" />
+    <None Include="images\TeamImages\Banners\Nov-14%4015.14.5.png" />
+    <None Include="images\TeamImages\Banners\Nov-18%402.0.35.png" />
+    <None Include="images\TeamImages\Banners\ostanovka.png" />
+    <None Include="images\TeamImages\Banners\p1.jpg" />
+    <None Include="images\TeamImages\Banners\photo_2024-03-08_18-56-23.jpg" />
+    <None Include="images\TeamImages\Banners\photo_2024-05-14_11-14-52.jpg" />
+    <None Include="images\TeamImages\Banners\photo_2024-12-25_11-33-53.jpg" />
+    <None Include="images\TeamImages\Banners\RaceMgrLogo.png" />
+    <None Include="images\TeamImages\Banners\redline-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\slide.jpg" />
+    <None Include="images\TeamImages\Banners\srN02ejYD9Q.jpg" />
+    <None Include="images\TeamImages\Banners\trailb-bunner.jpg" />
+    <None Include="images\TeamImages\Banners\zvonok.png" />
+    <None Include="images\TeamImages\d3b380e0f30611ef996266b929a52cde_1.jpg" />
+    <None Include="images\TeamImages\drive.png" />
+    <None Include="images\TeamImages\eb488cdbee3611ef8cb8ceeb8f83ad34_1.jpg" />
+    <None Include="images\TeamImages\ebdurance.jpg" />
+    <None Include="images\TeamImages\F_MHhWjwujM.jpg" />
+    <None Include="images\TeamImages\gforce.jpg" />
+    <None Include="images\TeamImages\grit.jpg" />
+    <None Include="images\TeamImages\Nov-18%402.0.35.png" />
+    <None Include="images\TeamImages\p1.jpg" />
+    <None Include="images\TeamImages\p2.jpg" />
+    <None Include="images\TeamImages\p3.jpg" />
+    <None Include="images\TeamImages\photo_2023-09-13_12-15-02.jpg" />
+    <None Include="images\TeamImages\photo_2025-02-15_12-35-16.jpg" />
+    <None Include="images\TeamImages\redline.jpg" />
+    <None Include="images\TeamImages\slide.jpg" />
+    <None Include="images\TeamImages\trailblazers.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\EventImages\stancestul.png" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

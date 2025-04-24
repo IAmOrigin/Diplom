@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="81da41ee51474ccab646d842fc5439fc" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Events" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.EventType" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+      <Diagram DiagramId="81da41ee51474ccab646d842fc5439fc" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="Model.Events" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.EventType" Width="1.5" PointX="5.125" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PilotRoles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Pilots" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Results" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Teams" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Ticket" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Results" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Teams" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ticket" Width="1.5" PointX="7.625" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="10" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_Events_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Results_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Ticket_ToTable" ManuallyRouted="false" />

@@ -7,16 +7,17 @@
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1440"
-      Title="design1">
+      Title="ProfilePage"
+      Language="ru-RU">
     <Page.Resources>
         <DataTemplate
             x:Key="ticketTemplate">
             <Border
-    Height="270"
-    Width="600"
-    VerticalAlignment="Top"
-    HorizontalAlignment="Left"
-    Margin="0,0,15,15">
+                Height="270"
+                Width="600"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Margin="0,0,15,15">
                 <Border.Background>
                     <ImageBrush
                         ImageSource="{Binding Events.EventImg}"
@@ -265,9 +266,6 @@
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
-
-                <!--<WrapPanel
-                Name="TicketContainer"/>-->
             </Grid>
 
 

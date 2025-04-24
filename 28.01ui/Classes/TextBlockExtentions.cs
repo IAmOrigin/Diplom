@@ -12,5 +12,7 @@ namespace _28._01ui
 			await Task.Delay(delayMilliseconds);
 			textBlock.Text = string.Empty;
 		}
+
+		// TextBlock.SetTextWithDelay("text")
 	}
 }

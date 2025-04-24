@@ -3,8 +3,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
+using _28._01ui.Classes;
 using _28._01ui.Properties;
+using Wpf.Ui;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Input;
 using Wpf.Ui.Markup;
 
 namespace _28._01ui
@@ -21,6 +24,7 @@ namespace _28._01ui
 			Manager.MainFrame = MainFrame;
 			Manager.MainFrame.Navigated += OnNavigated;
 			Manager.MainFrame.Navigate(new StartPage());
+			PopupManager.Initialize(popup1);
 		}
 
 		private void OnNavigated(object sender, NavigationEventArgs e)
@@ -52,6 +56,12 @@ namespace _28._01ui
 
 		private void HomeClick(object sender, RoutedEventArgs e)
 		{
+			var page = MainFrame.Content as Page;
+			if (page is StartPage)
+			{
+				PopupManager.ShowMessage("Вы уже на главной странице!");
+				return;
+			}
 			Manager.MainFrame.Navigate(new Uri("Pages/StartPage.xaml", UriKind.Relative));
 		}
 
@@ -110,6 +120,11 @@ namespace _28._01ui
 			{
 				System.Windows.MessageBox.Show($"Ошибка при применении темы: {ex.Message}");
 			}
+		}
+
+		private void ClosePopup(object sender, RoutedEventArgs e)
+		{
+			popup1.IsOpen= false;	
 		}
 	}
 }
