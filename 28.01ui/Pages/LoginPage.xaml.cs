@@ -1,5 +1,7 @@
-﻿using _28._01ui.Properties;
+﻿using _28._01ui.Classes;
+using _28._01ui.Properties;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,20 +22,30 @@ namespace _28._01ui
 			{
 				if (string.IsNullOrEmpty(textboxLogin.Text) || string.IsNullOrEmpty(pasboxPas.Password))
 				{
-					Warn.SetTextWithDelay("Заполните все поля");
+					PopupManager.ShowMessage("Заполните все поля", "Не удалось войти");
 					return;
 				}
+
 				string Login = textboxLogin.Text;
 				string Password = pasboxPas.Password;
-				bool flag = false;
-				foreach (var user in entities.Users)
-				{
-					if (Login == user.Login && Password == user.Password)
-					{
-						flag = true;
-						Settings.Default.loggedInUser = user.Id;
 
-						if (user.Role != null)
+				var user = entities.Users.FirstOrDefault(u => u.Login == Login);
+
+				if (user == null)
+				{
+					PopupManager.ShowMessage("Пользователь с таким логином не найден", "Не удалось войти");
+				}
+				else
+				{
+					bool isPasswordValid = PasswordHelper.VerifyPassword(Password, user.Password);
+
+					if (!isPasswordValid)
+					{
+						PopupManager.ShowMessage("Неверный пароль", "Не удалось войти");
+					}
+					else
+					{
+						if (!string.IsNullOrEmpty(user.Role))
 						{
 							Settings.Default.loggedInUser = user.Id;
 							Settings.Default.Save();
@@ -41,13 +53,9 @@ namespace _28._01ui
 						}
 						else
 						{
-							Warn.SetTextWithDelay("Неизвестный пользователь");
+							PopupManager.ShowMessage("Неизвестный пользователь", "Не удалось войти");
 						}
 					}
-				}
-				if (!flag)
-				{
-					Warn.SetTextWithDelay("Неверный логин или пароль");
 				}
 			}
 			catch (Exception ex)

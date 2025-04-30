@@ -1,4 +1,5 @@
-﻿using _28._01ui.Properties;
+﻿using _28._01ui.Classes;
+using _28._01ui.Properties;
 using System;
 using System.Linq;
 using System.Windows;
@@ -9,6 +10,7 @@ namespace _28._01ui
 	public partial class RegistrPage : Page
 	{
 		Entities entities = new Entities();
+
 		public RegistrPage()
 		{
 			InitializeComponent();
@@ -19,10 +21,12 @@ namespace _28._01ui
 		{
 			try
 			{
-				if (string.IsNullOrEmpty(textboxLogin.Text) || string.IsNullOrEmpty(pasboxPas.Password) ||
-					string.IsNullOrEmpty(pasboxPas2.Password) || string.IsNullOrEmpty(textboxName.Text))
+				if (string.IsNullOrEmpty(textboxLogin.Text) ||
+					string.IsNullOrEmpty(pasboxPas.Password) ||
+					string.IsNullOrEmpty(pasboxPas2.Password) ||
+					string.IsNullOrEmpty(textboxName.Text))
 				{
-					Warn.SetTextWithDelay("Заполните поля");
+					PopupManager.ShowMessage("Заполните все поля");
 					return;
 				}
 				string Login = textboxLogin.Text;
@@ -31,24 +35,26 @@ namespace _28._01ui
 				string Name = textboxName.Text;
 				if (entities.Users.Any(u => u.Login == Login))
 				{
-					Warn.SetTextWithDelay("Пользователь с таким логином уже существует");
+					PopupManager.ShowMessage("Пользователь с таким логином уже существует");
 					return;
 				}
 				if (Password != Password2)
 				{
-					Warn.SetTextWithDelay("Пароли не совпадают");
+					PopupManager.ShowMessage("Пароли не совпадают");
 					return;
 				}
+				string hashedPassword = PasswordHelper.HashPassword(Password);
 				var newUser = new Users
 				{
 					Login = Login,
-					Password = Password,
+					Password = hashedPassword, // Сохраняем хэш пароля
 					Role = "User",
 					Name = Name
 				};
 				entities.Users.Add(newUser);
 				entities.SaveChanges();
 				Settings.Default.loggedInUser = newUser.Id;
+				Settings.Default.Save();
 				Manager.MainFrame.Navigate(new StartPage());
 			}
 			catch (Exception ex)
@@ -56,5 +62,5 @@ namespace _28._01ui
 				Warn.SetTextWithDelay(ex.ToString());
 			}
 		}
-    }
+	}
 }

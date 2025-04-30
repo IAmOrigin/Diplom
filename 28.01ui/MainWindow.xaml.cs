@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using _28._01ui.Classes;
+using _28._01ui.Pages;
 using _28._01ui.Properties;
 using Wpf.Ui;
 using Wpf.Ui.Controls;
@@ -59,9 +60,8 @@ namespace _28._01ui
 			var page = MainFrame.Content as Page;
 			if (page is StartPage)
 			{
-				PopupManager.ShowMessage("Вы уже на главной странице!");
 				return;
-			}
+			} 
 			Manager.MainFrame.Navigate(new Uri("Pages/StartPage.xaml", UriKind.Relative));
 		}
 

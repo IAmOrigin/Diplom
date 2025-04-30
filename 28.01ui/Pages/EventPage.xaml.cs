@@ -16,18 +16,30 @@ namespace _28._01ui
 		{
 			InitializeComponent();
 			AdminCheck();
-			LoadEvents();
+			LoadEvents(EventContainer);
+			LoadArchive(ArchiveContainer);
 			animGrid.InitSlideUp();
 			animGrid1.ContentSlideUp();
 		}
 
-		private void LoadEvents()
+		private void LoadEvents(ItemsControl itemsControl)
 		{
 			foreach (var entity in entities.Events)
 			{
 				if (entity.EventDate >= DateTime.Now)
 				{
-					EventContainer.Items.Add(entity);
+					itemsControl.Items.Add(entity);
+				}
+			}
+		}
+
+		private void LoadArchive(ItemsControl itemsControl)
+		{
+			foreach (var entity in entities.Events)
+			{
+				if (entity.EventDate < DateTime.Now)
+				{
+					itemsControl.Items.Add(entity);
 				}
 			}
 		}
@@ -50,37 +62,42 @@ namespace _28._01ui
 		{
 			string searchingText = SearchBox.Text.ToLower();
 			EventContainer.Items.Clear();
-			var filtername = entities.Events.Where(s => s.EventName.ToLower().Contains(searchingText)).ToList();
-			var filterlocation = entities.Events.Where(s => s.Location.ToLower().Contains(searchingText)).ToList();
-			var filtertype = entities.Events.Where(s => s.EventType.TypeName.ToLower().Contains(searchingText)).ToList();
+			ArchiveContainer.Items.Clear();
 			if (searchingText != "")
 			{
-				foreach (var filterItem in filtername)
+				// Объединяем все результаты поиска и удаляем дубликаты
+				var filteredEvents = entities.Events
+					.Where(s => s.EventName.ToLower().Contains(searchingText) ||
+							   s.Location.ToLower().Contains(searchingText) ||
+							   s.EventType.TypeName.ToLower().Contains(searchingText))
+					.Where(s => s.EventDate >= DateTime.Now)
+					.Distinct() // Удаляем дубликаты
+					.ToList();
+
+				foreach (var eventItem in filteredEvents)
 				{
-					if (filterItem.EventDate >= DateTime.Now)
-					{
-						EventContainer.Items.Add(filterItem);
-					}
+					EventContainer.Items.Add(eventItem);
 				}
-				foreach (var filterItem in filtertype)
+				// Объединяем все результаты поиска и удаляем дубликаты
+				var filteredArchive = entities.Events
+					.Where(s => s.EventName.ToLower().Contains(searchingText) ||
+							   s.Location.ToLower().Contains(searchingText) ||
+							   s.EventType.TypeName.ToLower().Contains(searchingText))
+					.Where(s => s.EventDate < DateTime.Now)
+					.Distinct() // Удаляем дубликаты
+					.ToList();
+
+				foreach (var eventItem in filteredArchive)
 				{
-					if (filterItem.EventDate >= DateTime.Now)
-					{
-						EventContainer.Items.Add(filterItem);
-					}
-				}
-				foreach (var filterItem in filterlocation)
-				{
-					if (filterItem.EventDate >= DateTime.Now)
-					{
-						EventContainer.Items.Add(filterItem);
-					}
+					ArchiveContainer.Items.Add(eventItem);
 				}
 			}
 			else
 			{
+				ArchiveContainer.Items.Clear();
+				LoadEvents(ArchiveContainer);
 				EventContainer.Items.Clear();
-				LoadEvents();
+				LoadEvents(EventContainer);
 			}
 		}
 		private void EventClick(object sender, RoutedEventArgs e)

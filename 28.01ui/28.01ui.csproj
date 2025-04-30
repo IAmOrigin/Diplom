@@ -75,7 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\PasswordHelper.cs" />
     <Compile Include="Classes\PopupManager.cs" />
+    <Compile Include="Classes\WidthConverter.cs" />
+    <Compile Include="Classes\AdaptiveEventsWidthConverter.cs" />
     <Compile Include="Pages\ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>

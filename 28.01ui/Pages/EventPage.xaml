@@ -1,39 +1,48 @@
-﻿<Page x:Class="_28._01ui.EventPage"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_28._01ui"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:Classes="clr-namespace:_28._01ui.Classes"
+        x:Name="page"
+        x:Class="_28._01ui.EventPage"
       mc:Ignorable="d" 
       Title="EventPage"
       d:DesignHeight="1080"
       d:DesignWidth="1920">
 
     <Page.Resources>
+        <Classes:AdaptiveEventsWidth x:Key="AdaptiveEventsWidth"/>
         <DataTemplate
             x:Key="EventTemplate">
             <Grid
                 Height="220"
-                Width="400"
                 Grid.Row="1"
                 Grid.Column="1"
-                Margin="0,0,10,20">
+                Margin="0,0,10,20"
+                Width="{Binding ActualWidth, Converter={StaticResource AdaptiveEventsWidth}, ElementName=EventContainer, Mode=OneWay}">
                 <Border
                     CornerRadius="10">
+                    <Border.Background>
+                        <ImageBrush     
+                            Stretch="UniformToFill"
+                            ImageSource="{Binding EventImg}"/>
+                    </Border.Background>
                     <Grid
                         Margin="0,0,0,10"
                         Height="auto"
                         HorizontalAlignment="Stretch"
                         VerticalAlignment="Bottom"
-                        Background="#7F000000">     
+                        Background="#7F000000">
                         <StackPanel
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Left"
                             Margin="5"
                             Orientation="Vertical">
                             <TextBlock
-                                Text="{Binding EventDate, StringFormat='dd.MM.yyyy'}"
+                                Text="{Binding EventDate, StringFormat=dd.MM.yyyy}"
                                 FontSize="16"
                                 Foreground="White"/>
                             <TextBlock
@@ -46,11 +55,6 @@
                                 TextWrapping="Wrap"/>
                         </StackPanel>
                     </Grid>
-                    <Border.Background>
-                        <ImageBrush     
-                            Stretch="UniformToFill"
-                            ImageSource="{Binding EventImg}"/>
-                    </Border.Background>
                 </Border>
                 <ui:Button
                     Click="EventClick"
@@ -59,7 +63,7 @@
                     Grid.Column="1"
                     CornerRadius="10"
                     Height="220"
-                    Width="400"
+                    Width="{Binding ActualWidth, Converter={StaticResource AdaptiveEventsWidth}, ElementName=EventContainer, Mode=OneWay}"
                     VerticalAlignment="Top"/>
             </Grid>
         </DataTemplate>
@@ -67,7 +71,7 @@
 
     <ui:DynamicScrollViewer>
         <Grid
-            Name="animGrid">
+            x:Name="animGrid">
             <Grid.RenderTransform>
                 <TranslateTransform Y="20"/>
             </Grid.RenderTransform>
@@ -93,7 +97,7 @@
                     FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
-                    Text="Просмотр и редактирование событий"
+                    Text="Предстоящие и прошедшие события"
                     FontSize="14"/>
             </StackPanel>
 
@@ -106,14 +110,14 @@
                 Grid.Row="0"
                 Cursor="IBeam">
                 <ui:TextBox
-                    Name="SearchBox"
+                    x:Name="SearchBox"
                     Height="35"
                     BorderThickness="0"
                     PlaceholderText="Поиск"
                     Width="230"
                     TextChanged="SearchBox_TextChanged"/>
                 <ui:Button
-                    Name="btnAdd"
+                    x:Name="btnAdd"
                     Height="35"
                     Width="35"
                     BorderThickness="0"
@@ -126,23 +130,47 @@
             </StackPanel>
 
             <Grid
-                Name="animGrid1"
+                x:Name="animGrid1"
                 Grid.Column="1"
                 Grid.Row="1">
                 <Grid.RenderTransform>
                     <TranslateTransform Y="20"/>
                 </Grid.RenderTransform>
-                <ItemsControl
-                    Name="EventContainer"
-                    ItemTemplate="{StaticResource EventTemplate}">  
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <WrapPanel/>
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                </ItemsControl>
+                <StackPanel
+                    Orientation="Vertical">
+                    <Expander
+                        Header="Предстоящие события"
+                        IsExpanded="True"
+                        BorderBrush="{x:Null}">
+                        <ItemsControl
+                            x:Name="EventContainer"
+                            ItemTemplate="{StaticResource EventTemplate}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Expander>
+                    <Expander
+                        Margin="0,15"
+                        Header="Прошедшие события"
+                        IsExpanded="True"
+                        BorderBrush="{x:Null}">
+                        <ItemsControl
+                            x:Name="ArchiveContainer"
+                            ItemTemplate="{StaticResource EventTemplate}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </Expander>
+                </StackPanel>
+
             </Grid>
-            
+
         </Grid>
     </ui:DynamicScrollViewer>
 </Page>

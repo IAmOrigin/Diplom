@@ -39,6 +39,7 @@
                     FontSize="32"
                     FontWeight="SemiBold"/>
                 <ui:Button
+                    Click="ButtonBuyTicket"
                     Grid.Column="2"
                     Grid.Row="0"
                     HorizontalAlignment="Right"
@@ -50,15 +51,15 @@
                     Grid.Row="1"
                     Grid.Column="0">
                     <TextBlock
-                        FontSize="24"
+                        FontSize="18"
                         Text="{Binding EventDate, StringFormat='dd MMMM yyyy'}"
                         Margin="0,0,0,10"/>
                     <TextBlock
-                        FontSize="24"
+                        FontSize="18"
                         Text="{Binding Location}"
                         Margin="0,0,0,10"/>
                     <TextBlock
-                        FontSize="20"
+                        FontSize="16"
                         Text="{Binding EventType.TypeName}"
                         Margin="0,0,0,10"/>
                     <TextBlock

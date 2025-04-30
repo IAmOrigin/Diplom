@@ -1,10 +1,13 @@
-﻿using System;
+﻿using _28._01ui.Classes;
+using _28._01ui.Properties;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -61,6 +64,13 @@ namespace _28._01ui.Pages
 			entities.Events.Remove(deleteEvent);
 			entities.SaveChanges();
 			Manager.MainFrame.GoBack();
+		}
+		private void ButtonBuyTicket(object sender, RoutedEventArgs e)
+		{
+			if (Settings.Default.loggedInUser == 0)
+            {
+                PopupManager.ShowMessage("Для покупки билета необходимо авторизоваться");
+            }
 		}
 	}
 }

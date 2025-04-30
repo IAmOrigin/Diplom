@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_28._01ui"
-        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:local1="clr-namespace:_28._01ui.Classes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="FastLane world"
@@ -13,6 +14,9 @@
         MinHeight="450"
         MinWidth="750"
         Background="{x:Null}">
+    <ui:FluentWindow.Resources>
+        <local1:SubtractWidthConverter x:Key="SubtractWidthConverter" />
+    </ui:FluentWindow.Resources>
 
     <Grid
         Background="{DynamicResource AppBackgroundColor}">
@@ -152,31 +156,90 @@
             Name="popup1"
             StaysOpen="False"
             PopupAnimation="Fade"
+            VerticalOffset="-80"
+            HorizontalOffset="90"
+            Margin="10"
+            Width="{Binding ActualWidth,
+            Converter={StaticResource SubtractWidthConverter},
+            ElementName=MainFrame,
+            Mode=OneWay}">
+            <Border
+                Height="70"
+                CornerRadius="10"
+                Background="{DynamicResource AppBackgroundColor}">
+                <Grid
+                    Margin="20,0,10,0">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <ui:SymbolIcon
+                            FontWeight="SemiBold"
+                            Symbol="Alert20"
+                            FontSize="28"/>
+                        <StackPanel
+                            Margin="20,0,0,0"
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Name="popupHeaderTextBlock"
+                                Text="Предупрждение"
+                                FontSize="16"
+                                FontWeight="SemiBold"/>
+                            <TextBlock
+                                Name="popupTextBlock"
+                                VerticalAlignment="Center"
+                                Text="Предупрждение об ошибке"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <ui:Button
+                        Margin="0,0,10,0"
+                        Click="ClosePopup"
+                        BorderThickness="0"
+                        Height="37"
+                        Width="37"
+                        Appearance="Transparent"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <ui:SymbolIcon
+                        FontWeight="SemiBold"
+                        Symbol="Dismiss20"/>
+                    </ui:Button>
+                </Grid>
+            </Border>
+        </Popup>
+
+        <Popup
+            AllowsTransparency="True"
+            Name="switchPopup"
+            StaysOpen="False"
+            PopupAnimation="Fade"
             VerticalOffset="-60"
             HorizontalOffset="70"
             Margin="10"
             Width="{Binding ActualWidth, ElementName=MainFrame, Mode=OneWay}">
             <Border
-                Height="50"
+                Height="70"
                 CornerRadius="10"
                 Background="{DynamicResource AppBackgroundColor}">
                 <Grid
-                    Margin="10,0,10,0">
+                    Margin="20,0,10,0">
                     <TextBlock
-                        Name="popupTextBlock"
+                        Name="sss"
                         VerticalAlignment="Center"
-                        Text="Предупрждение об ошибке"/>
-                    <ui:Button
-                        Click="ClosePopup"
-                        BorderThickness="0"
-                        Height="34"
-                        Width="34"
-                        Appearance="Transparent"
+                        Text="Вы уверенны в своих действиях? У этого будут последствия..."/>
+                    <StackPanel
+                        Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
-                        <ui:SymbolIcon
-                            Symbol="Dismiss20"/>
-                    </ui:Button>
+                        <ui:Button
+                            Margin="15,0"
+                            BorderThickness="0"
+                            Content="Да"
+                            Width="60"/>
+                        <ui:Button
+                            BorderThickness="0"
+                            Width="70"
+                            Content="Нет"/>
+                    </StackPanel>
                 </Grid>
             </Border>
         </Popup>
@@ -185,9 +248,6 @@
             Name="MainFrame"
             Grid.Row="1"
             Grid.Column="1"/>
-
-
-
 
     </Grid>
 </ui:FluentWindow>

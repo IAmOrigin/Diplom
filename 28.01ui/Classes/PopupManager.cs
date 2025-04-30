@@ -1,11 +1,12 @@
-﻿using System.Linq;
-using System.Windows.Controls;
+﻿using System.Windows;
 using System.Windows.Controls.Primitives;
+using Wpf.Ui.Controls;
+using TextBlock = System.Windows.Controls.TextBlock;
 
 namespace _28._01ui.Classes
 {
-    public static class PopupManager
-    {
+	public static class PopupManager
+	{
 		public static Popup WarnPopup { get; private set; }
 
 		public static void Initialize(Popup popup)
@@ -13,15 +14,21 @@ namespace _28._01ui.Classes
 			WarnPopup = popup;
 		}
 
-		public static void ShowMessage(string text)
+		public static void ShowMessage(string message, string title = "Уведомление", int autoCloseDelay = 5)
 		{
-			if (WarnPopup?.Child is Border border &&
-				border.Child is Grid grid &&
-				grid.Children.OfType<TextBlock>().FirstOrDefault() is TextBlock textBlock)
+			if (WarnPopup == null) return;
+
+			Application.Current.Dispatcher.Invoke(() =>
 			{
-				textBlock.Text = text;
+				// Находим элементы по именам
+				var headerTextBlock = WarnPopup.FindName("popupHeaderTextBlock") as TextBlock;
+				var messageTextBlock = WarnPopup.FindName("popupTextBlock") as TextBlock;
+				// Обновляем содержимое
+				if (headerTextBlock != null) headerTextBlock.Text = title;
+				if (messageTextBlock != null) messageTextBlock.Text = message;
+
 				WarnPopup.IsOpen = true;
-			}
+			});
 		}
 	}
 }
