@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _28._01ui.EditorWindows;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -162,7 +163,9 @@ namespace _28._01ui
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new PilotEditor());
+			PilotAddChanger window = new PilotAddChanger();
+			window.ShowDialog();
+			//Manager.MainFrame.Navigate(new PilotEditor());
 		}
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)

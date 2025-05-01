@@ -1,4 +1,4 @@
-﻿<ui:FluentWindow x:Class="_28._01ui.EditorWindows.PilotEditorWindow"
+﻿<Window x:Class="_28._01ui.EditorWindows.PilotEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -82,4 +82,4 @@
                 Click="Button_Cancel"/>
         </StackPanel>
     </Grid>
-</ui:FluentWindow>
+</Window>

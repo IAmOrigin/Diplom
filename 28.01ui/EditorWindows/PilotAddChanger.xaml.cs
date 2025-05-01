@@ -15,11 +15,16 @@ using Wpf.Ui.Controls;
 
 namespace _28._01ui.EditorWindows
 {
-    public partial class PilotAddChanger : FluentWindow
+    public partial class PilotAddChanger : Window
     {
         public PilotAddChanger()
         {
             InitializeComponent();
         }
-    }
+
+		private void Button_Cancel(object sender, RoutedEventArgs e)
+		{
+            this.Close();
+		}
+	}
 }

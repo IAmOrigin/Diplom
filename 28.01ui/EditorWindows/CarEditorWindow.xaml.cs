@@ -15,7 +15,7 @@ using Wpf.Ui.Controls;
 
 namespace _28._01ui.EditorWindows
 {
-    public partial class CarEditorWindow : FluentWindow
+    public partial class CarEditorWindow : Window
     {
         public CarEditorWindow()
         {

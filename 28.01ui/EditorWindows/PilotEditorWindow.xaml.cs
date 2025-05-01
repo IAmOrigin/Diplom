@@ -18,7 +18,7 @@ namespace _28._01ui.EditorWindows
     /// <summary>
     /// Логика взаимодействия для PilotEditorWindow.xaml
     /// </summary>
-    public partial class PilotEditorWindow : FluentWindow
+    public partial class PilotEditorWindow : Window
     {
         public PilotEditorWindow()
         {
