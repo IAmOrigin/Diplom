@@ -126,5 +126,10 @@ namespace _28._01ui
 		{
 			popup1.IsOpen= false;	
 		}
-	}
+
+		private void testButton_Click(object sender, RoutedEventArgs e)
+		{
+			Manager.MainFrame.Navigate(new PilotViewer());
+        }
+    }
 }

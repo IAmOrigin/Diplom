@@ -1,0 +1,236 @@
+﻿<Page x:Class="_28._01ui.Pages.PilotViewer"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_28._01ui.Pages"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="PilotViewer">
+
+    <ui:DynamicScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="240"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Name="bunnerTeam"
+                Grid.ColumnSpan="3"
+                Stretch="UniformToFill"
+                VerticalAlignment="Center"
+                Source="/images/TeamImages/Banners/apex-bunner.jpg" />
+
+            <StackPanel
+                Orientation="Vertical"
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Margin="0,0,0,10">
+                <TextBlock
+                    Text="Команда"/>
+                <TextBlock
+                    Name="teamName"
+                    Text="Apex"
+                    FontSize="36"/>
+            </StackPanel>
+
+            <StackPanel
+                Name="adminPanel"
+                Orientation="Horizontal"
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Margin="0,0,10,10">
+                <ui:Button
+                    Name="btnEdit"
+                    Height="40"
+                    Width="40"
+                    BorderThickness="0"
+                    Margin="0,0,10,0"
+                    Click="btnEdit_Click"
+                    Cursor="Arrow">
+                    <ui:SymbolIcon
+                        Symbol="Edit20"/>
+                </ui:Button>
+                <ui:Button
+                    Name="btnDelete"
+                    Height="40"
+                    Width="40"
+                    BorderThickness="0"
+                    Margin="0,0,0,0"
+                    Click="btnDelete_Click"
+                    Cursor="Arrow">
+                    <ui:SymbolIcon
+                        Symbol="Delete20"/>
+                </ui:Button>
+            </StackPanel>
+
+            <TextBlock
+                Text="Участник"
+                FontSize="32"
+                Margin="0,10,0,0"
+                Grid.Row="1"
+                Grid.Column="1"/>
+
+            <Grid
+                Grid.Row="2"
+                Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        MinWidth="200"
+                        MaxWidth="340"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border
+                    CornerRadius="10"
+                    Margin="0,20,0,0"
+                    Grid.Row="0"
+                    Background="{DynamicResource AppBackgroundColor}">
+                    <StackPanel
+                        Margin="10"
+                        Orientation="Vertical">
+                        <Viewbox>
+                            <Border
+                                Name="borderPilotImg"
+                                Width="32"
+                                Height="32"
+                                CornerRadius="300">
+                                <Border.Background>
+                                    <ImageBrush
+                                        ImageSource="/images/ProfileImages/p1.jpg"
+                                        Stretch="UniformToFill"/>
+                                </Border.Background>
+                            </Border>
+                        </Viewbox>
+                        <TextBlock
+                            Name="namePilot"
+                            Margin="0,10,0,0"
+                            FontSize="36"
+                            TextWrapping="Wrap"
+                            Text="Родион Родионов"/>
+                        <TextBlock
+                            Name="cityPilot"
+                            Margin="0,10,0,0"
+                            TextWrapping="Wrap"
+                            Text="Город: Волгоград"/>
+                        <TextBlock
+                            Name="rolePilot"
+                            Margin="0,10,0,0"
+                            TextWrapping="Wrap"
+                            Text="Должность: Пилот"/>
+                    </StackPanel>
+                </Border>
+                <StackPanel
+                    Margin="20,20,0,0"
+                    Grid.Column="1"
+                    Grid.RowSpan="2"
+                    Orientation="Vertical">
+                    <ui:Button
+                        Margin="0,0,0,20"
+                        Name="buttonAddCar"
+                        Height="45"
+                        BorderThickness="0"
+                        HorizontalAlignment="Stretch"
+                        Content="Добавить автомобиль"
+                        Background="{DynamicResource AppBackgroundColor}" Click="buttonAddCar_Click"/>
+                    <Border
+                        Name="borderCarInfo"
+                        Margin="0,0,0,20"
+                        CornerRadius="10"
+                        Background="{DynamicResource AppBackgroundColor}">
+                        <Grid>
+                            <StackPanel
+                                Margin="10,10,0,0"
+                                Orientation="Vertical">
+                                <TextBlock
+                                    Text="Автомобиль"
+                                    FontSize="24"/>
+                                <TextBlock
+                                    Name="nameCar"
+                                    Text="Название: "
+                                    TextWrapping="Wrap"
+                                    Margin="0,10,0,0"/>
+                                <TextBlock
+                                    Name="engineCar"
+                                    Text="Двигатель: "
+                                    TextWrapping="Wrap"
+                                    Margin="0,10,0,0"/>
+                                <TextBlock
+                                    Name="volumeCar"
+                                    Text="Рабочий объем (л): "
+                                    TextWrapping="Wrap"
+                                    Margin="0,10,0,0"/>
+                                <TextBlock
+                                    Name="powerCar"
+                                    Text="Мощность (л.с.): "
+                                    TextWrapping="Wrap"
+                                    Margin="0,10,0,10"/>
+                            </StackPanel>
+                            <StackPanel
+                                Name="adminPanelEditCar"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,10,10">
+                                <ui:Button
+                                    Name="btnEditCar"
+                                    Height="40"
+                                    Width="40"
+                                    BorderThickness="0"
+                                    Margin="0,0,10,0"
+                                    Click="btnEditCar_Click"
+                                    Cursor="Arrow">
+                                    <ui:SymbolIcon
+                                        Symbol="Edit20"/>
+                                </ui:Button>
+                                <ui:Button
+                                    Name="btnDeleteCar"
+                                    Height="40"
+                                    Width="40"
+                                    BorderThickness="0"
+                                    Margin="0,0,0,0"
+                                    Click="btnDeleteCar_Click"
+                                    Cursor="Arrow">
+                                    <ui:SymbolIcon
+                                        Symbol="Delete20"/>
+                                </ui:Button>
+                            </StackPanel>
+                        </Grid>
+                        
+                    </Border>
+                    <Border
+                        CornerRadius="10"
+                        Background="{DynamicResource AppBackgroundColor}">
+                        <StackPanel
+                            Margin="10,10,0,0"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Text="О себе"
+                                FontSize="24"/>
+                            <TextBlock
+                                Text="Биография: "
+                                TextWrapping="Wrap"
+                                Margin="0,10,0,10"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+    </ui:DynamicScrollViewer>
+</Page>

@@ -94,50 +94,56 @@
             </ui:NavigationView.MenuItems>
             <ui:NavigationView.FooterMenuItems>
                 <ui:NavigationViewItem
+                    Name="testButton" Click="testButton_Click">
+                    <TextBlock
+                        Text="Тест"/>
+                </ui:NavigationViewItem>
+                <ui:NavigationViewItem
                     Name="themeButton"
-                    Margin="0,0,0,5" Click="themeButton_Click">
+                    Margin="0,0,0,5"
+                    Click="themeButton_Click">
                     <StackPanel
-    Orientation="Vertical"
-    VerticalAlignment="Center"
-    Margin="0,-23,0,0">
+                        Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Margin="0,-23,0,0">
                         <ui:SymbolIcon
-        Symbol="WeatherSunny20"
-        FontSize="26"/>
+                            Symbol="WeatherSunny20"
+                            FontSize="26"/>
                         <ui:TextBlock
-        Text="Тема"
-        FontSize="11"/>
+                            Text="Тема"
+                            FontSize="11"/>
                     </StackPanel>
                 </ui:NavigationViewItem>
                 <ui:NavigationViewItem
                     Name="profilebtn"
-                Margin="0,0,0,5"
-                Click="ProfileClick">
+                    Margin="0,0,0,5"
+                    Click="ProfileClick">
                     <StackPanel
-                    Orientation="Vertical"
-                    VerticalAlignment="Center"
-                    Margin="0,-23,0,0">
+                        Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Margin="0,-23,0,0">
                         <ui:SymbolIcon
-                        Symbol="Person20"
-                        FontSize="26"/>
+                            Symbol="Person20"
+                            FontSize="26"/>
                         <ui:TextBlock
-                        Text="Профиль"
-                        FontSize="11"/>
+                            Text="Профиль"
+                            FontSize="11"/>
                     </StackPanel>
                 </ui:NavigationViewItem>
                 <ui:NavigationViewItem
-                Name="loginbtn"
-                Margin="0,0,0,5"
-                Click="LoginClick">
+                    Name="loginbtn"
+                    Margin="0,0,0,5"
+                    Click="LoginClick">
                     <StackPanel
-                    Orientation="Vertical"
-                    VerticalAlignment="Center"
-                    Margin="0,-23,0,0">
+                        Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        Margin="0,-23,0,0">
                         <ui:SymbolIcon
-                        Symbol="ArrowEnter20"
-                        FontSize="26"/>
+                            Symbol="ArrowEnter20"
+                            FontSize="26"/>
                         <ui:TextBlock
-                        Text="Войти"
-                        FontSize="11"/>
+                            Text="Войти"
+                            FontSize="11"/>
                     </StackPanel>
                 </ui:NavigationViewItem>
             </ui:NavigationView.FooterMenuItems>

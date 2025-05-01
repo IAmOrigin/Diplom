@@ -79,6 +79,15 @@
     <Compile Include="Classes\PopupManager.cs" />
     <Compile Include="Classes\WidthConverter.cs" />
     <Compile Include="Classes\AdaptiveEventsWidthConverter.cs" />
+    <Compile Include="EditorWindows\CarEditorWindow.xaml.cs">
+      <DependentUpon>CarEditorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditorWindows\PilotAddChanger.xaml.cs">
+      <DependentUpon>PilotAddChanger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditorWindows\PilotEditorWindow.xaml.cs">
+      <DependentUpon>PilotEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ArchivePage.xaml.cs">
       <DependentUpon>ArchivePage.xaml</DependentUpon>
     </Compile>
@@ -109,6 +118,9 @@
     </Compile>
     <Compile Include="Pages\PilotEditor.xaml.cs">
       <DependentUpon>PilotEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PilotViewer.xaml.cs">
+      <DependentUpon>PilotViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="PilotRoles.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -174,6 +186,18 @@
       <DependentUpon>TicketBuy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\VisibiltyConverter.cs" />
+    <Page Include="EditorWindows\CarEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditorWindows\PilotAddChanger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditorWindows\PilotEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ArchivePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -183,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\PilotEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PilotViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

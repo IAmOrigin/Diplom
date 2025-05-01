@@ -97,8 +97,7 @@
                     FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
-                    Text="Предстоящие и прошедшие события"
-                    FontSize="14"/>
+                    Text="Предстоящие и прошедшие события"/>
             </StackPanel>
 
             <StackPanel

@@ -1,0 +1,40 @@
+﻿<ui:FluentWindow x:Class="_28._01ui.EditorWindows.PilotAddChanger"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_28._01ui.EditorWindows"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="PilotAddChanger"
+                 WindowStyle="None"
+                 ResizeMode="NoResize"
+                 WindowStartupLocation="CenterScreen"
+                 Height="180"
+                 Width="500"
+                 Background="{x:Null}">
+    <Grid
+        Background="{DynamicResource AppBackgroundColor}">
+        <TextBlock
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Text="Добавление участника"
+            FontSize="24"
+            FontWeight="SemiBold"
+            Margin="20"/>
+        <ui:Button
+            Content="Новый участник"
+            Margin="20,70,0,0"
+            VerticalAlignment="Top" Width="150"
+            />
+        <ui:Button
+            Content="Из другой команды"
+            VerticalAlignment="Top"
+            Margin="190,70,0,0" Width="172"/>
+        <ui:Button
+            Content="Отмена"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="20"/>
+    </Grid>
+</ui:FluentWindow>
