@@ -45,7 +45,7 @@ namespace _28._01ui
 					}
 					else
 					{
-						if (!string.IsNullOrEmpty(user.Role))
+						if (user.IdRole != 0)
 						{
 							Settings.Default.loggedInUser = user.Id;
 							Settings.Default.Save();

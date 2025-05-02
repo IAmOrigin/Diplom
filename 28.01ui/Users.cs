@@ -20,11 +20,12 @@ namespace _28._01ui
         }
     
         public int Id { get; set; }
-        public string Role { get; set; }
+        public Nullable<int> IdRole { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual UserRole UserRole { get; set; }
     }
 }

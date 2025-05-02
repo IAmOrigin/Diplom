@@ -27,11 +27,13 @@ namespace _28._01ui
     
         public DbSet<Events> Events { get; set; }
         public DbSet<EventType> EventType { get; set; }
+        public DbSet<PilotCar> PilotCar { get; set; }
         public DbSet<PilotRoles> PilotRoles { get; set; }
         public DbSet<Pilots> Pilots { get; set; }
         public DbSet<Results> Results { get; set; }
         public DbSet<Teams> Teams { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<UserRole> UserRole { get; set; }
         public DbSet<Users> Users { get; set; }
     }
 }

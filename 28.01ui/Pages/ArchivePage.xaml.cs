@@ -54,7 +54,7 @@ namespace _28._01ui
 
 		private void BtnDelete(object sender, RoutedEventArgs e)
 		{
-			if (DataHolder.SharedRole == "Admin")
+			if (DataHolder.SharedRoleId == 1)
 			{
 				var button = sender as Wpf.Ui.Controls.Button;
 				// Получаем DataContext кнопки (это объект, связанный с текущим элементом ListView)

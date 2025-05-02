@@ -23,7 +23,7 @@ namespace _28._01ui
 			InitializeComponent();
 			animGrid.InitSlideUp();
 			var loggedUser = entities.Users.Find(Settings.Default.loggedInUser);
-			if (loggedUser.Role == "Admin")
+			if (loggedUser.IdRole == 1)
 			{
 				var imageBrush = new ImageBrush
 				{

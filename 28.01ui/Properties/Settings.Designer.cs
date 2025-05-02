@@ -46,5 +46,65 @@ namespace _28._01ui.Properties {
                 this["darkTheme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public global::System.Windows.WindowState windowState {
+            get {
+                return ((global::System.Windows.WindowState)(this["windowState"]));
+            }
+            set {
+                this["windowState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double windowTop {
+            get {
+                return ((double)(this["windowTop"]));
+            }
+            set {
+                this["windowTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double windowLeft {
+            get {
+                return ((double)(this["windowLeft"]));
+            }
+            set {
+                this["windowLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double windowHeight {
+            get {
+                return ((double)(this["windowHeight"]));
+            }
+            set {
+                this["windowHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double windowWidth {
+            get {
+                return ((double)(this["windowWidth"]));
+            }
+            set {
+                this["windowWidth"] = value;
+            }
+        }
     }
 }

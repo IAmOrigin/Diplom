@@ -18,7 +18,7 @@
             </Grid.RenderTransform>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="120"/>
+                <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -26,17 +26,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
-
-            <Image
-                Grid.Row="0"
-                Grid.ColumnSpan="3"
-                Stretch="UniformToFill"
-                VerticalAlignment="Center"
-                Source="/images/BackImages/7740.jpg" >
-                <Image.Effect>
-                    <BlurEffect Radius="10"/>
-                </Image.Effect>
-            </Image>
 
             <StackPanel
                 Orientation="Vertical"
@@ -48,11 +37,11 @@
                 <TextBlock
                     Foreground="White"
                     Text="Команды"
-                    FontSize="32"
+                    FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
                     Foreground="White"
-                    Text="Просмотр и редактирование команд"
+                    Text="Просмотр команд участников"
                     FontSize="14"/>
             </StackPanel>
 

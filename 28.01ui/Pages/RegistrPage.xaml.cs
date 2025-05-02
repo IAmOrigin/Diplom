@@ -48,7 +48,7 @@ namespace _28._01ui
 				{
 					Login = Login,
 					Password = hashedPassword, // Сохраняем хэш пароля
-					Role = "User",
+					IdRole = 2,
 					Name = Name
 				};
 				entities.Users.Add(newUser);

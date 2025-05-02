@@ -16,16 +16,20 @@ namespace _28._01ui
     {
         public Pilots()
         {
+            this.PilotCar = new HashSet<PilotCar>();
             this.Results = new HashSet<Results>();
         }
     
         public int Id { get; set; }
         public string PilotName { get; set; }
         public Nullable<System.DateTime> PilotBirthDate { get; set; }
+        public string Bio { get; set; }
+        public string City { get; set; }
         public Nullable<int> TeamId { get; set; }
         public Nullable<int> RoleId { get; set; }
         public string PilotImg { get; set; }
     
+        public virtual ICollection<PilotCar> PilotCar { get; set; }
         public virtual PilotRoles PilotRoles { get; set; }
         public virtual Teams Teams { get; set; }
         public virtual ICollection<Results> Results { get; set; }

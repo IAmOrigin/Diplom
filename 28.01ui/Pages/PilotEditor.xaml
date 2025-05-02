@@ -77,7 +77,7 @@
                         <Border.Background>
                             <ImageBrush
                     Stretch="UniformToFill"
-                    ImageSource="/images/ProfileImages/p3.jpg"/>
+                    />
                         </Border.Background>
                         <ui:Button
                     Click="AddImg"

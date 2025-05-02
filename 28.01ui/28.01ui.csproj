@@ -7,7 +7,7 @@
     <ProjectGuid>{23092A88-02BC-4E0E-8D93-3531BE23FB17}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>_28._01ui</RootNamespace>
-    <AssemblyName>FastLane Manager</AssemblyName>
+    <AssemblyName>FastLane World</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -82,16 +82,15 @@
     <Compile Include="EditorWindows\CarEditorWindow.xaml.cs">
       <DependentUpon>CarEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditorWindows\EventEditorWindow.xaml.cs">
+      <DependentUpon>EventEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditorWindows\PilotAddChanger.xaml.cs">
       <DependentUpon>PilotAddChanger.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditorWindows\PilotEditorWindow.xaml.cs">
       <DependentUpon>PilotEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ArchivePage.xaml.cs">
-      <DependentUpon>ArchivePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Classes\DataHolder.cs" />
     <Compile Include="Events.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -113,6 +112,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ArchivePage.xaml.cs">
+      <DependentUpon>ArchivePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\DataHolder.cs" />
     <Compile Include="Pages\EventViewer.xaml.cs">
       <DependentUpon>EventViewer.xaml</DependentUpon>
     </Compile>
@@ -121,12 +124,6 @@
     </Compile>
     <Compile Include="Pages\PilotViewer.xaml.cs">
       <DependentUpon>PilotViewer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PilotRoles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pilots.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -153,23 +150,11 @@
     <Compile Include="Pages\RegistrPage.xaml.cs">
       <DependentUpon>RegistrPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Results.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\StartPage.xaml.cs">
       <DependentUpon>StartPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeamEditor.xaml.cs">
       <DependentUpon>TeamEditor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Teams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ticket.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Users.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\StringOverride.cs" />
     <Compile Include="Pages\TeamsPage.xaml.cs">
@@ -186,7 +171,35 @@
       <DependentUpon>TicketBuy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\VisibiltyConverter.cs" />
+    <Compile Include="PilotCar.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRoles.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pilots.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Results.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ticket.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Page Include="EditorWindows\CarEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditorWindows\EventEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -351,7 +364,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\ProfileImages\admin.jpg" />
-    <Resource Include="images\ProfileImages\user.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\BackImages\17.jpg" />
@@ -378,15 +390,8 @@
     <Resource Include="images\default.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\ProfileImages\p1.jpg" />
-    <Resource Include="images\ProfileImages\p2.jpg" />
-    <Resource Include="images\ProfileImages\p3.jpg" />
-    <Resource Include="images\ProfileImages\p4.jpg" />
-    <Resource Include="images\ProfileImages\p5.jpg" />
-    <Resource Include="images\ProfileImages\p6.jpg" />
     <Resource Include="images\defaultprofilepic.jpg" />
     <Resource Include="images\TeamImages\Banners\photo_2024-12-25_11-33-53.jpg" />
-    <Resource Include="images\11.jpg" />
     <Resource Include="images\TeamImages\16.jpg" />
     <Resource Include="images\TeamImages\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
     <Resource Include="images\TeamImages\7740.jpg" />
@@ -406,10 +411,8 @@
     <Resource Include="images\TeamImages\eb488cdbee3611ef8cb8ceeb8f83ad34_1.jpg" />
     <Resource Include="images\TeamImages\F_MHhWjwujM.jpg" />
     <Resource Include="images\TeamImages\p3.jpg" />
-    <Resource Include="images\ProfileImages\ostanovka.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="images\11.jpg" />
     <None Include="images\BackImages\1.jpg" />
     <None Include="images\BackImages\10.jpg" />
     <None Include="images\BackImages\11.jpg" />
@@ -471,31 +474,7 @@
     <None Include="images\ImageSlider\7.jpg" />
     <None Include="images\ImageSlider\8.jpg" />
     <None Include="images\ImageSlider\9.jpg" />
-    <None Include="images\ProfileImages\7740.jpg" />
     <None Include="images\ProfileImages\admin.jpg" />
-    <None Include="images\ProfileImages\d3b380e0f30611ef996266b929a52cde_1.jpg" />
-    <None Include="images\ProfileImages\drive.png" />
-    <None Include="images\ProfileImages\image.png" />
-    <None Include="images\ProfileImages\Nov-14%4015.14.5.png" />
-    <None Include="images\ProfileImages\ostanovka.png" />
-    <None Include="images\ProfileImages\p1.jpg" />
-    <None Include="images\ProfileImages\p2.jpg" />
-    <None Include="images\ProfileImages\p3.jpg" />
-    <None Include="images\ProfileImages\p4.jpg" />
-    <None Include="images\ProfileImages\p5.jpg" />
-    <None Include="images\ProfileImages\p6.jpg" />
-    <None Include="images\ProfileImages\photo_2023-03-26_17-25-52.jpg" />
-    <None Include="images\ProfileImages\photo_2023-09-13_12-15-02.jpg" />
-    <None Include="images\ProfileImages\photo_2024-03-08_18-56-23.jpg" />
-    <None Include="images\ProfileImages\photo_2024-03-30_21-38-58.jpg" />
-    <None Include="images\ProfileImages\photo_2024-04-06_14-51-32.jpg" />
-    <None Include="images\ProfileImages\photo_2024-05-14_11-14-52.jpg" />
-    <None Include="images\ProfileImages\photo_2025-01-19_20-38-53.jpg" />
-    <None Include="images\ProfileImages\photo_2025-02-15_12-35-16.jpg" />
-    <None Include="images\ProfileImages\user.jpg" />
-    <None Include="images\ProfileImages\WIN_20231114_21_36_33_Pro.jpg" />
-    <None Include="images\ProfileImages\WIN_20231114_21_36_45_Pro.jpg" />
-    <None Include="images\ProfileImages\zvonok.png" />
     <None Include="images\TeamImages\16.jpg" />
     <None Include="images\TeamImages\2.jpg" />
     <None Include="images\TeamImages\6fd2dedaf36411efa0060a8cc7b4a14e_1.jpg" />
@@ -552,6 +531,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\EventImages\stancestul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\DarkImageSlider\" />
+    <Folder Include="images\LightImageSlider\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ProfileImages\Oso7MrJr0-A.jpg" />
+    <Resource Include="images\ProfileImages\1P_ag-6nbBA.jpg" />
+    <Resource Include="images\ProfileImages\IxKDoCHnq1Y.jpg" />
+    <Resource Include="images\ProfileImages\M4YTjAAqyF8.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -562,10 +551,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\DarkImageSlider\" />
-    <Folder Include="images\LightImageSlider\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

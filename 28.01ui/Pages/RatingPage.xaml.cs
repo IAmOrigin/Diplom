@@ -38,7 +38,7 @@ namespace _28._01ui
 		private void cboxevents_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			selectHelper.Text = "";
-			if (DataHolder.SharedRole == "Admin")
+			if (DataHolder.SharedRoleId == 1)
 			{
 				addResultButton.Visibility = Visibility.Visible;
 			}
@@ -74,7 +74,7 @@ namespace _28._01ui
 		}
 		private void editResultClick(object sender, RoutedEventArgs e)
 		{
-			if (DataHolder.SharedRole == "Admin")
+			if (DataHolder.SharedRoleId == 1)
 			{
 				var selectedEvent = cboxevents.SelectedItem as Events;
 				var button = sender as Button;

@@ -14,12 +14,14 @@
                  Width="870"
                  Background="{x:Null}">
     <Grid
-        Background="{DynamicResource AppBackgroundColor}">
+        Background="{DynamicResource AppDialogColor}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="183*"/>
             <ColumnDefinition Width="287*"/>
         </Grid.ColumnDefinitions>
         <TextBlock
+            Grid.ColumnSpan="2"
+            Name="header"
             Margin="20,20,20,20"
             Text="Участник"
             FontSize="24"
@@ -28,10 +30,27 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Orientation="Vertical" Height="308" Width="250">
-            <Border
-                CornerRadius="300"
-                Height="250"
-                Width="250" Background="#FF383838"/>
+            <Grid>
+                <Border
+                    Name="borderPilotImg"
+                    CornerRadius="300"
+                    Height="250"
+                    Width="250"
+                    Background="#FF383838"/>
+                <ui:Button
+                    CornerRadius="300"
+                    Height="250"
+                    Width="250"
+                    Appearance="Transparent"
+                    Click="Button_EditImg">
+                    <ui:Button.Content>
+                        <ui:SymbolIcon
+                            Symbol="Edit20"
+                            FontSize="24"/>
+                    </ui:Button.Content>
+                </ui:Button>
+            </Grid>
+            
             <TextBlock
                 Margin="20"
                 HorizontalAlignment="Center"
@@ -43,28 +62,43 @@
             Margin="0,70,0,0"
             Grid.Column="1">
             <ui:TextBox
+                Name="namePilot"
                 PlaceholderText="Имя"
                 BorderThickness="0"/>
             <ui:TextBox
                 Margin="0,20,0,0"
                 PlaceholderText="Фамилия"
                 BorderThickness="0"/>
+            <Grid
+                Margin="0,20,0,0">
+                <DatePicker
+                    BorderThickness="0"
+                    Name="birthDate"
+                    SelectedDateChanged="DatePicker_SelectedDateChanged"/>
+                <TextBlock
+                    Opacity="0.6"
+                    IsHitTestVisible="False"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Name="datePickerPlaceHolder"
+                    Text="Дата рождения"/>
+            </Grid>
+            
             <ui:TextBox
-                Margin="0,20,0,0"
-                PlaceholderText="Дата рождения"
-                BorderThickness="0"/>
-            <ui:TextBox
+                Name="cityPilot"
                 Margin="0,20,0,0"
                 PlaceholderText="Город"
                 BorderThickness="0"/>
             <ui:TextBox
+                Name="bioPilot"
                 Margin="0,20,0,0"
                 PlaceholderText="О себе"
                 BorderThickness="0"/>
-            <ui:TextBox
+            <ComboBox
+                BorderThickness="0"
                 Margin="0,20,0,0"
-                PlaceholderText="Должность"
-                BorderThickness="0"/>
+                Name="comboRole"/>
+
         </StackPanel>
         <StackPanel
             Grid.Column="1"
@@ -75,7 +109,7 @@
             <ui:Button
                 Width="110"
                 Margin="0,0,10,0"
-                Content="Сохранить"/>
+                Content="Сохранить" Click="Button_Save"/>
             <ui:Button
                 Width="90"
                 Content="Отмена"

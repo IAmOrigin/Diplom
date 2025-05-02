@@ -16,7 +16,7 @@ namespace _28._01ui
 			{ 
 				listviewteams.Items.Add(team);
 			}
-			if (DataHolder.SharedRole != "Admin")
+			if (DataHolder.SharedRoleId != 1)
 			{
 				btnAdd.Visibility = Visibility.Collapsed;
 			}

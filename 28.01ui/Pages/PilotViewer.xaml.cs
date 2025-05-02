@@ -20,34 +20,56 @@ namespace _28._01ui.Pages
 {
     public partial class PilotViewer : Page
     {
-		bool car = false;
+		int pilotId;
 		Entities entities = new Entities();
         public PilotViewer()
         {
             InitializeComponent();
+			pilotId = 73;
+			LoadData(pilotId);
 			CarCheck();
 			AdminCheck();
         }
 
 		private void AdminCheck()
 		{
-			if (DataHolder.SharedRole != "Admin")
+			if (DataHolder.SharedRoleId != 1)
 			{
 				adminPanel.Visibility = Visibility.Collapsed;
 				buttonAddCar.Visibility = Visibility.Collapsed;
 				adminPanelEditCar.Visibility = Visibility.Collapsed;
 			}
 		}
-		private void LoadData()
+		private void LoadData(int Id)
 		{
-			
+			entities = new Entities();
+			var pilot = entities.Pilots.Find(Id);
+			var imageBrush = new ImageBrush
+			{
+				ImageSource = new BitmapImage(new Uri(ProjectDirectory.GetProjectDirectory() + pilot.PilotImg)),
+				Stretch = Stretch.UniformToFill
+			};
+			borderPilotImg.Background = imageBrush;
+			namePilot.Text = pilot.PilotName;
+			cityPilot.Text = "Город: " + pilot.City;
+			rolePilot.Text = "Должность: " + pilot.PilotRoles.NameRole;
+			bioPilot.Text = pilot.Bio;
+			pilotId = Id;
+			teamName.Text = pilot.Teams.TeamName;
+			bunnerTeam.Source = new BitmapImage(new Uri(ProjectDirectory.GetProjectDirectory() + pilot.Teams.TeamBunner));
 		}
 		private void CarCheck()
 		{
-			if (car)
+			entities = new Entities();
+			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
+			if (car != null)
 			{
 				buttonAddCar.Visibility = Visibility.Collapsed;
 				borderCarInfo.Visibility = Visibility.Visible;
+				nameCar.Text = "Наименование: " + car.Name;
+				nameEngine.Text = "Двигатель: " + car.Engine;
+				engineVol.Text = "Рабочий объем двигателя: " + car.Volume.ToString()+" л";
+				engineHP.Text = "Мощность: " + car.HorsePower.ToString()+" л.с.";
 			}
 			else
 			{
@@ -58,37 +80,41 @@ namespace _28._01ui.Pages
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)
 		{
-			PilotEditorWindow window = new PilotEditorWindow();
+			PilotEditorWindow window = new PilotEditorWindow(pilotId);
 			window.Closed += Editor_Closed;
 			window.ShowDialog();
 		}
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)
 		{
-
+			
 		}
 
 		private void btnEditCar_Click(object sender, RoutedEventArgs e)
 		{
-
+			CarEditorWindow window = new CarEditorWindow(pilotId);
+			window.Closed += Editor_Closed;
+			window.ShowDialog();
 		}
 
 		private void btnDeleteCar_Click(object sender, RoutedEventArgs e)
 		{
-			car = false;
+			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
+			entities.PilotCar.Remove(car);
+			entities.SaveChanges();
 			CarCheck();
 		}
 
 		private void buttonAddCar_Click(object sender, RoutedEventArgs e)
 		{
-			CarEditorWindow window = new CarEditorWindow();
+			CarEditorWindow window = new CarEditorWindow(pilotId);
 			window.Closed += Editor_Closed;
-			car = true;
 			window.ShowDialog();
 		}
 		private void Editor_Closed(object sender, EventArgs e)
 		{
 			CarCheck();
+			LoadData(pilotId);
 		}
 	}
 }

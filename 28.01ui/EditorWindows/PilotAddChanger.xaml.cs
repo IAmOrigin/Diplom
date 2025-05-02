@@ -26,5 +26,5 @@ namespace _28._01ui.EditorWindows
 		{
             this.Close();
 		}
-	}
+    }
 }

@@ -44,7 +44,7 @@ namespace _28._01ui.Pages
 
         private void AdminCheck()
         {
-			if (DataHolder.SharedRole != "Admin")
+			if (DataHolder.SharedRoleId != 1)
 			{
                 adminPanel.Visibility = Visibility.Collapsed;
 			}

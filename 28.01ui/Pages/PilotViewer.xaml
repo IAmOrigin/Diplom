@@ -39,6 +39,7 @@
                 <TextBlock
                     Text="Команда"/>
                 <TextBlock
+                    FontWeight="SemiBold"
                     Name="teamName"
                     Text="Apex"
                     FontSize="36"/>
@@ -102,7 +103,7 @@
                     Grid.Row="0"
                     Background="{DynamicResource AppBackgroundColor}">
                     <StackPanel
-                        Margin="10"
+                        Margin="20"
                         Orientation="Vertical">
                         <Viewbox>
                             <Border
@@ -112,7 +113,7 @@
                                 CornerRadius="300">
                                 <Border.Background>
                                     <ImageBrush
-                                        ImageSource="/images/ProfileImages/p1.jpg"
+                                        
                                         Stretch="UniformToFill"/>
                                 </Border.Background>
                             </Border>
@@ -155,7 +156,7 @@
                         Background="{DynamicResource AppBackgroundColor}">
                         <Grid>
                             <StackPanel
-                                Margin="10,10,0,0"
+                                Margin="20,20,0,0"
                                 Orientation="Vertical">
                                 <TextBlock
                                     Text="Автомобиль"
@@ -166,20 +167,20 @@
                                     TextWrapping="Wrap"
                                     Margin="0,10,0,0"/>
                                 <TextBlock
-                                    Name="engineCar"
+                                    Name="nameEngine"
                                     Text="Двигатель: "
                                     TextWrapping="Wrap"
                                     Margin="0,10,0,0"/>
                                 <TextBlock
-                                    Name="volumeCar"
+                                    Name="engineVol"
                                     Text="Рабочий объем (л): "
                                     TextWrapping="Wrap"
                                     Margin="0,10,0,0"/>
                                 <TextBlock
-                                    Name="powerCar"
+                                    Name="engineHP"
                                     Text="Мощность (л.с.): "
                                     TextWrapping="Wrap"
-                                    Margin="0,10,0,10"/>
+                                    Margin="0,10,0,20"/>
                             </StackPanel>
                             <StackPanel
                                 Name="adminPanelEditCar"
@@ -217,15 +218,16 @@
                         CornerRadius="10"
                         Background="{DynamicResource AppBackgroundColor}">
                         <StackPanel
-                            Margin="10,10,0,0"
+                            Margin="20,20,0,0"
                             Orientation="Vertical">
                             <TextBlock
                                 Text="О себе"
                                 FontSize="24"/>
                             <TextBlock
+                                Name="bioPilot"
                                 Text="Биография: "
                                 TextWrapping="Wrap"
-                                Margin="0,10,0,10"/>
+                                Margin="0,10,0,20"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>

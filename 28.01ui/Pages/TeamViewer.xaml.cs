@@ -17,7 +17,7 @@ namespace _28._01ui
 			InitializeComponent();
 			animGrid.InitSlideUp();
 			animGrid1.ContentSlideUp();
-			if (DataHolder.SharedRole != "Admin")
+			if (DataHolder.SharedRoleId != 1)
 			{
 				btnEdit.Visibility = Visibility.Collapsed;
 				btnDelete.Visibility = Visibility.Collapsed;
@@ -68,7 +68,7 @@ namespace _28._01ui
 					{
 						var imageBrush = new ImageBrush
 						{
-							ImageSource = new BitmapImage(new Uri(ProjectDirectory.GetProjectDirectory() + @"/images/ProfileImages/p3.jpg")),
+							ImageSource = new BitmapImage(new Uri(ProjectDirectory.GetProjectDirectory() + @"/images/defaultprofilepic.jpg")),
 							Stretch = Stretch.UniformToFill
 						};
 						imageBorder.Background = imageBrush;
@@ -93,7 +93,7 @@ namespace _28._01ui
 					stackpanel.Children.Add(roleTextBlock);
 					stackpanel.Children.Add(nameTextBlock);
 					pilotscontainer.Children.Add(border);
-					if (DataHolder.SharedRole == "Admin")
+					if (DataHolder.SharedRoleId == 1)
 					{
 						var delbutton = new Wpf.Ui.Controls.Button
 						{
@@ -122,7 +122,7 @@ namespace _28._01ui
 				}
 			}
 
-			if (DataHolder.SharedRole == "Admin")
+			if (DataHolder.SharedRoleId == 1)
 			{
 				var uiButton = new Wpf.Ui.Controls.Button
 			{
@@ -163,9 +163,9 @@ namespace _28._01ui
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			PilotAddChanger window = new PilotAddChanger();
-			window.ShowDialog();
-			//Manager.MainFrame.Navigate(new PilotEditor());
+			//PilotAddChanger window = new PilotAddChanger();
+			//window.ShowDialog();
+			Manager.MainFrame.Navigate(new PilotEditor());
 		}
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)

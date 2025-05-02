@@ -14,7 +14,7 @@
                  Width="530"
                  Background="{x:Null}">
     <Grid
-        Background="{DynamicResource AppBackgroundColor}">
+        Background="{DynamicResource AppDialogColor}">
         <TextBlock
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
@@ -23,15 +23,18 @@
             FontWeight="SemiBold"
             Margin="20"/>
         <ui:Button
+            BorderThickness="0"
             Content="Новый участник"
             Margin="20,70,0,0"
             VerticalAlignment="Top" Width="150"
             />
         <ui:Button
+            BorderThickness="0"
             Content="Из другой команды"
             VerticalAlignment="Top"
             Margin="190,70,0,0" Width="172"/>
         <ui:Button
+            BorderThickness="0"
             Content="Отмена"
             HorizontalAlignment="Right"
             VerticalAlignment="Bottom"

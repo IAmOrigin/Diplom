@@ -7,7 +7,6 @@
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         xmlns:local1="clr-namespace:_28._01ui.Classes"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
         Title="FastLane world"
         Height="500"
         Width="900"
@@ -172,7 +171,7 @@
             <Border
                 Height="70"
                 CornerRadius="10"
-                Background="{DynamicResource AppBackgroundColor}">
+                Background="{DynamicResource AppDialogColor}">
                 <Grid
                     Margin="20,0,10,0">
                     <StackPanel

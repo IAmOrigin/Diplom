@@ -46,7 +46,7 @@ namespace _28._01ui
 
 		private void AdminCheck()
 		{
-			if (DataHolder.SharedRole != "Admin")
+			if (DataHolder.SharedRoleId != 1)
 			{
 				btnAdd.Visibility = Visibility.Collapsed;
 			}
