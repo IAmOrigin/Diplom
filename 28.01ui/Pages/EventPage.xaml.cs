@@ -1,4 +1,5 @@
-﻿using _28._01ui.Properties;
+﻿using _28._01ui.EditorWindows;
+using _28._01ui.Properties;
 using System;
 using System.Linq;
 using System.Windows;
@@ -55,7 +56,10 @@ namespace _28._01ui
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
 			DataHolder.SharedEventId = 0;
-			Manager.MainFrame.Navigate(new Uri("Pages/EventEditor.xaml", UriKind.Relative));
+			EventEditorWindow window = new EventEditorWindow(0);
+			Manager.DialogOverlay.Visibility = Visibility.Visible;
+			window.ShowDialog();
+			//Manager.MainFrame.Navigate(new Uri("Pages/EventEditor.xaml", UriKind.Relative));
         }
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -26,6 +26,7 @@ namespace _28._01ui
 			ApplyTheme();
 			Pic.defaultpic = @"images\default.jpg";
 			Pic.defaultprofilepic = @"images\defaultprofilepic.jpg";
+			Manager.DialogOverlay = dialogOverlay;
 			Manager.MainFrame = MainFrame;
 			Manager.MainFrame.Navigated += OnNavigated;
 			Manager.MainFrame.Navigate(new StartPage());
@@ -180,5 +181,10 @@ namespace _28._01ui
 		{
 			Manager.MainFrame.Navigate(new PilotViewer());
         }
-    }
+
+		private void dialogOverLay_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }

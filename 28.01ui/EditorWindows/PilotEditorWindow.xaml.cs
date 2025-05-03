@@ -2,16 +2,14 @@
 using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Wpf.Ui.Controls;
+using MessageBox = System.Windows.MessageBox;
 
 namespace _28._01ui.EditorWindows
 {
-    /// <summary>
-    /// Логика взаимодействия для PilotEditorWindow.xaml
-    /// </summary>
     public partial class PilotEditorWindow : Window
     {
         Entities entities = new Entities();
@@ -126,13 +124,14 @@ namespace _28._01ui.EditorWindows
 					pilot.PilotImg = newfile;
 				}
 			}
-			catch
+			catch(Exception ex) 
 			{
 				if(pilot.PilotImg == null)
 				{
 					pilot.PilotImg = Pic.defaultpic;
 				}
 				PopupManager.ShowMessage("Не удалось добавить изображение");
+				MessageBox.Show(ex.ToString());
 			}
 			entities.SaveChanges();
 			this.Close();

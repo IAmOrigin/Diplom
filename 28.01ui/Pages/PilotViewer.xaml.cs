@@ -81,6 +81,7 @@ namespace _28._01ui.Pages
 		private void btnEdit_Click(object sender, RoutedEventArgs e)
 		{
 			PilotEditorWindow window = new PilotEditorWindow(pilotId);
+			Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.Closed += Editor_Closed;
 			window.ShowDialog();
 		}
@@ -93,6 +94,7 @@ namespace _28._01ui.Pages
 		private void btnEditCar_Click(object sender, RoutedEventArgs e)
 		{
 			CarEditorWindow window = new CarEditorWindow(pilotId);
+			Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.Closed += Editor_Closed;
 			window.ShowDialog();
 		}
@@ -108,11 +110,13 @@ namespace _28._01ui.Pages
 		private void buttonAddCar_Click(object sender, RoutedEventArgs e)
 		{
 			CarEditorWindow window = new CarEditorWindow(pilotId);
+			Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.Closed += Editor_Closed;
 			window.ShowDialog();
 		}
 		private void Editor_Closed(object sender, EventArgs e)
 		{
+			Manager.DialogOverlay.Visibility = Visibility.Collapsed;
 			CarCheck();
 			LoadData(pilotId);
 		}

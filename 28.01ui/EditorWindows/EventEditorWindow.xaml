@@ -7,11 +7,188 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Title="EventEditorWindow"
-        Height="540"
+        Height="560"
         Width="490"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid
-        Background="{DynamicResource AppDialogColor}"/>
+        Background="{DynamicResource AppDialogColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            Margin="20,20,0,20"
+            FontSize="24"
+            FontWeight="SemiBold"
+            Text="Редактирование события"
+            Grid.Row="0"/>
+        <StackPanel
+            Margin="0,20,20,20"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            Grid.Row="2">
+            <ui:Button
+               Name="buttonNext"
+                HorizontalAlignment="Right"
+                Content="Далее"
+                Width="100"
+                Margin="0,0,20,0"
+                BorderThickness="0"
+                Click="buttonNext_Click"/>
+            <ui:Button
+                Visibility="Collapsed"
+                Name="buttonBack"
+                HorizontalAlignment="Right"
+                Content="Назад"
+                Width="100"
+                Margin="0,0,20,0"
+                BorderThickness="0" Click="buttonBack_Click"/>
+            <ui:Button
+                Visibility="Collapsed"
+                Name="buttonSave"
+                Margin="0,0,20,0"
+                HorizontalAlignment="Right"
+                Content="Сохранить"
+                Width="100"
+                BorderThickness="0" Click="buttonSave_Click"/>
+            <ui:Button
+                Name="buttonCancel"
+                HorizontalAlignment="Right"
+                Content="Отмена"
+                Width="100"
+                BorderThickness="0" Click="buttonCancel_Click"/>
+        </StackPanel>
+
+        <ui:DynamicScrollViewer
+            Grid.Row="1">
+            <Grid>
+                <StackPanel
+                   Width="350"
+                   HorizontalAlignment="Left"
+                    Visibility="Visible"
+                    Margin="20,0,20,0"
+                    Name="page1"
+                    Orientation="Vertical">
+                    <TextBlock
+                        Text="Обложка"/>
+                    <Grid
+                        Margin="0,10,0,0">
+                        <Border
+                            BorderThickness="0"
+                            CornerRadius="10"
+                            Height="150"/>
+                        <ui:Button
+                            BorderThickness="0"
+                            Name="buttonAddImg"
+                            Height="150"
+                            Width="350"
+                            CornerRadius="10"
+                            Click="buttonAddImg_Click">
+                            <ui:Button.Content>
+                                <ui:SymbolIcon
+                                    Symbol="Edit20"
+                                    FontSize="24"/>
+                            </ui:Button.Content>
+                        </ui:Button>
+                    </Grid>
+
+                    <ui:TextBox
+                        Margin="0,20,0,0"
+                        PlaceholderText="Название"
+                        BorderThickness="0"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        Text="Тип мероприятия"/>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        Margin="0,10,0,0">
+                        <ComboBox
+                            Name="comboType"
+                            BorderThickness="0" Width="294"/>
+                        <ui:Button
+                            Width="35"
+                            Height="35"
+                            BorderThickness="0"
+                            Margin="20,0,0,0"
+                            Name="buttonAddType"
+                            Click="buttonAddType_Click">
+                            <ui:Button.Content>
+                                <ui:SymbolIcon
+                                    Symbol="Edit20"
+                                    FontSize="14"/>
+                            </ui:Button.Content>
+                        </ui:Button>
+                    </StackPanel>
+                    
+                    <ui:TextBox
+                        PlaceholderText="Описание"
+                        TextWrapping="Wrap"
+                        MinHeight="90"
+                        Margin="0,20,0,0"
+                        BorderThickness="0"/>
+                </StackPanel>
+                <StackPanel
+                    Width="350"
+                    Visibility="Collapsed"
+                    Margin="20,0,20,0"
+                    Name="page2"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Left">
+                    <ui:TextBox
+                        BorderThickness="0"
+                        PlaceholderText="Место проведения"/>
+                    <DatePicker
+                        BorderThickness="0"
+                        Margin="0,20,0,0"/>
+                    <StackPanel
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal">
+                        <ui:NumberBox
+                            PlaceholderText="Часы"
+                            Maximum="23"
+                            Width="163"
+                            Minimum="0"/>
+                        <ui:NumberBox
+                            PlaceholderText="Минуты"
+                            Margin="20,0,0,0"
+                            Maximum="59"
+                            Minimum="0"
+                            Width="163"/>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="Бесплатный проход"/>
+                        <ui:ToggleSwitch
+                            Click="ticketSwitch_Click"
+                            Name="ticketSwitch"
+                            Margin="20,0,0,0"
+                            Height="35"/>
+                    </StackPanel>
+                    <ui:NumberBox
+                        Minimum="1"
+                        Maximum="100000"
+                        BorderThickness="0"
+                        Name="ticketsRemain"
+                        Margin="0,20,0,0"
+                        PlaceholderText="Количество мест"/>
+                    <ui:NumberBox
+                        BorderThickness="0"
+                        Minimum="0"
+                        Maximum="1000000"
+                        Name="tiketPrice"
+                        Margin="0,20,0,0"
+                        PlaceholderText="Стоимость билета (Руб)"/>
+
+                </StackPanel>
+            </Grid>
+
+        </ui:DynamicScrollViewer>
+
+    </Grid>
 </Window>

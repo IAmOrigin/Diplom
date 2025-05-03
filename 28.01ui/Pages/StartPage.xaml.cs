@@ -74,9 +74,9 @@ namespace _28._01ui
 			Manager.MainFrame.Navigate(new Uri("Pages/EventPage.xaml", UriKind.Relative));
 		}
 
-		private void ArchiveBtn(object sender, RoutedEventArgs e)
+		private void PilotsBtn(object sender, RoutedEventArgs e)
 		{
-			Manager.MainFrame.Navigate(new Uri("Pages/ArchivePage.xaml", UriKind.Relative));
+			Manager.MainFrame.Navigate(new Uri("Pages/PilotsPage.xaml", UriKind.Relative));
 		}
 
 		private void RatingBtn(object sender, RoutedEventArgs e)

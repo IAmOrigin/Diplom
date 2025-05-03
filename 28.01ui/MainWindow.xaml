@@ -254,5 +254,18 @@
             Grid.Row="1"
             Grid.Column="1"/>
 
+        <Grid
+            Visibility="Collapsed"
+            Name="dialogOverlay"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Background="#B2000000">
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                Text="Завершите действия в окне редактирования"/>
+        </Grid>
+
     </Grid>
 </ui:FluentWindow>

@@ -88,7 +88,7 @@
             </StackPanel>
         </ui:Button>
         <ui:Button
-        Click="ArchiveBtn"
+        Click="PilotsBtn"
         Grid.Column="1"
         Grid.Row="2"
         BorderThickness="0"
@@ -106,12 +106,12 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock
                     FontSize="14"
-                    Text="Архив"/>
+                    Text="Участники"/>
                     <TextBlock
                     FontSize="12"
                     TextWrapping="Wrap"
                     Opacity="0.5"
-                    Text="Прошедшие события"/>
+                    Text="Список участников"/>
                 </StackPanel>
             </StackPanel>
         </ui:Button>
