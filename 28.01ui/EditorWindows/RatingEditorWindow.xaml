@@ -1,4 +1,4 @@
-﻿<Window x:Class="_28._01ui.EditorWindows.EventTypeEditorWindow"
+﻿<Window x:Class="_28._01ui.EditorWindows.RatingEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Title="Редактирование"
-        Height="450"
-        Width="800"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Height="470"
+        Width="870"
+        Background="{x:Null}">
     <Grid
         Background="{DynamicResource AppDialogColor}">
         

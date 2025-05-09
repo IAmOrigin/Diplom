@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         WindowStyle="None"
-        Title="CarEditorWindow"
+        Title="Редактирование"
                  Height="360"
                  Width="550"
                  ResizeMode="NoResize"

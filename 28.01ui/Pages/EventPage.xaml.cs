@@ -25,6 +25,7 @@ namespace _28._01ui
 
 		private void LoadEvents(ItemsControl itemsControl)
 		{
+			itemsControl.Items.Clear();
 			foreach (var entity in entities.Events)
 			{
 				if (entity.EventDate >= DateTime.Now)
@@ -36,6 +37,7 @@ namespace _28._01ui
 
 		private void LoadArchive(ItemsControl itemsControl)
 		{
+			itemsControl.Items.Clear();
 			foreach (var entity in entities.Events)
 			{
 				if (entity.EventDate < DateTime.Now)
@@ -55,11 +57,10 @@ namespace _28._01ui
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			DataHolder.SharedEventId = 0;
 			EventEditorWindow window = new EventEditorWindow(0);
+			window.Closed += Editor_Closed;
 			Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.ShowDialog();
-			//Manager.MainFrame.Navigate(new Uri("Pages/EventEditor.xaml", UriKind.Relative));
         }
 
 		private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -111,6 +112,15 @@ namespace _28._01ui
 			if (event1 == null) return;
 			DataHolder.SharedEventId = event1.Id;
 			Manager.MainFrame.Navigate(new Uri("Pages/EventViewer.xaml", UriKind.Relative));
+		}
+		private void Editor_Closed(object sender, EventArgs e)
+		{
+			Manager.DialogOverlay.Visibility = Visibility.Collapsed;
+			EventContainer.Items.Clear();
+			ArchiveContainer.Items.Clear();
+			LoadArchive(ArchiveContainer);
+			LoadEvents(EventContainer);
+
 		}
 	}
 }

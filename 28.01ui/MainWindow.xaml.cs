@@ -11,6 +11,7 @@ using Wpf.Ui;
 using Wpf.Ui.Controls;
 using Wpf.Ui.Input;
 using Wpf.Ui.Markup;
+using MessageBox = System.Windows.MessageBox;
 
 namespace _28._01ui
 {
@@ -30,7 +31,7 @@ namespace _28._01ui
 			Manager.MainFrame = MainFrame;
 			Manager.MainFrame.Navigated += OnNavigated;
 			Manager.MainFrame.Navigate(new StartPage());
-			PopupManager.Initialize(popup1);
+			PopupManager.Initialize(popup1, confirmPopup);
 		}
 
 		private void OnNavigated(object sender, NavigationEventArgs e)

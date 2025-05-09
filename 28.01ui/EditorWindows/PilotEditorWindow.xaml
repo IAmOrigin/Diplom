@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_28._01ui.EditorWindows"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        Title="PilotEditorWindow"
+        Title="Редактирование"
                  WindowStyle="None"
                  ResizeMode="NoResize"
                  WindowStartupLocation="CenterScreen"
@@ -45,7 +45,7 @@
                     Click="Button_EditImg">
                     <ui:Button.Content>
                         <ui:SymbolIcon
-                            Symbol="Edit20"
+                            Symbol="Image20"
                             FontSize="24"/>
                     </ui:Button.Content>
                 </ui:Button>

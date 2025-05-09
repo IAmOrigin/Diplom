@@ -180,6 +180,9 @@
     <Compile Include="EditorWindows\PilotEditorWindow.xaml.cs">
       <DependentUpon>PilotEditorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditorWindows\RatingEditorWindow.xaml.cs">
+      <DependentUpon>RatingEditorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Events.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -201,15 +204,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ArchivePage.xaml.cs">
-      <DependentUpon>ArchivePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Classes\DataHolder.cs" />
     <Compile Include="Pages\EventViewer.xaml.cs">
       <DependentUpon>EventViewer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PilotEditor.xaml.cs">
-      <DependentUpon>PilotEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PilotsPage.xaml.cs">
       <DependentUpon>PilotsPage.xaml</DependentUpon>
@@ -219,9 +216,6 @@
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EventEditor.xaml.cs">
-      <DependentUpon>EventEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EventPage.xaml.cs">
       <DependentUpon>EventPage.xaml</DependentUpon>
@@ -307,15 +301,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ArchivePage.xaml">
+    <Page Include="EditorWindows\RatingEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EventViewer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PilotEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -328,10 +318,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ProfilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EventEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -450,16 +436,6 @@
     <Resource Include="images\BackImages\9.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\EventImages\RDS2025Summer.jpg" />
-    <Resource Include="images\EventImages\RDS2025Winter.jpg" />
-    <Resource Include="images\EventImages\RDS2026Summer.jpg" />
-    <Resource Include="images\EventImages\SRC2023.jpg" />
-    <Resource Include="images\EventImages\SRC2025.jpg" />
-    <Resource Include="images\EventImages\TA02.jpg" />
-    <Resource Include="images\EventImages\TA07.jpg" />
-    <Resource Include="images\EventImages\TA08.jpg" />
-    <Resource Include="images\EventImages\SDC2024.jpg" />
-    <Resource Include="images\EventImages\SDC2025.jpg" />
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -552,17 +528,7 @@
     <None Include="images\EventImages\photo_2024-05-14_11-14-52.jpg" />
     <None Include="images\EventImages\photo_2024-12-25_11-33-53.jpg" />
     <None Include="images\EventImages\photo_2025-04-21_00-36-13 %283%29.jpg" />
-    <None Include="images\EventImages\RDS2025Summer.jpg" />
-    <None Include="images\EventImages\RDS2025Winter.jpg" />
-    <None Include="images\EventImages\RDS2026Summer.jpg" />
-    <None Include="images\EventImages\SDC2024.jpg" />
-    <None Include="images\EventImages\SDC2025.jpg" />
-    <None Include="images\EventImages\SRC2023.jpg" />
-    <None Include="images\EventImages\SRC2025.jpg" />
     <None Include="images\EventImages\srN02ejYD9Q.jpg" />
-    <None Include="images\EventImages\TA02.jpg" />
-    <None Include="images\EventImages\TA07.jpg" />
-    <None Include="images\EventImages\TA08.jpg" />
     <None Include="images\EventImages\user.jpg" />
     <None Include="images\EventImages\Кошка_Вирго.jpg" />
     <None Include="images\ImageSlider\1.jpg" />
@@ -630,13 +596,36 @@
     <None Include="images\TeamImages\trailblazers.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\EventImages\stancestul.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="images\DarkImageSlider\" />
     <Folder Include="images\LightImageSlider\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\ProfileImages\M4YTjAAqyF8.jpg" />
+    <Resource Include="images\EventImages\1P_ag-6nbBA.jpg" />
+    <Resource Include="images\EventImages\M4YTjAAqyF8.jpg" />
+    <Resource Include="images\EventImages\M4YTjAAqyF81.jpg" />
+    <Resource Include="images\EventImages\M4YTjAAqyF82.jpg" />
+    <Resource Include="images\EventImages\Oso7MrJr0-A.jpg" />
+    <Resource Include="images\EventImages\photo_2025-04-20_20-34-37.jpg" />
+    <Resource Include="images\EventImages\11.jpg" />
+    <Resource Include="images\EventImages\17.jpg" />
+    <Resource Include="images\EventImages\171.jpg" />
+    <Resource Include="images\EventImages\3.jpg" />
+    <Resource Include="images\EventImages\AQABkiVDQMISmfU8osl1CIT_T7lO8KkzEoObQcJsoE0gnQeWBUQ1ymFlWj8RgghhSOrg_t6aJe-fulvPcUa-U7YE4bI.jpg" />
+    <Resource Include="images\EventImages\automobile-racing-sports-competition1.jpg" />
+    <Resource Include="images\EventImages\DEGA.jpg" />
+    <Resource Include="images\EventImages\Evans02SWE24cm375.jpg" />
+    <Resource Include="images\EventImages\img-2655.jpg" />
+    <Resource Include="images\EventImages\IMG_23491.jpg" />
+    <Resource Include="images\EventImages\IMG_23561.jpg" />
+    <Resource Include="images\EventImages\nascar-cup-series.jpg" />
+    <Resource Include="images\EventImages\photo_2024-12-25_11-33-531.jpg" />
+    <Resource Include="images\EventImages\photo_2025-04-21_00-36-13 %283%291.jpg" />
+    <Resource Include="images\EventImages\RDS2025Summer1.jpg" />
+    <Resource Include="images\EventImages\sami-pajari-enni-malkonen-toyo.jpg" />
+    <Resource Include="images\EventImages\img2.akspic.ru-futbol-skuderiya_ferrari-sportivnyj_gonochnyj_avtomobil-formula_odin-avtosport-5184x2916.jpg" />
+    <Resource Include="images\EventImages\CnpkhPVF6AI.jpg" />
+    <Resource Include="images\EventImages\3tXnqh3Wc6E.jpg" />
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

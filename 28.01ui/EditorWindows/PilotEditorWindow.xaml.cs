@@ -107,7 +107,6 @@ namespace _28._01ui.EditorWindows
 				{
 					string targetDirectory = Path.Combine(ProjectDirectory.GetProjectDirectory(), @"images\ProfileImages\");
 					string targetFilePath = Path.Combine(targetDirectory, Path.GetFileName(sourceFilePath));
-					// Если файл уже существует, добавляем суффикс (1, 2, 3 и т.д.)
 					if (File.Exists(targetFilePath))
 					{
 						string fileNameWithoutExt = Path.GetFileNameWithoutExtension(sourceFilePath);

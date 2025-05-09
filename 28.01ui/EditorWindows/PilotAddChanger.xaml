@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_28._01ui.EditorWindows"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        Title="PilotAddChanger"
+        Title="Редактирование"
                  WindowStyle="None"
                  ResizeMode="NoResize"
                  WindowStartupLocation="CenterScreen"

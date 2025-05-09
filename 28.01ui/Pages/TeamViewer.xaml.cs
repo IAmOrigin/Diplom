@@ -165,7 +165,7 @@ namespace _28._01ui
 		{
 			//PilotAddChanger window = new PilotAddChanger();
 			//window.ShowDialog();
-			Manager.MainFrame.Navigate(new PilotEditor());
+			//Manager.MainFrame.Navigate(new PilotEditor());
 		}
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)

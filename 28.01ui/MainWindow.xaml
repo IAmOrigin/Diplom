@@ -214,35 +214,54 @@
 
         <Popup
             AllowsTransparency="True"
-            Name="switchPopup"
+            Name="confirmPopup"
             StaysOpen="False"
             PopupAnimation="Fade"
-            VerticalOffset="-60"
-            HorizontalOffset="70"
+            VerticalOffset="-80"
+            HorizontalOffset="90"
             Margin="10"
-            Width="{Binding ActualWidth, ElementName=MainFrame, Mode=OneWay}">
+            Width="{Binding ActualWidth,
+            Converter={StaticResource SubtractWidthConverter},
+            ElementName=MainFrame,
+            Mode=OneWay}">
             <Border
                 Height="70"
                 CornerRadius="10"
-                Background="{DynamicResource AppBackgroundColor}">
+                Background="{DynamicResource AppDialogColor}"
+                Width="{Binding ActualWidth,
+                Converter={StaticResource SubtractWidthConverter},
+                ElementName=MainFrame, Mode=OneWay}">
                 <Grid
-                    Margin="20,0,10,0">
-                    <TextBlock
-                        Name="sss"
-                        VerticalAlignment="Center"
-                        Text="Вы уверенны в своих действиях? У этого будут последствия..."/>
+                    Margin="20,0,20,0">
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <StackPanel
+                            VerticalAlignment="Center"
+                            Orientation="Vertical">
+                            <TextBlock
+                                Text="Подтверждение"
+                                FontSize="16"
+                                FontWeight="SemiBold"/>
+                            <TextBlock
+                                Name="textQuestion"
+                                VerticalAlignment="Center"
+                                Text="Вы уверены в своих действиях?"/>
+                        </StackPanel>
+                    </StackPanel>
                     <StackPanel
                         Orientation="Horizontal"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center">
                         <ui:Button
+                            Name="yesButton"
                             Margin="15,0"
                             BorderThickness="0"
                             Content="Да"
-                            Width="60"/>
+                            MinWidth="60"/>
                         <ui:Button
+                            Name="noButton"
                             BorderThickness="0"
-                            Width="70"
+                            MinWidth="70"
                             Content="Нет"/>
                     </StackPanel>
                 </Grid>
@@ -253,7 +272,7 @@
             Name="MainFrame"
             Grid.Row="1"
             Grid.Column="1"/>
-
+        
         <Grid
             Visibility="Collapsed"
             Name="dialogOverlay"

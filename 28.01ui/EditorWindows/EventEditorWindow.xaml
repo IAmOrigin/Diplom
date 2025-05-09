@@ -65,10 +65,9 @@
         <ui:DynamicScrollViewer
             Grid.Row="1">
             <Grid>
-                <StackPanel
+                <StackPanel Visibility="Visible"
                    Width="350"
                    HorizontalAlignment="Left"
-                    Visibility="Visible"
                     Margin="20,0,20,0"
                     Name="page1"
                     Orientation="Vertical">
@@ -77,9 +76,11 @@
                     <Grid
                         Margin="0,10,0,0">
                         <Border
+                            Name="borderEventImg"
                             BorderThickness="0"
                             CornerRadius="10"
-                            Height="150"/>
+                            Height="150">
+                        </Border>
                         <ui:Button
                             BorderThickness="0"
                             Name="buttonAddImg"
@@ -89,7 +90,7 @@
                             Click="buttonAddImg_Click">
                             <ui:Button.Content>
                                 <ui:SymbolIcon
-                                    Symbol="Edit20"
+                                    Symbol="Image20"
                                     FontSize="24"/>
                             </ui:Button.Content>
                         </ui:Button>
@@ -97,6 +98,7 @@
 
                     <ui:TextBox
                         Margin="0,20,0,0"
+                        Name="eventName"
                         PlaceholderText="Название"
                         BorderThickness="0"/>
                     <TextBlock
@@ -122,41 +124,54 @@
                             </ui:Button.Content>
                         </ui:Button>
                     </StackPanel>
-                    
+
                     <ui:TextBox
+                        Name="eventDesc"
                         PlaceholderText="Описание"
                         TextWrapping="Wrap"
                         MinHeight="90"
                         Margin="0,20,0,0"
                         BorderThickness="0"/>
                 </StackPanel>
-                <StackPanel
+
+                <StackPanel Visibility="Collapsed"
                     Width="350"
-                    Visibility="Collapsed"
                     Margin="20,0,20,0"
                     Name="page2"
                     Orientation="Vertical"
                     HorizontalAlignment="Left">
                     <ui:TextBox
+                        Name="eventLocation"
                         BorderThickness="0"
                         PlaceholderText="Место проведения"/>
+                    <TextBlock
+                        Margin="0,20,0,0"
+                        Text="Дата проведения"/>
                     <DatePicker
+                        Name="eventDate"
                         BorderThickness="0"
-                        Margin="0,20,0,0"/>
+                        Margin="0,10,0,0"/>
                     <StackPanel
                         Margin="0,20,0,0"
                         Orientation="Horizontal">
                         <ui:NumberBox
+                            Name="eventHours"
                             PlaceholderText="Часы"
                             Maximum="23"
-                            Width="163"
+                            Width="162"
                             Minimum="0"/>
+                        <TextBlock
+                            FontSize="16"
+                            Text=":"
+                            Margin="10,0,0,0"
+                            VerticalAlignment="Center"/>
                         <ui:NumberBox
+                            Name="eventMinutes"
                             PlaceholderText="Минуты"
-                            Margin="20,0,0,0"
+                            Margin="10,0,0,0"
                             Maximum="59"
                             Minimum="0"
-                            Width="163"/>
+                            Width="162"/>
                     </StackPanel>
                     <StackPanel
                         Margin="0,20,0,0"
@@ -181,7 +196,7 @@
                         BorderThickness="0"
                         Minimum="0"
                         Maximum="1000000"
-                        Name="tiketPrice"
+                        Name="ticketPrice"
                         Margin="0,20,0,0"
                         PlaceholderText="Стоимость билета (Руб)"/>
 
