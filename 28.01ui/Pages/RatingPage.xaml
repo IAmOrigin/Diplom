@@ -33,11 +33,11 @@
                 Grid.Column="1"
                 Grid.Row="0">
                 <TextBlock
-                    Text="События"
+                    Text="Таблица лидеров"
                     FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
-                    Text="Предстоящие и прошедшие события"/>
+                    Text="Просмотр результатов событий"/>
             </StackPanel>
 
             <StackPanel
@@ -54,7 +54,7 @@
                     BorderThickness="0"
                     PlaceholderText="Поиск"
                     Width="230"
-                    TextChanged="SearchBox_TextChanged"/>
+                    />
                 <ui:Button
                     x:Name="btnAdd"
                     Height="35"
@@ -67,6 +67,33 @@
                         Symbol="Add20"/>
                 </ui:Button>
             </StackPanel>
+
+            <DataGrid
+                Name="dataGridResults"
+                Grid.Row="1"
+                Grid.Column="1">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="#"
+                        />
+                    <DataGridTextColumn
+                        Header="Пилот"
+                        Binding="{Binding Pilots.PilotName}"/>
+                    <DataGridTextColumn
+                        Header="Автомобиль"
+                        Binding="{Binding Pilots.PilotCar.FirstCarName}"/>
+                    <DataGridTextColumn
+                        Header="Время"
+                        Binding="{Binding Time}"/>
+                    <DataGridTextColumn
+                        Header="Очки"
+                        Binding="{Binding Points}"/>
+                    <DataGridTextColumn
+                        Header="Страна"
+                        Binding="{Binding Pilots.Teams.TeamCountry}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
         </Grid>
     </ui:DynamicScrollViewer>
 </Page>

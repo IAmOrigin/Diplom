@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Data.Entity;
 
 namespace _28._01ui
 {
@@ -14,7 +15,10 @@ namespace _28._01ui
 		{
 			InitializeComponent();
 			animGrid.InitSlideUp();
-			
+			foreach (var item in entities.Results)
+			{
+				dataGridResults.Items.Add(item);
+			}
 		}
 
 

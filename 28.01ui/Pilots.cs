@@ -11,9 +11,10 @@ namespace _28._01ui
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Pilots
-    {
+	using System.Linq;
+
+	public partial class Pilots
+	{
         public Pilots()
         {
             this.PilotCar = new HashSet<PilotCar>();
@@ -33,5 +34,6 @@ namespace _28._01ui
         public virtual PilotRoles PilotRoles { get; set; }
         public virtual Teams Teams { get; set; }
         public virtual ICollection<Results> Results { get; set; }
-    }
+		public string FirstCarName => PilotCar?.FirstOrDefault()?.Name;
+	}
 }
