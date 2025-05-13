@@ -14,13 +14,17 @@ namespace _28._01ui
     
     public partial class PilotCar
     {
+        public PilotCar()
+        {
+            this.Pilots = new HashSet<Pilots>();
+        }
+    
         public int Id { get; set; }
-        public int PilotId { get; set; }
         public string Name { get; set; }
         public string Engine { get; set; }
         public Nullable<decimal> Volume { get; set; }
         public Nullable<int> HorsePower { get; set; }
     
-        public virtual Pilots Pilots { get; set; }
+        public virtual ICollection<Pilots> Pilots { get; set; }
     }
 }

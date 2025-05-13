@@ -31,7 +31,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PilotId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Engine" Type="nvarchar(max)" />
           <Property Name="Volume" Type="decimal" Precision="18" Scale="1" />
@@ -55,6 +54,7 @@
           <Property Name="City" Type="nvarchar(max)" />
           <Property Name="TeamId" Type="int" />
           <Property Name="RoleId" Type="int" />
+          <Property Name="CarId" Type="int" />
           <Property Name="PilotImg" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Results">
@@ -120,20 +120,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PilotCar_ToTable">
-          <End Role="Pilots" Type="Self.Pilots" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pilots">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PilotCar">
-              <PropertyRef Name="PilotId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pilots_ToTable">
           <End Role="Teams" Type="Self.Teams" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -159,6 +145,18 @@
             </Principal>
             <Dependent Role="Pilots">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pilots_ToTable_2">
+          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="0..1" />
+          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PilotCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pilots">
+              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -245,16 +243,16 @@
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Events" EntitySet="Events" />
           </AssociationSet>
-          <AssociationSet Name="FK_PilotCar_ToTable" Association="Self.FK_PilotCar_ToTable">
-            <End Role="Pilots" EntitySet="Pilots" />
-            <End Role="PilotCar" EntitySet="PilotCar" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable" Association="Self.FK_Pilots_ToTable">
             <End Role="Teams" EntitySet="Teams" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable_1" Association="Self.FK_Pilots_ToTable_1">
             <End Role="PilotRoles" EntitySet="PilotRoles" />
+            <End Role="Pilots" EntitySet="Pilots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pilots_ToTable_2" Association="Self.FK_Pilots_ToTable_2">
+            <End Role="PilotCar" EntitySet="PilotCar" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Results_ToTable" Association="Self.FK_Results_ToTable">
@@ -313,12 +311,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PilotId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Engine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Volume" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="HorsePower" Type="Int32" />
-          <NavigationProperty Name="Pilots" Relationship="Self.FK_PilotCar_ToTable" FromRole="PilotCar" ToRole="Pilots" />
+          <NavigationProperty Name="Pilots" Relationship="Self.FK_Pilots_ToTable_2" FromRole="PilotCar" ToRole="Pilots" />
         </EntityType>
         <EntityType Name="PilotRoles">
           <Key>
@@ -339,8 +336,9 @@
           <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TeamId" Type="Int32" />
           <Property Name="RoleId" Type="Int32" />
+          <Property Name="CarId" Type="Int32" />
           <Property Name="PilotImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PilotCar" Relationship="Self.FK_PilotCar_ToTable" FromRole="Pilots" ToRole="PilotCar" />
+          <NavigationProperty Name="PilotCar" Relationship="Self.FK_Pilots_ToTable_2" FromRole="Pilots" ToRole="PilotCar" />
           <NavigationProperty Name="PilotRoles" Relationship="Self.FK_Pilots_ToTable_1" FromRole="Pilots" ToRole="PilotRoles" />
           <NavigationProperty Name="Teams" Relationship="Self.FK_Pilots_ToTable" FromRole="Pilots" ToRole="Teams" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_ToTable_1" FromRole="Pilots" ToRole="Results" />
@@ -444,17 +442,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PilotCar_ToTable">
-          <End Role="Pilots" Type="Self.Pilots" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="*" />
+        <Association Name="FK_Pilots_ToTable_2">
+          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="0..1" />
+          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Pilots">
+            <Principal Role="PilotCar">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PilotCar">
-              <PropertyRef Name="PilotId" />
+            <Dependent Role="Pilots">
+              <PropertyRef Name="CarId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -549,9 +545,9 @@
             <End Role="Events" EntitySet="Events" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_PilotCar_ToTable" Association="Self.FK_PilotCar_ToTable">
-            <End Role="Pilots" EntitySet="Pilots" />
+          <AssociationSet Name="FK_Pilots_ToTable_2" Association="Self.FK_Pilots_ToTable_2">
             <End Role="PilotCar" EntitySet="PilotCar" />
+            <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable_1" Association="Self.FK_Pilots_ToTable_1">
             <End Role="PilotRoles" EntitySet="PilotRoles" />
@@ -607,7 +603,6 @@
             <EntityTypeMapping TypeName="Model.PilotCar">
               <MappingFragment StoreEntitySet="PilotCar">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PilotId" ColumnName="PilotId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Engine" ColumnName="Engine" />
                 <ScalarProperty Name="Volume" ColumnName="Volume" />
@@ -633,6 +628,7 @@
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="TeamId" ColumnName="TeamId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PilotImg" ColumnName="PilotImg" />
               </MappingFragment>
             </EntityTypeMapping>

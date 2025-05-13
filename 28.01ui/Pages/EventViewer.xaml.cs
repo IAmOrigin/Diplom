@@ -36,7 +36,8 @@ namespace _28._01ui.Pages
                 var selectedEvent = entities.Events.Find(DataHolder.SharedEventId);
                 bunner.Source = new BitmapImage(new Uri(ProjectDirectory.GetProjectDirectory() + selectedEvent.EventImg));
                 eventName.Text = selectedEvent.EventName;
-                eventDate.Text = selectedEvent.EventDate.Value.ToString("d MMMM yyyy HH:mm").ToLower();
+                eventDate.Text = selectedEvent.EventDate.Value.ToString("yyyy").ToLower();
+				eventDateTime.Text = selectedEvent.EventDate.Value.ToString("dd MMMM HH:mm").ToLower();
 				eventType.Text = selectedEvent.EventType.ToString();
                 eventLocation.Text = selectedEvent.Location;
                 eventDesc.Text = selectedEvent.EventDesc;
@@ -67,11 +68,10 @@ namespace _28._01ui.Pages
 
 		private void btnEdit_Click(object sender, RoutedEventArgs e)
 		{
-            EventEditorWindow window = new EventEditorWindow(DataHolder.SharedEventId);
-            Manager.DialogOverlay.Visibility = Visibility.Visible;
+            EventEditorWindow window = new EventEditorWindow();
 			window.Closed += Editor_Closed;
+            Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.ShowDialog();
-
 		}
 
 		private void btnDelete_Click(object sender, RoutedEventArgs e)

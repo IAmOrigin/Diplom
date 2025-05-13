@@ -32,7 +32,8 @@ namespace _28._01ui.EditorWindows
 
 		private void LoadData(int Id)
 		{
-			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
+			var pilot = entities.Pilots.Find(pilotId);
+			var car = entities.PilotCar.Find(pilot.CarId);
 			if (car == null)
 			{
 				return;
@@ -72,12 +73,14 @@ namespace _28._01ui.EditorWindows
 				PopupManager.ShowMessage("Поле Мощность должно содержать целое число");
 				return;
 			}
-			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
+			var pilot = entities.Pilots.Find(pilotId);
+			var car = entities.PilotCar.Find(pilot.CarId);
 			if (car == null)
 			{
 				car = new PilotCar();
-				car.PilotId = pilotId;
 				entities.PilotCar.Add(car);
+				pilot.CarId = car.Id;
+				
 			}
 			car.Name = nameCar.Text;
 			car.Engine = nameEngine.Text;

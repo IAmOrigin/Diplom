@@ -57,7 +57,8 @@ namespace _28._01ui
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
 		{
-			EventEditorWindow window = new EventEditorWindow(0);
+			DataHolder.SharedEventId = 0;
+			EventEditorWindow window = new EventEditorWindow();
 			window.Closed += Editor_Closed;
 			Manager.DialogOverlay.Visibility = Visibility.Visible;
 			window.ShowDialog();

@@ -24,10 +24,10 @@ namespace _28._01ui.EditorWindows
 		int eventId;
 		string newfile = null;
 		string sourceFilePath = null;
-		public EventEditorWindow(int id)
+		public EventEditorWindow()
         {
             InitializeComponent();
-			eventId = id;
+			eventId = DataHolder.SharedEventId;
 			LoadData();
         }
 
@@ -200,7 +200,10 @@ namespace _28._01ui.EditorWindows
 				}
 				else
 				{
-					selectedEvent.EventImg = Pic.defaultpic;
+					if (selectedEvent.EventImg == null)
+					{
+						selectedEvent.EventImg = Pic.defaultpic;
+					}
 				}
 			}
 			catch (Exception ex)

@@ -61,9 +61,10 @@ namespace _28._01ui.Pages
 		private void CarCheck()
 		{
 			entities = new Entities();
-			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
-			if (car != null)
+			var pilot = entities.Pilots.Find(pilotId);
+			if (pilot.CarId != null)
 			{
+				var car = entities.PilotCar.Find(pilot.CarId);
 				buttonAddCar.Visibility = Visibility.Collapsed;
 				borderCarInfo.Visibility = Visibility.Visible;
 				nameCar.Text = "Наименование: " + car.Name;
@@ -101,7 +102,8 @@ namespace _28._01ui.Pages
 
 		private void btnDeleteCar_Click(object sender, RoutedEventArgs e)
 		{
-			var car = entities.PilotCar.FirstOrDefault(c => c.PilotId == pilotId);
+			var pilot = entities.Pilots.Find(pilotId);
+			var car = entities.PilotCar.Find(pilot.CarId);
 			entities.PilotCar.Remove(car);
 			entities.SaveChanges();
 			CarCheck();

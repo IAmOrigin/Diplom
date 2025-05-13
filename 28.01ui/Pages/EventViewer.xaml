@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:_28._01ui.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="900" d:DesignWidth="1440"
       Title="EventViewer"
       Language="ru-RU">
 
@@ -52,6 +52,7 @@
                         Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+
                 <TextBlock
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
@@ -61,7 +62,7 @@
                     TextWrapping="Wrap"
                     Text="EventName"
                     Name="eventName"
-                    FontSize="32"
+                    FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
                     Name="textBlockNoBuy"
@@ -82,33 +83,78 @@
                     Orientation="Vertical"
                     Grid.Row="1"
                     Grid.Column="0">
-                    <TextBlock
-                        Name="eventDate"
-                        FontSize="18"
-                        Text="EventDate"
-                        Margin="0,0,0,10"/>
-                    <TextBlock
-                        Name="eventLocation"
-                        FontSize="18"
-                        Text="EventLocation"
-                        Margin="0,0,0,10"/>
-                    <TextBlock
-                        Name="eventType"
-                        FontSize="16"
-                        Text="EventType"
-                        Margin="0,0,0,10"/>
-                    <TextBlock
-                        Name="eventDesc"
-                        TextWrapping="Wrap"
-                         Text="EventDesc"/>
+                    <Border
+                        CornerRadius="10"
+                        Background="{DynamicResource AppBackgroundColor}">
+                        <TextBlock
+                            Margin="20"
+                            Name="eventDesc"
+                            TextWrapping="Wrap"
+                            Text="EventDesc"/>
+                    </Border>
+                    <Border
+                        Margin="0,20,0,0"
+                        CornerRadius="10"
+                        Background="{DynamicResource AppBackgroundColor}">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Margin="20">
+                            <ui:SymbolIcon
+                                Symbol="FastAcceleration20"
+                                FontSize="36"
+                                Foreground="{DynamicResource AppTextColor}"/>
+                            <TextBlock
+                                
+                                VerticalAlignment="Center"
+                                Name="eventType"
+                                FontSize="18"
+                                Text="EventType"
+                                Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Border
+                        Margin="0,20,0,0"
+                        CornerRadius="10"
+                        Background="{DynamicResource AppBackgroundColor}">
+                        <Grid>
+                            <StackPanel
+                                Orientation="Horizontal"
+                                Margin="20">
+                                <ui:SymbolIcon
+                                    Foreground="{DynamicResource AppTextColor}"
+                                    Symbol="Location20"
+                                    FontSize="36"/>
+                                <StackPanel
+                                    Margin="20,0,0,0"
+                                    Orientation="Vertical">
+                                    <TextBlock
+                                        Name="eventLocation"
+                                        FontSize="18"
+                                        Text="EventLocation"/>
+                                    <TextBlock
+                                        Name="eventDateTime"
+                                        FontSize="18"
+                                        Text="EventDateTime"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,20,0"
+                                Name="eventDate"
+                                FontSize="24"
+                                Text="EventDate"/>
+                        </Grid>
+                        
+                    </Border>
+                    
+                    
+                    
+                    
                 </StackPanel>
-                <Image
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Grid.ColumnSpan="2"
-                    Stretch="Uniform"
-                    Margin="10"
-                    Source="/images/ProfileImages/admin.jpg" />
+
             </Grid>
 
             <StackPanel

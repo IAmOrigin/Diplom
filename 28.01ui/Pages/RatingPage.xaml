@@ -6,10 +6,25 @@
       xmlns:local="clr-namespace:_28._01ui"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
+      d:DesignHeight="900" d:DesignWidth="1440"
       Title="EventPage">
     <Page.Resources>
-
+        <DataTemplate
+            x:Key="eventButtons">
+            <ui:Button
+                Height="35"
+                VerticalAlignment="Top"
+                Margin="20,20,0,0"
+                MinWidth="120"
+                BorderThickness="0"
+                Click="event_Click">
+                <ui:Button.Content>
+                    <TextBlock
+                        Margin="10,0"
+                        Text="{Binding EventName}"/>
+                </ui:Button.Content>
+            </ui:Button>
+        </DataTemplate>
     </Page.Resources>
     <ui:DynamicScrollViewer>
         <Grid Name="animGrid">
@@ -29,7 +44,6 @@
                 Orientation="Vertical"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Margin="0,0,0,10"
                 Grid.Column="1"
                 Grid.Row="0">
                 <TextBlock
@@ -53,8 +67,7 @@
                     Height="35"
                     BorderThickness="0"
                     PlaceholderText="Поиск"
-                    Width="230"
-                    />
+                    Width="230"/>
                 <ui:Button
                     x:Name="btnAdd"
                     Height="35"
@@ -68,32 +81,84 @@
                 </ui:Button>
             </StackPanel>
 
-            <DataGrid
-                Name="dataGridResults"
+            <StackPanel
+                Margin="0,20,0,0"
+                Orientation="Vertical"
                 Grid.Row="1"
                 Grid.Column="1">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Header="#"
-                        />
-                    <DataGridTextColumn
-                        Header="Пилот"
-                        Binding="{Binding Pilots.PilotName}"/>
-                    <DataGridTextColumn
-                        Header="Автомобиль"
-                        Binding="{Binding Pilots.PilotCar.FirstCarName}"/>
-                    <DataGridTextColumn
-                        Header="Время"
-                        Binding="{Binding Time}"/>
-                    <DataGridTextColumn
-                        Header="Очки"
-                        Binding="{Binding Points}"/>
-                    <DataGridTextColumn
-                        Header="Страна"
-                        Binding="{Binding Pilots.Teams.TeamCountry}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            
+                <Border
+                    Height="80"
+                    CornerRadius="10"
+                    Background="{DynamicResource AppBackgroundColor}">
+                    <ScrollViewer
+                        HorizontalScrollBarVisibility="Visible"
+                        VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl
+                            x:Name="eventButtonsContainer"
+                            ItemTemplate="{StaticResource eventButtons}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel
+                                        Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                    
+                </Border>
+                <Border
+                    Name="ratingBorder"
+                    Margin="0,20,0,20"
+                    CornerRadius="10"
+                    Background="{DynamicResource AppBackgroundColor}">
+                    <DataGrid
+                        IsHitTestVisible="False"
+                        Margin="20"
+                        Name="dataGridResults"
+                        GridLinesVisibility="None"
+                        AlternationCount="2"
+                        AlternatingRowBackground="{DynamicResource AppDialogColor}"
+                        RowHeight="55">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Header="#"
+                                Width="auto"
+                                Binding="{Binding Position}"/>
+                            <DataGridTextColumn
+                                Header="Пилот"
+                                Width="*"
+                                Binding="{Binding Pilots.PilotName}"/>
+                            <DataGridTextColumn
+                                Header="Автомобиль"
+                                Width="*"
+                                Binding="{Binding Pilots.PilotCar.Name}"/>
+                            <DataGridTextColumn
+                                Header="Время"
+                                Width="auto"
+                                Binding="{Binding Time, StringFormat={}{0:mm\\:ss}}"/>
+                            <DataGridTextColumn
+                                Header="Очки"
+                                Width="auto"
+                                Binding="{Binding Points}"/>
+                            <DataGridTextColumn
+                                Header="Страна"
+                                Width="*"
+                                Binding="{Binding Pilots.Teams.TeamCountry}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+                
+            </StackPanel>
+            <TextBlock
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Opacity="0.5"
+                Grid.Row="1"
+                Grid.Column="1"
+                Name="textBlockInfo"
+                Text="Выберите интересующее событие"/>
+
+
         </Grid>
     </ui:DynamicScrollViewer>
 </Page>
