@@ -22,7 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition
-            Height="100"/>
+            Height="auto"/>
             <RowDefinition
             Height="100"/>
         </Grid.RowDefinitions>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using _28._01ui.Classes;
+using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Windows;
@@ -59,7 +60,7 @@ namespace _28._01ui
 					}
 				catch
 				{
-					Warn.SetTextWithDelay("Не удалось открыть изображение");
+						PopupManager.ShowMessage("Не удалось открыть изображение");
 					{
 						var logo = new ImageBrush
 						{
@@ -78,7 +79,7 @@ namespace _28._01ui
 			var team = entities.Teams.Find(DataHolder.SharedTeamId);
 			if (tboxName.Text == "" || tboxCountry.Text == "")
 			{
-				Warn.SetTextWithDelay("Заполните поля");
+				PopupManager.ShowMessage("Заполните поля");
 			}
 			else
 			{
@@ -139,7 +140,7 @@ namespace _28._01ui
 			}
 			else
 			{
-				Warn.SetTextWithDelay("Изображение не было выбрано");
+				PopupManager.ShowMessage("Изображение не было выбрано");
 			}
 		}
 
@@ -166,7 +167,7 @@ namespace _28._01ui
 			}
 			else
 			{
-				Warn.SetTextWithDelay("Изображение не было выбрано");
+				PopupManager.ShowMessage("Изображение не было выбрано");
 			}
 		}
 	}

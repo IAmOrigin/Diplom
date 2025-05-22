@@ -59,7 +59,7 @@ namespace _28._01ui
 			}
 			catch (Exception ex)
 			{
-				Warn.SetTextWithDelay(ex.ToString());
+				PopupManager.ShowMessage(ex.ToString());
 			}
 		}
 	}

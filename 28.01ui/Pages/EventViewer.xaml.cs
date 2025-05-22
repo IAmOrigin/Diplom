@@ -1,5 +1,6 @@
 ﻿using _28._01ui.Classes;
 using _28._01ui.EditorWindows;
+using _28._01ui.TicketWindowFolder;
 using _28._01ui.Properties;
 using System;
 using System.Collections.Generic;
@@ -41,16 +42,23 @@ namespace _28._01ui.Pages
 				eventType.Text = selectedEvent.EventType.ToString();
                 eventLocation.Text = selectedEvent.Location;
                 eventDesc.Text = selectedEvent.EventDesc;
+                
                 if (selectedEvent.Price == 0)
                 {
                     buttonBuy.Visibility = Visibility.Collapsed;
                     textBlockNoBuy.Visibility = Visibility.Visible;
                 }
-                if(selectedEvent.EventDate < DateTime.Now)
+                else if (selectedEvent.TicketsRemain == 0)
+                {
+                    buttonBuy.Visibility = Visibility.Collapsed;
+                    textBlockNoBuy.Text = "Билеты закончились";
+                }
+                if (selectedEvent.EventDate < DateTime.Now)
                 {
                     buttonBuy.Visibility = Visibility.Collapsed;
                     textBlockNoBuy.Text = "Событие завершено";
                 }
+                
             }
             catch(Exception ex)
             {
@@ -93,12 +101,25 @@ namespace _28._01ui.Pages
 		}
 		private void ButtonBuyTicket(object sender, RoutedEventArgs e)
 		{
+			var selectedEvent = entities.Events.Find(DataHolder.SharedEventId);
 			if (Settings.Default.loggedInUser == 0)
             {
                 PopupManager.ShowMessage("Для покупки билета необходимо авторизоваться");
+                return;
             }
+            TicketWindow window = new TicketWindow();
+            Manager.DialogOverlay.Visibility = Visibility.Visible;
+            window.Closed += TicketWindow_Closed;
+            window.ShowDialog();
+
+
 		}
 		private void Editor_Closed(object sender, EventArgs e)
+		{
+			Manager.DialogOverlay.Visibility = Visibility.Collapsed;
+			LoadInfo();
+		}
+		private void TicketWindow_Closed(object sender, EventArgs e)
 		{
 			Manager.DialogOverlay.Visibility = Visibility.Collapsed;
 			LoadInfo();

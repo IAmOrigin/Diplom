@@ -15,7 +15,6 @@ namespace _28._01ui
     public partial class Results
     {
         public int Id { get; set; }
-        public int Position { get; set; }
         public Nullable<int> EventId { get; set; }
         public Nullable<int> PilotId { get; set; }
         public Nullable<int> Points { get; set; }

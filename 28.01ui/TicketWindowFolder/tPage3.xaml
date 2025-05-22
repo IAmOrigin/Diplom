@@ -1,0 +1,88 @@
+﻿<Page x:Class="_28._01ui.TicketWindowFolder.tPage3"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_28._01ui.TicketWindowFolder"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      d:DesignHeight="450"
+      d:DesignWidth="450"
+      Title="tPage1">
+
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Left"
+            Orientation="Vertical">
+            <TextBlock
+                Text="Введите код подтверждения"/>
+            <StackPanel
+                Margin="0,10,0,0"
+                Orientation="Horizontal">
+                <ui:TextBox
+                    Name="textBoxCode"
+                    Width="100"
+                    BorderThickness="0"
+                    PlaceholderText="XXXXXX"/>
+                <TextBlock
+                    Name="textBlockTimer"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    Text="3:00"/>
+                <ui:HyperlinkButton
+                    Margin="20,0,0,0"
+                    Name="newCodeButton"
+                    Visibility="Collapsed"
+                    Click="Button_NewCode"
+                    Content="Отправить новый код"/>
+            </StackPanel>
+            <ui:HyperlinkButton
+                Margin="0,20,0,0"
+                Click="Button_NoCode"
+                Content="Не приходит код?"
+                BorderThickness="0"
+                Width="150"/>
+
+            <StackPanel
+                Visibility="Collapsed"
+                Orientation="Vertical">
+                <TextBlock
+                Margin="0,20,0,0"
+                Text="Введите код подтверждения из СМС"/>
+            <StackPanel
+                Margin="0,10,0,0"
+                Orientation="Horizontal">
+                <ui:TextBox
+                    Width="100"
+                    BorderThickness="0"
+                    PlaceholderText="ХХХXХХ"/>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0"
+                    Text="3:00"/>
+            </StackPanel>
+            <ui:HyperlinkButton
+                Margin="0,20,0,0"
+                Content="Отправить код еще раз"
+                BorderThickness="0"
+                Width="190"/>
+            </StackPanel>
+            
+            
+        </StackPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom">
+            <ui:Button
+                BorderThickness="0"
+                Width="100"
+                Margin="0,0,20,0"
+                Content="Далее" Click="Button_Next"/>
+            <ui:Button
+                BorderThickness="0"
+                Width="100"
+                Content="Отмена" Click="Button_Cancel"/>
+        </StackPanel>
+    </Grid>
+</Page>

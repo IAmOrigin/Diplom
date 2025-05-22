@@ -1,0 +1,36 @@
+﻿<Page x:Class="_28._01ui.TicketWindowFolder.tPage4"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_28._01ui.TicketWindowFolder"
+      mc:Ignorable="d" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      d:DesignHeight="450"
+      d:DesignWidth="450"
+      Title="tPage4">
+
+    <Grid>
+        <StackPanel
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="Спасибо за покупку!"
+                FontSize="24"/>
+            <TextBlock
+                Name="textBlockDateTime"
+                HorizontalAlignment="Center"
+                TextWrapping="Wrap"
+                Text="Ждем Вас на мероприятии"/>
+        </StackPanel>
+        <ui:Button
+            BorderThickness="0"
+            Width="100"
+            Content="Закрыть"
+            Click="Button_Cancel"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"/>
+    </Grid>
+</Page>

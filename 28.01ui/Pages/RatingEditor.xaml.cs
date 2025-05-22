@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _28._01ui.Classes;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -134,7 +135,7 @@ namespace _28._01ui
 				}
 				catch
 				{
-					Warn.SetTextWithDelay("Неверный формат времени");
+					PopupManager.ShowMessage("Неверный формат времени");
 					return;
 				}
 			}
@@ -187,7 +188,7 @@ namespace _28._01ui
 			}
 			else
 			{
-				Warn.SetTextWithDelay("Выберите пилота");
+				PopupManager.ShowMessage("Выберите пилота");
 			}
 		}
 

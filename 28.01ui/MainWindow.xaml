@@ -283,7 +283,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center"
                 Foreground="White"
-                Text="Завершите действия в окне редактирования"/>
+                Text="Завершите действия в всплывающем окне"/>
         </Grid>
 
     </Grid>
