@@ -34,7 +34,6 @@ namespace _28._01ui
 				}
 			}
 		}
-
 		private void LoadArchive(ItemsControl itemsControl)
 		{
 			itemsControl.Items.Clear();
@@ -71,26 +70,24 @@ namespace _28._01ui
 			ArchiveContainer.Items.Clear();
 			if (searchingText != "")
 			{
-				// Объединяем все результаты поиска и удаляем дубликаты
 				var filteredEvents = entities.Events
 					.Where(s => s.EventName.ToLower().Contains(searchingText) ||
 							   s.Location.ToLower().Contains(searchingText) ||
 							   s.EventType.TypeName.ToLower().Contains(searchingText))
 					.Where(s => s.EventDate >= DateTime.Now)
-					.Distinct() // Удаляем дубликаты
+					.Distinct()
 					.ToList();
 
 				foreach (var eventItem in filteredEvents)
 				{
 					EventContainer.Items.Add(eventItem);
 				}
-				// Объединяем все результаты поиска и удаляем дубликаты
 				var filteredArchive = entities.Events
 					.Where(s => s.EventName.ToLower().Contains(searchingText) ||
 							   s.Location.ToLower().Contains(searchingText) ||
 							   s.EventType.TypeName.ToLower().Contains(searchingText))
 					.Where(s => s.EventDate < DateTime.Now)
-					.Distinct() // Удаляем дубликаты
+					.Distinct()
 					.ToList();
 
 				foreach (var eventItem in filteredArchive)

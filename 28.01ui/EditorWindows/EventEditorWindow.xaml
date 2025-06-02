@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:_28._01ui.EditorWindows"
         mc:Ignorable="d"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-        Title="EventEditorWindow"
+        Title="Редактирование"
         Height="560"
         Width="490"
         WindowStyle="None"
@@ -199,7 +199,83 @@
                         Name="ticketPrice"
                         Margin="0,20,0,0"
                         PlaceholderText="Стоимость билета (Руб)"/>
-
+                    <StackPanel
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="Регламент"/>
+                        <ui:ToggleSwitch
+                            Click="regulationSwitch_Click"
+                            IsChecked="True"
+                            Name="regulationSwitch"
+                            Margin="20,0,0,0"
+                            Height="35"/>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Name="regulationTextBlock"
+                            Text="Добавьте регламент"/>
+                        <ui:Button
+                            Name="regulationButton"
+                            Margin="20,0,0,0"
+                            BorderThickness="0"
+                            Content="Регламент"
+                            Click="regulationButton_Click"/>
+                    </StackPanel>
+                    <StackPanel
+                        Margin="0,20,0,0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="Галерея"/>
+                        <ui:Button
+                            Margin="20,0,0,0"
+                            BorderThickness="0"
+                            Content="Добавить фото"
+                            Click="Button_Gallery"/>
+                    </StackPanel>
+                    <ItemsControl
+                            Margin="0,20,0,0"
+                            x:Name="itemsControlGallery">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel
+                                        Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                        Margin="0,0,20,10"
+                                        Height="80"
+                                        Width="140"
+                                        CornerRadius="10">
+                                    <Border.Background>
+                                        <ImageBrush
+                                            Stretch="UniformToFill"
+                                            ImageSource="{Binding Image}"/>
+                                    </Border.Background>
+                                    <ui:Button
+                                        Click="Button_RemoveGalleryItem"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Stretch"
+                                            VerticalAlignment="Stretch"
+                                            Appearance="Transparent"
+                                            Background="#66000000">
+                                        <ui:Button.Content>
+                                            <ui:SymbolIcon
+                                                    Symbol="Delete20"
+                                                    FontSize="20"/>
+                                        </ui:Button.Content>
+                                    </ui:Button>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </StackPanel>
             </Grid>
 

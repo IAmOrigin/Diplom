@@ -96,12 +96,6 @@
                     Appearance="Primary"
                     Click="registrBtn_Click"/>
 
-                <TextBlock
-                    Name="Warn"
-                    Margin="0,10,0,0"
-                    FontSize="12"
-                    Foreground="Coral"/>
-                
             </StackPanel>
         </Grid>
     </Grid>

@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.AccessControl;
@@ -24,6 +25,8 @@ namespace _28._01ui.EditorWindows
 		int eventId;
 		string newfile = null;
 		string sourceFilePath = null;
+		string regulation = null;
+		string regulationDate = null;
 		public EventEditorWindow()
         {
             InitializeComponent();
@@ -54,6 +57,23 @@ namespace _28._01ui.EditorWindows
 				DateTime dateTime = selectedEvent.EventDate.Value;
 				eventHours.Value = dateTime.Hour;
 				eventMinutes.Value = dateTime.Minute;
+				//regulationDate = selectedEvent.RegulationDate.ToString();
+				//regulation = selectedEvent.Regulation;
+				if (regulation == null)
+				{
+					regulationTextBlock.Text = "Добавьте регламент";
+				}
+				else
+				{
+					regulationTextBlock.Text = "Регламент";
+				}
+				foreach (var item in entities.EventGallery)
+				{
+					if (selectedEvent.Id == item.EventId)
+					{
+						itemsControlGallery.Items.Add(item);
+					}
+				}
 				if (selectedEvent.Price != 0)
 				{
 					ticketSwitch.IsChecked = false;
@@ -134,13 +154,14 @@ namespace _28._01ui.EditorWindows
 		private void buttonSave_Click(object sender, RoutedEventArgs e)
 		{
 			var selectedEvent = entities.Events.Find(eventId);
-			if(String.IsNullOrEmpty(eventName.Text) ||
+			if (String.IsNullOrEmpty(eventName.Text) ||
 				comboType.SelectedIndex == -1 ||
 				String.IsNullOrEmpty(eventDesc.Text) ||
 				String.IsNullOrEmpty(eventLocation.Text) ||
 				eventDate.SelectedDate == default ||
 				eventHours.Text == "" ||
 				eventMinutes.Text == "" ||
+				(regulationSwitch.IsChecked == true && (String.IsNullOrEmpty(regulation) || String.IsNullOrEmpty(regulationDate))) ||
 				(ticketSwitch.IsChecked == false && (ticketsRemain.Text == "" || ticketPrice.Text == "")))
 			{
 				PopupManager.ShowMessage("Заполните все поля");
@@ -167,6 +188,16 @@ namespace _28._01ui.EditorWindows
 				0
 			);
 			selectedEvent.EventDate = combinedDateTime;
+			if (regulationSwitch.IsChecked == false)
+			{
+				//selectedEvent.Regulation = null
+				//selectedEvent.Regulationdate = null
+			}
+			else
+			{
+				//selectedEvent.Regulation = regulation
+				//selectedEvent.Regulationdate = regulationDate
+			}
 			if (ticketSwitch.IsChecked == true)
 			{
 				selectedEvent.TicketsRemain = 0;
@@ -223,6 +254,88 @@ namespace _28._01ui.EditorWindows
 		{
 			EventTypeEditorWindow window = new EventTypeEditorWindow();
 			window.ShowDialog();
+		}
+
+		private void Button_Gallery(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.Filter = "Изображения (*.bmp, *.jpg, *.png)|*.bmp;*.jpg;*.png"; ;
+			if (openFileDialog.ShowDialog() == true)
+			{
+				sourceFilePath = openFileDialog.FileName;
+				string targetDirectory = Path.Combine(ProjectDirectory.GetProjectDirectory(), @"images\EventGallery\");
+				string targetFilePath = Path.Combine(targetDirectory, Path.GetFileName(sourceFilePath));
+				if (File.Exists(targetFilePath))
+				{
+					string fileNameWithoutExt = Path.GetFileNameWithoutExtension(sourceFilePath);
+					string fileExt = Path.GetExtension(sourceFilePath);
+					int counter = 1;
+					do
+					{
+						targetFilePath = Path.Combine(targetDirectory, $"{fileNameWithoutExt}{counter}{fileExt}");
+						counter++;
+					} while (File.Exists(targetFilePath));
+				}
+				File.Copy(sourceFilePath, targetFilePath);
+				newfile = Path.Combine(@"images\EventGallery\", Path.GetFileName(sourceFilePath));
+				sourceFilePath = null;
+				EventGallery photo = new EventGallery();
+				photo.EventId = eventId;
+				photo.Image = newfile;
+				entities.EventGallery.Add(photo);
+				itemsControlGallery.Items.Add(photo);
+				
+			}
+			else
+			{
+				PopupManager.ShowMessage("Изображение не было выбрано");
+			}
+		}
+
+		private void Button_RemoveGalleryItem(object sender, RoutedEventArgs e)
+		{
+			var button = sender as Button;
+			var galleryItem = button.DataContext as EventGallery;
+			entities.EventGallery.Remove(galleryItem);
+			itemsControlGallery.Items.Remove(galleryItem);
+		}
+
+		private void regulationSwitch_Click(object sender, RoutedEventArgs e)
+		{
+			regulationSwitcher();
+		}
+		private void regulationSwitcher()
+		{
+			if (regulationButton.Visibility == Visibility.Visible)
+			{
+				regulationButton.Visibility = Visibility.Collapsed;
+				regulationTextBlock.Visibility = Visibility.Collapsed;
+			}
+			else
+			{
+				regulationButton.Visibility = Visibility.Visible;
+				regulationTextBlock.Visibility = Visibility.Visible;
+			}
+		}
+
+		private void regulationButton_Click(object sender, RoutedEventArgs e)
+		{
+			RegulationEditorWindow window = new RegulationEditorWindow(regulation, regulationDate);
+			window.Closed += RegulationEditor_Closed;
+			window.ShowDialog();
+			regulation = window.resultText;
+			regulationDate = window.resultDate;
+		}
+		private void RegulationEditor_Closed(object sender, EventArgs e)
+		{
+			if (regulation == null)
+			{
+				regulationTextBlock.Text = "Добавьте регламент";
+			}
+			else
+			{
+				regulationTextBlock.Text = "Регламент";
+			}
 		}
 	}
 }

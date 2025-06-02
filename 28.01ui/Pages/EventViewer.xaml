@@ -1,18 +1,26 @@
-﻿<Page x:Class="_28._01ui.Pages.EventViewer"
+﻿<Page
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:_28._01ui.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      xmlns:Classes="clr-namespace:_28._01ui.Classes" x:Class="_28._01ui.Pages.EventViewer"
       mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1440"
+      d:DesignHeight="900"
+      d:DesignWidth="1440"
       Title="EventViewer"
       Language="ru-RU">
 
+    <Page.Resources>
+        <Classes:Sub20WidthConverter x:Key="Sub20WidthConverter"/>
+        <Classes:DivBy5Mul2Converter x:Key="DivBy5Mul2Converter"/>
+        <Classes:DivBy5Mul3Converter x:Key="DivBy5Mul3Converter"/>
+    </Page.Resources>
+
     <ui:DynamicScrollViewer>
         <Grid
-            Name="animGrid">
+            x:Name="animGrid">
             <Grid.RenderTransform>
                 <TranslateTransform Y="20"/>
             </Grid.RenderTransform>
@@ -28,14 +36,18 @@
             </Grid.RowDefinitions>
 
             <Image
-                Name="bunner"
+                x:Name="bunner"
                 Grid.Row="0"
                 Grid.ColumnSpan="3"
                 Stretch="UniformToFill"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"/>
 
-            <Grid
+
+
+
+
+            <Grid x:Name="grid"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="0,10,0,0">
@@ -53,7 +65,6 @@
                         Height="auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-
                 <TextBlock
                     Grid.Row="0"
                     Grid.ColumnSpan="2"
@@ -62,17 +73,18 @@
                     Margin="0,0,0,10"
                     TextWrapping="Wrap"
                     Text="EventName"
-                    Name="eventName"
+                    x:Name="eventName"
                     FontSize="36"
                     FontWeight="SemiBold"/>
                 <TextBlock
-                    Name="textBlockNoBuy"
+                    VerticalAlignment="Center"
+                    x:Name="textBlockNoBuy"
                     Margin="20"
                     Grid.Column="2"
                     Grid.Row="0"
                     Text="Проход бесплатный"/>
                 <ui:Button
-                    Name="buttonBuy"
+                    x:Name="buttonBuy"
                     Click="ButtonBuyTicket"
                     Grid.Column="2"
                     Grid.Row="0"
@@ -80,86 +92,159 @@
                     Content="Купить билет"
                     Width="150"
                     Appearance="Primary"/>
-                <StackPanel
-                    Orientation="Vertical"
+
+                <WrapPanel
                     Grid.Row="1"
-                    Grid.Column="0">
-                    <Border
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Orientation="Horizontal">
+                    <StackPanel
+                        x:Name="stackPanelInfo"
+                        Margin="0,0,20,20"
+                    Orientation="Vertical"
+                        
+                        Width="{Binding ActualWidth,
+                        Converter={StaticResource DivBy5Mul2Converter},
+                        ElementName=grid,
+                        Mode=OneWay}">
+                        <Border
                         CornerRadius="10"
                         Background="{DynamicResource AppBackgroundColor}">
-                        <TextBlock
+                            <TextBlock
                             Margin="20"
-                            Name="eventDesc"
+                            x:Name="eventDesc"
                             TextWrapping="Wrap"
                             Text="EventDesc"/>
-                    </Border>
-                    <Border
+                        </Border>
+                        <Border
                         Margin="0,20,0,0"
                         CornerRadius="10"
                         Background="{DynamicResource AppBackgroundColor}">
-                        <StackPanel
+                            <StackPanel
                             Orientation="Horizontal"
                             Margin="20">
-                            <ui:SymbolIcon
+                                <ui:SymbolIcon
                                 Symbol="FastAcceleration20"
                                 FontSize="36"
                                 Foreground="{DynamicResource AppTextColor}"/>
-                            <TextBlock
+                                <TextBlock
                                 
                                 VerticalAlignment="Center"
-                                Name="eventType"
+                                x:Name="eventType"
                                 FontSize="18"
                                 Text="EventType"
                                 Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <Border
+                            </StackPanel>
+                        </Border>
+                        <Border
                         Margin="0,20,0,0"
                         CornerRadius="10"
                         Background="{DynamicResource AppBackgroundColor}">
-                        <Grid>
-                            <StackPanel
+                            <Grid>
+                                <StackPanel
                                 Orientation="Horizontal"
                                 Margin="20">
-                                <ui:SymbolIcon
+                                    <ui:SymbolIcon
                                     Foreground="{DynamicResource AppTextColor}"
                                     Symbol="Location20"
                                     FontSize="36"/>
-                                <StackPanel
+                                    <StackPanel
                                     Margin="20,0,0,0"
                                     Orientation="Vertical">
-                                    <TextBlock
-                                        Name="eventLocation"
+                                        <TextBlock
+                                        x:Name="eventLocation"
                                         FontSize="18"
                                         Text="EventLocation"/>
-                                    <TextBlock
-                                        Name="eventDateTime"
+                                        <TextBlock
+                                        x:Name="eventDateTime"
                                         FontSize="18"
                                         Text="EventDateTime"/>
-                                </StackPanel>
+                                    </StackPanel>
 
-                            </StackPanel>
-                            <TextBlock
+                                </StackPanel>
+                                <TextBlock
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Right"
                                 Margin="0,0,20,0"
-                                Name="eventDate"
+                                x:Name="eventDate"
                                 FontSize="24"
                                 Text="EventDate"/>
-                        </Grid>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                    <Grid
+                            Name="galleryGrid"
+                        VerticalAlignment="Top"
+                        Margin="0,0,20,20"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Height="400"
                         
-                    </Border>
-                    
-                    
-                    
-                    
-                </StackPanel>
-
+                            Width="{Binding ActualWidth,
+                            Converter={StaticResource DivBy5Mul3Converter},
+                            ElementName=grid,
+                            Mode=OneWay}">
+                        <Border
+                        CornerRadius="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch" Background="#7F000000">
+                            
+                        </Border>
+                        <Border
+                            Name="galleryBorder"
+                        CornerRadius="10"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                            <Border.Background>
+                                <ImageBrush
+                                Stretch="UniformToFill"/>
+                            </Border.Background>
+                        </Border>
+                        <ui:Button
+                        BorderThickness="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Width="50"
+                        CornerRadius="10,0,0,10"
+                        Background="#7F000000"
+                            Click="Button_Prev">
+                            <ui:Button.Content>
+                                <ui:SymbolIcon
+                                Foreground="White"
+                                Opacity="0.5"
+                                FontSize="48"
+                                Filled="True"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Symbol="CaretLeft20"
+                                Width="50"/>
+                            </ui:Button.Content>
+                        </ui:Button>
+                        <ui:Button
+                        BorderThickness="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Stretch"
+                        Width="50"
+                        CornerRadius="0,10,10,0"
+                        Background="#7F000000"
+                            Click="Button_Next">
+                            <ui:SymbolIcon
+                                Width="50"
+                                Foreground="White"
+                                Opacity="0.5"
+                                FontSize="48"
+                                Filled="True"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Symbol="CaretRight20"/>
+                        </ui:Button>
+                    </Grid>
+                </WrapPanel>
             </Grid>
 
             <StackPanel
-                Name="adminPanel"
+                x:Name="adminPanel"
                 Orientation="Horizontal"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -167,7 +252,7 @@
                 HorizontalAlignment="Right"
                 Margin="0,190,10,0">
                 <ui:Button
-                    Name="btnEdit"
+                    x:Name="btnEdit"
                     Height="40"
                     Width="40"
                     BorderThickness="0"
@@ -178,7 +263,7 @@
                         Symbol="Edit20"/>
                 </ui:Button>
                 <ui:Button
-                    Name="btnDelete"
+                    x:Name="btnDelete"
                     Height="40"
                     Width="40"
                     BorderThickness="0"

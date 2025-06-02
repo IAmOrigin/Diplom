@@ -25,6 +25,7 @@ namespace _28._01ui
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<EventGallery> EventGallery { get; set; }
         public DbSet<Events> Events { get; set; }
         public DbSet<EventType> EventType { get; set; }
         public DbSet<PilotCar> PilotCar { get; set; }

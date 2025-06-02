@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EventGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Events">
           <Key>
             <PropertyRef Name="Id" />
@@ -188,6 +196,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Table_ToTable">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="EventGallery" Type="Self.EventGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventGallery">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Ticket_ToTable">
           <End Role="Events" Type="Self.Events" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -229,6 +249,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="EventGallery" EntityType="Self.EventGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PilotCar" EntityType="Self.PilotCar" Schema="dbo" store:Type="Tables" />
@@ -263,6 +284,10 @@
             <End Role="Pilots" EntitySet="Pilots" />
             <End Role="Results" EntitySet="Results" />
           </AssociationSet>
+          <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventGallery" EntitySet="EventGallery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Ticket_ToTable" Association="Self.FK_Ticket_ToTable">
             <End Role="Events" EntitySet="Events" />
             <End Role="Ticket" EntitySet="Ticket" />
@@ -281,6 +306,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EventGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Table_ToTable" FromRole="EventGallery" ToRole="Events" />
+        </EntityType>
         <EntityType Name="Events">
           <Key>
             <PropertyRef Name="Id" />
@@ -294,6 +328,7 @@
           <Property Name="EventImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
           <Property Name="TicketsRemain" Type="Int32" />
+          <NavigationProperty Name="EventGallery" Relationship="Self.FK_Table_ToTable" FromRole="Events" ToRole="EventGallery" />
           <NavigationProperty Name="EventType" Relationship="Self.FK_Events_ToTable" FromRole="Events" ToRole="EventType" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_ToTable" FromRole="Events" ToRole="Results" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_ToTable" FromRole="Events" ToRole="Ticket" />
@@ -400,6 +435,18 @@
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_ToTable_1" FromRole="Users" ToRole="Ticket" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_ToTable" FromRole="Users" ToRole="UserRole" />
         </EntityType>
+        <Association Name="FK_Table_ToTable">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="EventGallery" Type="Self.EventGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventGallery">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Events_ToTable">
           <End Role="EventType" Type="Self.EventType" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -523,6 +570,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EventGallery" EntityType="Self.EventGallery" />
           <EntitySet Name="Events" EntityType="Self.Events" />
           <EntitySet Name="EventType" EntityType="Self.EventType" />
           <EntitySet Name="PilotCar" EntityType="Self.PilotCar" />
@@ -533,6 +581,10 @@
           <EntitySet Name="Ticket" EntityType="Self.Ticket" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="EventGallery" EntitySet="EventGallery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Events_ToTable" Association="Self.FK_Events_ToTable">
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Events" EntitySet="Events" />
@@ -576,6 +628,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="EventGallery">
+            <EntityTypeMapping TypeName="Model.EventGallery">
+              <MappingFragment StoreEntitySet="EventGallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Events">
             <EntityTypeMapping TypeName="Model.Events">
               <MappingFragment StoreEntitySet="Events">

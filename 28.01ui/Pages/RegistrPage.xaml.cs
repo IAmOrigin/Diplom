@@ -47,7 +47,7 @@ namespace _28._01ui
 				var newUser = new Users
 				{
 					Login = Login,
-					Password = hashedPassword, // Сохраняем хэш пароля
+					Password = hashedPassword,
 					IdRole = 2,
 					Name = Name
 				};

@@ -174,8 +174,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\ConfirmCode.cs" />
+    <Compile Include="Classes\DivConverter.cs" />
+    <Compile Include="Classes\DivBy5Mul2Converter.cs" />
+    <Compile Include="Classes\DivBy5Mul3Converter.cs" />
     <Compile Include="Classes\PasswordHelper.cs" />
     <Compile Include="Classes\PopupManager.cs" />
+    <Compile Include="Classes\Sub20WidthConverter.cs" />
     <Compile Include="Classes\WidthConverter.cs" />
     <Compile Include="Classes\AdaptiveEventsWidthConverter.cs" />
     <Compile Include="EditorWindows\CarEditorWindow.xaml.cs">
@@ -197,11 +201,11 @@
       <DependentUpon>RatingEditorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\DataHolder.cs" />
-    <Compile Include="Pages\StartPage1.xaml.cs">
-      <DependentUpon>StartPage1.xaml</DependentUpon>
+    <Compile Include="EditorWindows\RegulationEditorWindow.xaml.cs">
+      <DependentUpon>RegulationEditorWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TicketWindowFolder\TicketWindow.xaml.cs">
-      <DependentUpon>TicketWindow.xaml</DependentUpon>
+    <Compile Include="EventGallery.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Events.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -223,6 +227,30 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StartPage1.xaml.cs">
+      <DependentUpon>StartPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PilotCar.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PilotRoles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pilots.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Results.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teams.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Ticket.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TicketWindowFolder\TicketWindow.xaml.cs">
+      <DependentUpon>TicketWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EventViewer.xaml.cs">
       <DependentUpon>EventViewer.xaml</DependentUpon>
@@ -271,24 +299,6 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PilotCar.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PilotRoles.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Pilots.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Results.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Teams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ticket.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="TicketWindowFolder\tPage2.xaml.cs">
       <DependentUpon>tPage2.xaml</DependentUpon>
     </Compile>
@@ -328,6 +338,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditorWindows\RatingEditorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditorWindows\RegulationEditorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -681,6 +695,12 @@
   <ItemGroup>
     <Resource Include="images\EventImages\adMD-rpzVD8.jpg" />
     <Resource Include="images\EventImages\7nJESKVUam81.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\EventGallery\img3.akspic.ru-gonochnyj-avtogonki-moshhnye_mashiny-ippodrom-nissan-5616x3318 %281%29.jpg" />
+    <Resource Include="images\EventGallery\NASCAR_practice.jpg" />
+    <Resource Include="images\EventGallery\r4dhnsS1S_o.jpg" />
+    <Resource Include="images\EventImages\Sunrise.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

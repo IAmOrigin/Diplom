@@ -30,7 +30,7 @@ namespace _28._01ui
 			Manager.DialogOverlay = dialogOverlay;
 			Manager.MainFrame = MainFrame;
 			Manager.MainFrame.Navigated += OnNavigated;
-			Manager.MainFrame.Navigate(new StartPage1());
+			Manager.MainFrame.Navigate(new StartPage());
 			PopupManager.Initialize(popup1, confirmPopup);
 
 			
@@ -42,7 +42,7 @@ namespace _28._01ui
 			var page = MainFrame.Content as Page;
 			if (page is StartPage)
 			{
-				//buttonback.Visibility = Visibility.Collapsed;
+				buttonback.Visibility = Visibility.Collapsed;
 			}
 			else
 			{
@@ -52,7 +52,7 @@ namespace _28._01ui
 			if (Settings.Default.loggedInUser != 0)
 			{
 				var entity = entities.Users.Find(Settings.Default.loggedInUser);
-				DataHolder.SharedRoleId = (Int32)entity.IdRole;
+				DataHolder.SharedRoleId = (int)entity.IdRole;
 				profilebtn.Visibility = Visibility.Visible;
 				loginbtn.Visibility = Visibility.Collapsed;
 			}
@@ -183,7 +183,7 @@ namespace _28._01ui
 
 		private void testButton_Click(object sender, RoutedEventArgs e)
 		{
-			//Manager.MainFrame.Navigate(new PilotViewer());
+			Manager.MainFrame.Navigate(new PilotViewer());
 		}
 
 		private void dialogOverLay_Click(object sender, RoutedEventArgs e)
