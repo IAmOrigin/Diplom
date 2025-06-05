@@ -52,7 +52,7 @@ namespace _28._01ui.Pages
 			borderPilotImg.Background = imageBrush;
 			namePilot.Text = pilot.PilotName;
 			cityPilot.Text = "Город: " + pilot.City;
-			rolePilot.Text = "Должность: " + pilot.PilotRoles.NameRole;
+			rolePilot.Text = "Должность: " + pilot.UserRole.NameRole;
 			bioPilot.Text = pilot.Bio;
 			pilotId = Id;
 			teamName.Text = pilot.Teams.TeamName;

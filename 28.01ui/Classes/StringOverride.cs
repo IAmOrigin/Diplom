@@ -36,7 +36,7 @@ namespace _28._01ui
 	{
 		public override string ToString()
 		{
-			return Id.ToString() + PilotRoles.NameRole + PilotName;
+			return Id.ToString() + UserRole.NameRole + PilotName;
 		}
 	}
 

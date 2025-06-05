@@ -75,7 +75,7 @@ namespace _28._01ui
 					}
 						var roleTextBlock = new TextBlock
 					{
-						Text = pilot.PilotRoles.NameRole,
+						Text = pilot.UserRole.NameRole,
 						HorizontalAlignment = HorizontalAlignment.Center,
 						Foreground = Brushes.White,
 						FontWeight = FontWeights.Medium,

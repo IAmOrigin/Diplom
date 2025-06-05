@@ -12,22 +12,14 @@ namespace _28._01ui
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Admission
     {
-        public Users()
-        {
-            this.Pilots = new HashSet<Pilots>();
-            this.Ticket = new HashSet<Ticket>();
-        }
-    
         public int Id { get; set; }
-        public Nullable<int> IdRole { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Name { get; set; }
+        public int EventId { get; set; }
+        public int CarId { get; set; }
+        public bool IsAdmitted { get; set; }
     
-        public virtual ICollection<Pilots> Pilots { get; set; }
-        public virtual ICollection<Ticket> Ticket { get; set; }
-        public virtual UserRole UserRole { get; set; }
+        public virtual Events Events { get; set; }
+        public virtual PilotCar PilotCar { get; set; }
     }
 }

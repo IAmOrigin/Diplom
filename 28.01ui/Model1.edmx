@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" Nullable="false" />
+          <Property Name="CarId" Type="int" Nullable="false" />
+          <Property Name="IsAdmitted" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="EventGallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -26,6 +35,8 @@
           <Property Name="EventImg" Type="nvarchar(max)" />
           <Property Name="Price" Type="int" />
           <Property Name="TicketsRemain" Type="int" />
+          <Property Name="Regulation" Type="nvarchar(max)" />
+          <Property Name="RegulationDate" Type="datetime" />
         </EntityType>
         <EntityType Name="EventType">
           <Key>
@@ -33,6 +44,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeName" Type="nvarchar(max)" />
+          <Property Name="LeaderBoard" Type="bit" />
         </EntityType>
         <EntityType Name="PilotCar">
           <Key>
@@ -64,6 +76,7 @@
           <Property Name="RoleId" Type="int" />
           <Property Name="CarId" Type="int" />
           <Property Name="PilotImg" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="int" />
         </EntityType>
         <EntityType Name="Results">
           <Key>
@@ -95,6 +108,7 @@
           <Property Name="Price" Type="int" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="Phone" Type="nvarchar" MaxLength="11" />
+          <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="BuyDate" Type="datetime" />
         </EntityType>
         <EntityType Name="UserRole">
@@ -114,6 +128,30 @@
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="Name" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="FK_Admission_ToTable">
+          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="Admission" Type="Self.Admission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admission">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admission_ToTable_1">
+          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="1" />
+          <End Role="Admission" Type="Self.Admission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PilotCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admission">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Events_ToTable">
           <End Role="EventType" Type="Self.EventType" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -143,12 +181,12 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Pilots_ToTable_1">
-          <End Role="PilotRoles" Type="Self.PilotRoles" Multiplicity="0..1">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
           <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PilotRoles">
+            <Principal Role="UserRole">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Pilots">
@@ -165,6 +203,18 @@
             </Principal>
             <Dependent Role="Pilots">
               <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pilots_ToTable_3">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pilots">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,7 +247,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Table_ToTable">
-          <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EventGallery" Type="Self.EventGallery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Events">
@@ -249,6 +301,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="Admission" EntityType="Self.Admission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventGallery" EntityType="Self.EventGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
@@ -260,6 +313,14 @@
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Admission_ToTable" Association="Self.FK_Admission_ToTable">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Admission" EntitySet="Admission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admission_ToTable_1" Association="Self.FK_Admission_ToTable_1">
+            <End Role="PilotCar" EntitySet="PilotCar" />
+            <End Role="Admission" EntitySet="Admission" />
+          </AssociationSet>
           <AssociationSet Name="FK_Events_ToTable" Association="Self.FK_Events_ToTable">
             <End Role="EventType" EntitySet="EventType" />
             <End Role="Events" EntitySet="Events" />
@@ -269,11 +330,15 @@
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable_1" Association="Self.FK_Pilots_ToTable_1">
-            <End Role="PilotRoles" EntitySet="PilotRoles" />
+            <End Role="UserRole" EntitySet="UserRole" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable_2" Association="Self.FK_Pilots_ToTable_2">
             <End Role="PilotCar" EntitySet="PilotCar" />
+            <End Role="Pilots" EntitySet="Pilots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pilots_ToTable_3" Association="Self.FK_Pilots_ToTable_3">
+            <End Role="Users" EntitySet="Users" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Results_ToTable" Association="Self.FK_Results_ToTable">
@@ -306,6 +371,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" Nullable="false" />
+          <Property Name="CarId" Type="Int32" Nullable="false" />
+          <Property Name="IsAdmitted" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FK_Admission_ToTable" FromRole="Admission" ToRole="Events" />
+          <NavigationProperty Name="PilotCar" Relationship="Self.FK_Admission_ToTable_1" FromRole="Admission" ToRole="PilotCar" />
+        </EntityType>
         <EntityType Name="EventGallery">
           <Key>
             <PropertyRef Name="Id" />
@@ -328,6 +404,9 @@
           <Property Name="EventImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Int32" />
           <Property Name="TicketsRemain" Type="Int32" />
+          <Property Name="Regulation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RegulationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Admission" Relationship="Self.FK_Admission_ToTable" FromRole="Events" ToRole="Admission" />
           <NavigationProperty Name="EventGallery" Relationship="Self.FK_Table_ToTable" FromRole="Events" ToRole="EventGallery" />
           <NavigationProperty Name="EventType" Relationship="Self.FK_Events_ToTable" FromRole="Events" ToRole="EventType" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_ToTable" FromRole="Events" ToRole="Results" />
@@ -339,6 +418,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LeaderBoard" Type="Boolean" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Events_ToTable" FromRole="EventType" ToRole="Events" />
         </EntityType>
         <EntityType Name="PilotCar">
@@ -350,6 +430,7 @@
           <Property Name="Engine" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Volume" Type="Decimal" Precision="18" Scale="1" />
           <Property Name="HorsePower" Type="Int32" />
+          <NavigationProperty Name="Admission" Relationship="Self.FK_Admission_ToTable_1" FromRole="PilotCar" ToRole="Admission" />
           <NavigationProperty Name="Pilots" Relationship="Self.FK_Pilots_ToTable_2" FromRole="PilotCar" ToRole="Pilots" />
         </EntityType>
         <EntityType Name="PilotRoles">
@@ -358,7 +439,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Pilots" Relationship="Self.FK_Pilots_ToTable_1" FromRole="PilotRoles" ToRole="Pilots" />
         </EntityType>
         <EntityType Name="Pilots">
           <Key>
@@ -373,9 +453,11 @@
           <Property Name="RoleId" Type="Int32" />
           <Property Name="CarId" Type="Int32" />
           <Property Name="PilotImg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
           <NavigationProperty Name="PilotCar" Relationship="Self.FK_Pilots_ToTable_2" FromRole="Pilots" ToRole="PilotCar" />
-          <NavigationProperty Name="PilotRoles" Relationship="Self.FK_Pilots_ToTable_1" FromRole="Pilots" ToRole="PilotRoles" />
           <NavigationProperty Name="Teams" Relationship="Self.FK_Pilots_ToTable" FromRole="Pilots" ToRole="Teams" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_Pilots_ToTable_1" FromRole="Pilots" ToRole="UserRole" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Pilots_ToTable_3" FromRole="Pilots" ToRole="Users" />
           <NavigationProperty Name="Results" Relationship="Self.FK_Results_ToTable_1" FromRole="Pilots" ToRole="Results" />
         </EntityType>
         <EntityType Name="Results">
@@ -411,6 +493,7 @@
           <Property Name="Price" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="BuyDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Ticket_ToTable" FromRole="Ticket" ToRole="Events" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Ticket_ToTable_1" FromRole="Ticket" ToRole="Users" />
@@ -421,6 +504,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Pilots" Relationship="Self.FK_Pilots_ToTable_1" FromRole="UserRole" ToRole="Pilots" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_ToTable" FromRole="UserRole" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
@@ -432,11 +516,38 @@
           <Property Name="Login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pilots" Relationship="Self.FK_Pilots_ToTable_3" FromRole="Users" ToRole="Pilots" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_ToTable_1" FromRole="Users" ToRole="Ticket" />
           <NavigationProperty Name="UserRole" Relationship="Self.FK_Users_ToTable" FromRole="Users" ToRole="UserRole" />
         </EntityType>
-        <Association Name="FK_Table_ToTable">
+        <Association Name="FK_Admission_ToTable">
           <End Role="Events" Type="Self.Events" Multiplicity="1" />
+          <End Role="Admission" Type="Self.Admission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Events">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admission">
+              <PropertyRef Name="EventId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Admission_ToTable_1">
+          <End Role="PilotCar" Type="Self.PilotCar" Multiplicity="1" />
+          <End Role="Admission" Type="Self.Admission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PilotCar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Admission">
+              <PropertyRef Name="CarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Table_ToTable">
+          <End Role="Events" Type="Self.Events" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="EventGallery" Type="Self.EventGallery" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Events">
@@ -501,20 +612,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Pilots_ToTable_1">
-          <End Role="PilotRoles" Type="Self.PilotRoles" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PilotRoles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pilots">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pilots_ToTable">
           <End Role="Teams" Type="Self.Teams" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -526,6 +623,32 @@
             </Principal>
             <Dependent Role="Pilots">
               <PropertyRef Name="TeamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pilots_ToTable_1">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pilots">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pilots_ToTable_3">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Pilots" Type="Self.Pilots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pilots">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -570,6 +693,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admission" EntityType="Self.Admission" />
           <EntitySet Name="EventGallery" EntityType="Self.EventGallery" />
           <EntitySet Name="Events" EntityType="Self.Events" />
           <EntitySet Name="EventType" EntityType="Self.EventType" />
@@ -581,6 +705,14 @@
           <EntitySet Name="Ticket" EntityType="Self.Ticket" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Admission_ToTable" Association="Self.FK_Admission_ToTable">
+            <End Role="Events" EntitySet="Events" />
+            <End Role="Admission" EntitySet="Admission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Admission_ToTable_1" Association="Self.FK_Admission_ToTable_1">
+            <End Role="PilotCar" EntitySet="PilotCar" />
+            <End Role="Admission" EntitySet="Admission" />
+          </AssociationSet>
           <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
             <End Role="Events" EntitySet="Events" />
             <End Role="EventGallery" EntitySet="EventGallery" />
@@ -601,12 +733,16 @@
             <End Role="PilotCar" EntitySet="PilotCar" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
-          <AssociationSet Name="FK_Pilots_ToTable_1" Association="Self.FK_Pilots_ToTable_1">
-            <End Role="PilotRoles" EntitySet="PilotRoles" />
-            <End Role="Pilots" EntitySet="Pilots" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pilots_ToTable" Association="Self.FK_Pilots_ToTable">
             <End Role="Teams" EntitySet="Teams" />
+            <End Role="Pilots" EntitySet="Pilots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pilots_ToTable_1" Association="Self.FK_Pilots_ToTable_1">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="Pilots" EntitySet="Pilots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pilots_ToTable_3" Association="Self.FK_Pilots_ToTable_3">
+            <End Role="Users" EntitySet="Users" />
             <End Role="Pilots" EntitySet="Pilots" />
           </AssociationSet>
           <AssociationSet Name="FK_Results_ToTable_1" Association="Self.FK_Results_ToTable_1">
@@ -628,6 +764,16 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Admission">
+            <EntityTypeMapping TypeName="Model.Admission">
+              <MappingFragment StoreEntitySet="Admission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="CarId" ColumnName="CarId" />
+                <ScalarProperty Name="IsAdmitted" ColumnName="IsAdmitted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="EventGallery">
             <EntityTypeMapping TypeName="Model.EventGallery">
               <MappingFragment StoreEntitySet="EventGallery">
@@ -649,6 +795,8 @@
                 <ScalarProperty Name="EventImg" ColumnName="EventImg" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="TicketsRemain" ColumnName="TicketsRemain" />
+                <ScalarProperty Name="Regulation" ColumnName="Regulation" />
+                <ScalarProperty Name="RegulationDate" ColumnName="RegulationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -657,6 +805,7 @@
               <MappingFragment StoreEntitySet="EventType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="LeaderBoard" ColumnName="LeaderBoard" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -691,6 +840,7 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="CarId" ColumnName="CarId" />
                 <ScalarProperty Name="PilotImg" ColumnName="PilotImg" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -725,6 +875,7 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="BuyDate" ColumnName="BuyDate" />
               </MappingFragment>
             </EntityTypeMapping>

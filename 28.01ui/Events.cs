@@ -16,6 +16,7 @@ namespace _28._01ui
     {
         public Events()
         {
+            this.Admission = new HashSet<Admission>();
             this.EventGallery = new HashSet<EventGallery>();
             this.Results = new HashSet<Results>();
             this.Ticket = new HashSet<Ticket>();
@@ -30,7 +31,10 @@ namespace _28._01ui
         public string EventImg { get; set; }
         public Nullable<int> Price { get; set; }
         public Nullable<int> TicketsRemain { get; set; }
+        public string Regulation { get; set; }
+        public Nullable<System.DateTime> RegulationDate { get; set; }
     
+        public virtual ICollection<Admission> Admission { get; set; }
         public virtual ICollection<EventGallery> EventGallery { get; set; }
         public virtual EventType EventType { get; set; }
         public virtual ICollection<Results> Results { get; set; }

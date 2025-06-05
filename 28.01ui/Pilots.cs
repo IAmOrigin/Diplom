@@ -28,10 +28,12 @@ namespace _28._01ui
         public Nullable<int> RoleId { get; set; }
         public Nullable<int> CarId { get; set; }
         public string PilotImg { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         public virtual PilotCar PilotCar { get; set; }
-        public virtual PilotRoles PilotRoles { get; set; }
         public virtual Teams Teams { get; set; }
+        public virtual UserRole UserRole { get; set; }
+        public virtual Users Users { get; set; }
         public virtual ICollection<Results> Results { get; set; }
     }
 }

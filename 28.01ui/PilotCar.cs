@@ -16,6 +16,7 @@ namespace _28._01ui
     {
         public PilotCar()
         {
+            this.Admission = new HashSet<Admission>();
             this.Pilots = new HashSet<Pilots>();
         }
     
@@ -25,6 +26,7 @@ namespace _28._01ui
         public Nullable<decimal> Volume { get; set; }
         public Nullable<int> HorsePower { get; set; }
     
+        public virtual ICollection<Admission> Admission { get; set; }
         public virtual ICollection<Pilots> Pilots { get; set; }
     }
 }

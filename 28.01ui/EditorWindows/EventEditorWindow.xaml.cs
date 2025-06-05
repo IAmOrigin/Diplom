@@ -57,8 +57,8 @@ namespace _28._01ui.EditorWindows
 				DateTime dateTime = selectedEvent.EventDate.Value;
 				eventHours.Value = dateTime.Hour;
 				eventMinutes.Value = dateTime.Minute;
-				//regulationDate = selectedEvent.RegulationDate.ToString();
-				//regulation = selectedEvent.Regulation;
+				regulationDate = selectedEvent.RegulationDate.ToString();
+				regulation = selectedEvent.Regulation;
 				if (regulation == null)
 				{
 					regulationTextBlock.Text = "Добавьте регламент";
@@ -73,6 +73,18 @@ namespace _28._01ui.EditorWindows
 					{
 						itemsControlGallery.Items.Add(item);
 					}
+				}
+				if (String.IsNullOrEmpty(selectedEvent.Regulation))
+				{
+					regulationSwitch.IsChecked = false;
+					regulationButton.Visibility = Visibility.Collapsed;
+					regulationTextBlock.Visibility = Visibility.Collapsed;
+				}
+				else
+				{
+					regulationSwitch.IsChecked = true;
+					regulationButton.Visibility = Visibility.Visible;
+					regulationTextBlock.Visibility = Visibility.Visible;
 				}
 				if (selectedEvent.Price != 0)
 				{
@@ -190,13 +202,13 @@ namespace _28._01ui.EditorWindows
 			selectedEvent.EventDate = combinedDateTime;
 			if (regulationSwitch.IsChecked == false)
 			{
-				//selectedEvent.Regulation = null
-				//selectedEvent.Regulationdate = null
+				selectedEvent.Regulation = null;
+				selectedEvent.RegulationDate = null;
 			}
 			else
 			{
-				//selectedEvent.Regulation = regulation
-				//selectedEvent.Regulationdate = regulationDate
+				selectedEvent.Regulation = regulation;
+				selectedEvent.RegulationDate = Convert.ToDateTime(regulationDate);
 			}
 			if (ticketSwitch.IsChecked == true)
 			{
@@ -325,17 +337,20 @@ namespace _28._01ui.EditorWindows
 			window.ShowDialog();
 			regulation = window.resultText;
 			regulationDate = window.resultDate;
-		}
-		private void RegulationEditor_Closed(object sender, EventArgs e)
-		{
 			if (regulation == null)
 			{
 				regulationTextBlock.Text = "Добавьте регламент";
+				regulationButton.Content = "Добавить";
 			}
 			else
 			{
 				regulationTextBlock.Text = "Регламент";
+				regulationButton.Content = "Редактировать";
 			}
+		}
+		private void RegulationEditor_Closed(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

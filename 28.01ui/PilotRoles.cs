@@ -14,14 +14,7 @@ namespace _28._01ui
     
     public partial class PilotRoles
     {
-        public PilotRoles()
-        {
-            this.Pilots = new HashSet<Pilots>();
-        }
-    
         public int Id { get; set; }
         public string NameRole { get; set; }
-    
-        public virtual ICollection<Pilots> Pilots { get; set; }
     }
 }

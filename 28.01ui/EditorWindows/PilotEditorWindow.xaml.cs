@@ -46,7 +46,7 @@ namespace _28._01ui.EditorWindows
 			birthDate.SelectedDate = pilot.PilotBirthDate;
             cityPilot.Text = pilot.City;
             bioPilot.Text = pilot.Bio;
-			comboRole.SelectedItem = pilot.PilotRoles;
+			comboRole.SelectedItem = pilot.UserRole;
         }
 
 		private void Button_Cancel(object sender, RoutedEventArgs e)
@@ -100,7 +100,7 @@ namespace _28._01ui.EditorWindows
 			pilot.PilotBirthDate = birthDate.SelectedDate;
 			pilot.City = cityPilot.Text;
 			pilot.Bio = bioPilot.Text;
-			pilot.PilotRoles = comboRole.SelectedItem as PilotRoles;
+			pilot.UserRole = comboRole.SelectedItem as UserRole;
 			try
 			{
 				if (sourceFilePath != null)

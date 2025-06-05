@@ -20,6 +20,7 @@ namespace _28._01ui
         public Nullable<int> Price { get; set; }
         public string Name { get; set; }
         public string Phone { get; set; }
+        public string Email { get; set; }
         public Nullable<System.DateTime> BuyDate { get; set; }
     
         public virtual Events Events { get; set; }

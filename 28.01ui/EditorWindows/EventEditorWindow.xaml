@@ -207,7 +207,6 @@
                             Text="Регламент"/>
                         <ui:ToggleSwitch
                             Click="regulationSwitch_Click"
-                            IsChecked="True"
                             Name="regulationSwitch"
                             Margin="20,0,0,0"
                             Height="35"/>
@@ -216,10 +215,12 @@
                         Margin="0,20,0,0"
                         Orientation="Horizontal">
                         <TextBlock
+                            Visibility="Collapsed"
                             VerticalAlignment="Center"
                             Name="regulationTextBlock"
                             Text="Добавьте регламент"/>
                         <ui:Button
+                            Visibility="Collapsed"
                             Name="regulationButton"
                             Margin="20,0,0,0"
                             BorderThickness="0"

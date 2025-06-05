@@ -16,12 +16,14 @@ namespace _28._01ui
     {
         public UserRole()
         {
+            this.Pilots = new HashSet<Pilots>();
             this.Users = new HashSet<Users>();
         }
     
         public int Id { get; set; }
         public string NameRole { get; set; }
     
+        public virtual ICollection<Pilots> Pilots { get; set; }
         public virtual ICollection<Users> Users { get; set; }
     }
 }

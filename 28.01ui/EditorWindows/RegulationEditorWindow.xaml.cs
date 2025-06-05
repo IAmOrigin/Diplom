@@ -30,7 +30,7 @@ namespace _28._01ui.EditorWindows
 			resultText = regulation;
             resultDate = regulationDate;
             resultTextBox.Text = resultText;
-            if (resultDate != null )
+            if (!String.IsNullOrEmpty(resultDate))
             {
                 resultDatePicker.SelectedDate = Convert.ToDateTime(resultDate);
             }

@@ -21,6 +21,7 @@ namespace _28._01ui
     
         public int Id { get; set; }
         public string TypeName { get; set; }
+        public Nullable<bool> LeaderBoard { get; set; }
     
         public virtual ICollection<Events> Events { get; set; }
     }
